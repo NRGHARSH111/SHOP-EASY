@@ -1,37 +1,34 @@
 # SHOP-EASY
 
 
-3m ago
-
-providr me a readme content foe github
-
-To tailor a README to your project, I'll quickly scan key files and the project structure (settings.py, urls.py, views.py, template, and tests) to capture features, tech stack, and run instructions.
-
-Analyzed
-c:\Users\Victus\OneDrive\Desktop\SHOPPING CART\ShopEasy
-Analyzed
-c:\Users\Victus\OneDrive\Desktop\SHOPPING CART\ShopEasy\shop
-README for ShopEasy
-A minimal full‑stack shopping cart demo built with Django 5 and a modern Bootstrap UI. Includes a product catalog API, client‑side cart with order history, and a checkout endpoint.
 
 Features
 Modern UI: 
 shop/templates/index.html
- uses Bootstrap 5 with a sleek “glass” design.
-Product API: GET /api/products/ serves a hardcoded catalog from 
-shop/views.py
-.
+
+uses Bootstrap 5 with a sleek “glass” design.
+
+Product API: GET /api/products/ serves a hardcoded catalog from  shop/views.py
+
 Checkout API: POST /api/checkout/ accepts a cart payload and returns a success message.
+
 Client cart + orders: Cart and order history persisted in localStorage.
-Tests: Basic API tests in 
-shop/tests.py
-.
-Tech Stack
+
+Tests: Basic API tests in shop/tests.py
+
+
+Tech Stack:-
+
 Backend: Django 5.2.4
+
 Database: SQLite (dev)
+
 Frontend: Bootstrap 5 (CDN), vanilla JS
+
 Python: 3.10+ recommended
-Project Structure
+
+Project Structure:-
+
 ShopEasy/
 ├─ manage.py
 ├─ db.sqlite3
@@ -44,58 +41,86 @@ ShopEasy/
    ├─ tests.py
    └─ templates/
       └─ index.html
-Getting Started
-1) Setup
-bash
+
+Getting Started:-
+
+1) Setup bash
+
 # Windows PowerShell
+
 python -m venv .venv
+
 .venv\Scripts\Activate.ps1
 
 pip install --upgrade pip
+
 pip install "Django==5.2.4"
-2) Run database migrations
-bash
+
+2) Run database migrations bash
+
 python manage.py migrate
-3) Start the server
-bash
+
+3) Start the server bash
+
 python manage.py runserver
+
 App: http://127.0.0.1:8000/
+
 Products API: http://127.0.0.1:8000/api/products/
+
 Checkout API: http://127.0.0.1:8000/api/checkout/
-API
+
+API:-
+
 GET /api/products/
+
 Returns a list of products:
+
 json
 [
   { "id": 1, "name": "Wireless Mouse", "price": 19.99, "imageUrl": "...", "category": "Accessories" },
   ...
 ]
+
 POST /api/checkout/
+
 Body:
+
 json
 { "cart": [ { "productId": 1, "quantity": 2 }, ... ] }
+
 Response:
+
 json
 { "message": "Order received! Thank you for your purchase." }
-Running Tests
-bash
+Running Tests bash
+
 python manage.py test
+
 Configuration Notes
-DEBUG=True and ALLOWED_HOSTS=[] in 
-ShopEasy/settings.py
- are for local development.
+
+DEBUG=True and ALLOWED_HOSTS=[] in ShopEasy/settings.py are for local development.
+
 Before deploying:
+
 Set DEBUG=False
+
 Set ALLOWED_HOSTS appropriately
+
 Rotate SECRET_KEY and load from an environment variable
+
 Configure static files and a production database if needed
-Requirements
+
+Requirements:-
+
 Create a requirements.txt (optional but recommended):
 
 Django==5.2.4
-Install via:
 
-bash
+Install via: bash
+
 pip install -r requirements.txt
+
 Screenshots
+
 UI shows a product grid with category filters, search, cart modal, order history modal.
