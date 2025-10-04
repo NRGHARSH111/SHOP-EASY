@@ -2,8 +2,10 @@
 
 
 
-Features
-Modern UI: 
+# Features
+
+# Modern UI:
+
 shop/templates/index.html
 
 uses Bootstrap 5 with a sleek “glass” design.
@@ -17,7 +19,7 @@ Client cart + orders: Cart and order history persisted in localStorage.
 Tests: Basic API tests in shop/tests.py
 
 
-Tech Stack:-
+# Tech Stack:
 
 Backend: Django 5.2.4
 
@@ -27,7 +29,7 @@ Frontend: Bootstrap 5 (CDN), vanilla JS
 
 Python: 3.10+ recommended
 
-Project Structure:-
+# Project Structure:
 
 ShopEasy/
 ├─ manage.py
@@ -70,7 +72,7 @@ Products API: http://127.0.0.1:8000/api/products/
 
 Checkout API: http://127.0.0.1:8000/api/checkout/
 
-API:-
+# API
 
 GET /api/products/
 
@@ -93,7 +95,8 @@ Response:
 
 json
 { "message": "Order received! Thank you for your purchase." }
-Running Tests bash
+
+# Running Tests bash
 
 python manage.py test
 
@@ -101,7 +104,7 @@ Configuration Notes
 
 DEBUG=True and ALLOWED_HOSTS=[] in ShopEasy/settings.py are for local development.
 
-Before deploying:
+ # Before deploying:
 
 Set DEBUG=False
 
@@ -111,7 +114,7 @@ Rotate SECRET_KEY and load from an environment variable
 
 Configure static files and a production database if needed
 
-Requirements:-
+# Requirements:
 
 Create a requirements.txt (optional but recommended):
 
@@ -121,6 +124,6 @@ Install via: bash
 
 pip install -r requirements.txt
 
-Screenshots
+# Screenshots:
 
 UI shows a product grid with category filters, search, cart modal, order history modal.
