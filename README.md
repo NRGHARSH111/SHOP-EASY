@@ -44,11 +44,11 @@ ShopEasy/
    └─ templates/
       └─ index.html
 
+# Windows PowerShell
+
 Getting Started:-
 
 1) Setup bash
-
-# Windows PowerShell
 
 python -m venv .venv
 
