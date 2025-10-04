@@ -1,11 +1,8 @@
 # SHOP-EASY
 
-
-
 # Features:-
 
 # Modern UI:
-
 shop/templates/index.html
 
 uses Bootstrap 5 with a sleek “glass” design.
@@ -20,7 +17,6 @@ Tests: Basic API tests in shop/tests.py
 
 
 # Tech Stack:
-
 Backend: Django 5.2.4
 
 Database: SQLite (dev)
@@ -45,11 +41,9 @@ ShopEasy/
       └─ index.html
 
 # Windows PowerShell
-
 Getting Started:-
 
 1) Setup bash
-
 python -m venv .venv
 
 .venv\Scripts\Activate.ps1
@@ -59,7 +53,6 @@ pip install --upgrade pip
 pip install "Django==5.2.4"
 
 2) Run database migrations bash
-
 python manage.py migrate
 
 3) Start the server bash
@@ -73,7 +66,6 @@ Products API: http://127.0.0.1:8000/api/products/
 Checkout API: http://127.0.0.1:8000/api/checkout/
 
 # API
-
 GET /api/products/
 
 Returns a list of products:
@@ -105,7 +97,6 @@ Configuration Notes
 DEBUG=True and ALLOWED_HOSTS=[] in ShopEasy/settings.py are for local development.
 
  # Before deploying:
-
 Set DEBUG=False
 
 Set ALLOWED_HOSTS appropriately
@@ -115,7 +106,6 @@ Rotate SECRET_KEY and load from an environment variable
 Configure static files and a production database if needed
 
 # Requirements:
-
 Create a requirements.txt (optional but recommended):
 
 Django==5.2.4
@@ -125,5 +115,4 @@ Install via: bash
 pip install -r requirements.txt
 
 # Screenshots:
-
 UI shows a product grid with category filters, search, cart modal, order history modal.
