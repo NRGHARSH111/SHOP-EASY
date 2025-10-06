@@ -115,4 +115,7 @@ Install via: bash
 pip install -r requirements.txt
 
 # Screenshots:
-UI shows a product grid with category filters, search, cart modal, order history modal.
+screenshots/
+ ├─ cart.jpeg
+ ├─ dashboard.jpeg
+ ├─ orders.jpeg
