@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile - ShopEasy</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #6366f1;
+      --primary-light: #818cf8;
+      --secondary: #ec4899;
+      --accent: #06b6d4;
+      --success: #22c55e;
+      --warning: #f59e0b;
+      --bg-primary: #f8fafc;
+      --bg-secondary: #ffffff;
+      --bg-card: rgba(255, 255, 255, 0.95);
+      --text-primary: #1e293b;
+      --text-secondary: #64748b;
+      --text-muted: #94a3b8;
+      --border: rgba(99, 102, 241, 0.2);
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      --gradient-mesh: linear-gradient(135deg, #6366f1 0%, #ec4899 50%, #06b6d4 100%);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background: 
+        radial-gradient(at 30% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
+        radial-gradient(at 80% 10%, rgba(236, 72, 153, 0.06) 0%, transparent 50%);
+    }
+
+    .navbar {
+      background: rgba(255, 255, 255, 0.9) !important;
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+    }
+
+    .navbar-brand {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: var(--gradient-mesh);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .profile-container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .profile-grid {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .profile-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .profile-sidebar {
+      background: var(--bg-card);
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
+      height: fit-content;
+    }
+
+    .profile-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: var(--gradient-mesh);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 3rem;
+      color: white;
+    }
+
+    .profile-name {
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .profile-email {
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+    }
+
+    .profile-menu {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .profile-menu li {
+      margin-bottom: 0.5rem;
+    }
+
+    .profile-menu a {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.875rem 1rem;
+      border-radius: 12px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .profile-menu a:hover,
+    .profile-menu a.active {
+      background: rgba(99, 102, 241, 0.1);
+      color: var(--primary);
+    }
+
+    .profile-menu i {
+      width: 20px;
+      text-align: center;
+    }
+
+    .profile-content {
+      background: var(--bg-card);
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-title i {
+      color: var(--primary);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 576px) {
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .stat-card {
+      background: rgba(99, 102, 241, 0.05);
+      border-radius: 16px;
+      padding: 1.5rem;
+      text-align: center;
+      border: 1px solid var(--border);
+    }
+
+    .stat-card-icon {
+      width: 50px;
+      height: 50px;
+      background: var(--gradient-mesh);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      color: white;
+      font-size: 1.3rem;
+    }
+
+    .stat-card-value {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+
+    .stat-card-label {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .order-card {
+      background: rgba(99, 102, 241, 0.03);
+      border-radius: 16px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid var(--border);
+    }
+
+    .order-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .order-id {
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .order-status {
+      padding: 0.375rem 1rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .status-delivered {
+      background: rgba(34, 197, 94, 0.1);
+      color: var(--success);
+    }
+
+    .status-pending {
+      background: rgba(245, 158, 11, 0.1);
+      color: var(--warning);
+    }
+
+    .status-processing {
+      background: rgba(99, 102, 241, 0.1);
+      color: var(--primary);
+    }
+
+    .order-items {
+      margin-bottom: 1rem;
+    }
+
+    .order-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0;
+    }
+
+    .order-item-name {
+      font-weight: 500;
+    }
+
+    .order-item-qty {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+
+    .order-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .order-date {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+
+    .order-total {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .form-control {
+      border: 2px solid rgba(99, 102, 241, 0.1);
+      border-radius: 12px;
+      padding: 0.875rem 1rem;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      background: white;
+    }
+
+    .form-control:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+    }
+
+    .form-label {
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    .btn-save {
+      background: var(--gradient-mesh);
+      border: none;
+      color: white;
+      padding: 0.875rem 2rem;
+      border-radius: 12px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .btn-save:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+    }
+
+    .empty-orders {
+      text-align: center;
+      padding: 3rem 2rem;
+    }
+
+    .empty-orders i {
+      font-size: 4rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .toast-container {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
+    }
+
+    .toast {
+      background: var(--bg-card);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      box-shadow: var(--shadow-lg);
+      animation: slideIn 0.3s ease;
+    }
+
+    @keyframes slideIn {
+      from {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="/">ShopEasy</a>
+      <div class="d-flex align-items-center gap-3">
+        <a href="/shop/" class="btn btn-outline-primary rounded-pill">
+          <i class="fas fa-shopping-bag me-2"></i>Shop
+        </a>
+        <a href="/" class="btn btn-link text-decoration-none">
+          <i class="fas fa-home"></i>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="profile-container">
+    <div class="profile-grid">
+      <!-- Sidebar -->
+      <div class="profile-sidebar">
+        <div class="profile-avatar">
+          <i class="fas fa-user"></i>
+        </div>
+        <div class="profile-name" id="userName">Loading...</div>
+        <div class="profile-email" id="userEmail">loading@example.com</div>
+        
+        <ul class="profile-menu">
+          <li>
+            <a href="#" class="active" data-tab="dashboard">
+              <i class="fas fa-chart-line"></i>
+              Dashboard
+            </a>
+          </li>
+          <li>
+            <a href="#" data-tab="orders">
+              <i class="fas fa-shopping-bag"></i>
+              My Orders
+            </a>
+          </li>
+          <li>
+            <a href="#" data-tab="profile">
+              <i class="fas fa-user-edit"></i>
+              Edit Profile
+            </a>
+          </li>
+          <li>
+            <a href="#" data-tab="addresses">
+              <i class="fas fa-map-marker-alt"></i>
+              Addresses
+            </a>
+          </li>
+          <li>
+            <a href="#" onclick="logout()">
+              <i class="fas fa-sign-out-alt"></i>
+              Logout
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Content -->
+      <div class="profile-content">
+        <!-- Dashboard Tab -->
+        <div id="dashboardTab" class="tab-content">
+          <h2 class="section-title">
+            <i class="fas fa-chart-line"></i>
+            Dashboard
+          </h2>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-card-icon">
+                <i class="fas fa-shopping-bag"></i>
+              </div>
+              <div class="stat-card-value" id="totalOrders">0</div>
+              <div class="stat-card-label">Total Orders</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card-icon">
+                <i class="fas fa-rupee-sign"></i>
+              </div>
+              <div class="stat-card-value" id="totalSpent">₹0</div>
+              <div class="stat-card-label">Total Spent</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-card-icon">
+                <i class="fas fa-box"></i>
+              </div>
+              <div class="stat-card-value" id="itemsBought">0</div>
+              <div class="stat-card-label">Items Bought</div>
+            </div>
+          </div>
+          
+          <h3 class="section-title" style="font-size: 1.2rem; margin-top: 2rem;">
+            <i class="fas fa-clock"></i>
+            Recent Orders
+          </h3>
+          <div id="recentOrders">
+            <div class="empty-orders">
+              <i class="fas fa-shopping-bag"></i>
+              <h4>No orders yet</h4>
+              <p>Start shopping to see your orders here</p>
+              <a href="/shop/" class="btn btn-primary rounded-pill">
+                <i class="fas fa-shopping-bag me-2"></i>Shop Now
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Orders Tab -->
+        <div id="ordersTab" class="tab-content hidden">
+          <h2 class="section-title">
+            <i class="fas fa-shopping-bag"></i>
+            My Orders
+          </h2>
+          <div id="allOrders">
+            <div class="empty-orders">
+              <i class="fas fa-shopping-bag"></i>
+              <h4>No orders yet</h4>
+              <p>You haven't placed any orders yet</p>
+              <a href="/shop/" class="btn btn-primary rounded-pill">
+                <i class="fas fa-shopping-bag me-2"></i>Start Shopping
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Edit Profile Tab -->
+        <div id="profileTab" class="tab-content hidden">
+          <h2 class="section-title">
+            <i class="fas fa-user-edit"></i>
+            Edit Profile
+          </h2>
+          <form id="profileForm">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="editName" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label">Phone Number</label>
+                <input type="tel" class="form-control" id="editPhone">
+              </div>
+              <div class="col-12">
+                <label class="form-label">Email Address</label>
+                <input type="email" class="form-control" id="editEmail" required disabled>
+                <small class="text-muted">Email cannot be changed</small>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-save mt-4">
+              <i class="fas fa-save me-2"></i>Save Changes
+            </button>
+          </form>
+        </div>
+
+        <!-- Addresses Tab -->
+        <div id="addressesTab" class="tab-content hidden">
+          <h2 class="section-title">
+            <i class="fas fa-map-marker-alt"></i>
+            Saved Addresses
+          </h2>
+          <div id="savedAddresses">
+            <div class="order-card">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <div>
+                  <h5 class="mb-1">Home</h5>
+                  <p class="text-muted mb-0">123 Main Street, Mumbai, Maharashtra - 400001</p>
+                </div>
+                <span class="badge bg-success">Default</span>
+              </div>
+              <div class="d-flex gap-2">
+                <button class="btn btn-sm btn-outline-primary">Edit</button>
+                <button class="btn btn-sm btn-outline-danger">Delete</button>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-primary rounded-pill mt-3">
+            <i class="fas fa-plus me-2"></i>Add New Address
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script>
+    const apiBaseUrl = 'http://127.0.0.1:8000/api';
+    let currentUser = null;
+    let orders = [];
+
+    // Tab switching
+    document.querySelectorAll('.profile-menu a[data-tab]').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const tabName = link.dataset.tab;
+        
+        // Update active menu item
+        document.querySelectorAll('.profile-menu a').forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+        
+        // Show corresponding tab
+        document.querySelectorAll('.tab-content').forEach(tab => tab.classList.add('hidden'));
+        document.getElementById(tabName + 'Tab').classList.remove('hidden');
+      });
+    });
+
+    // Load user data
+    async function loadUserData() {
+      try {
+        const res = await fetch(`${apiBaseUrl}/auth-check/`);
+        const data = await res.json();
+        
+        if (!data.authenticated) {
+          window.location.href = '/auth/';
+          return;
+        }
+        
+        currentUser = data.user;
+        document.getElementById('userName').textContent = data.username || 'User';
+        document.getElementById('userEmail').textContent = data.email || 'user@example.com';
+        
+        // Populate edit form
+        document.getElementById('editName').value = data.username || '';
+        document.getElementById('editEmail').value = data.email || '';
+        
+        // Load orders
+        await loadOrders();
+      } catch (err) {
+        console.error('Failed to load user data:', err);
+        showToast('Error', 'Failed to load profile data', 'danger');
+      }
+    }
+
+    // Load orders
+    async function loadOrders() {
+      try {
+        // This is a mock - in real implementation, fetch from API
+        orders = JSON.parse(localStorage.getItem('orders') || '[]');
+        renderOrders();
+        updateStats();
+      } catch (err) {
+        console.error('Failed to load orders:', err);
+      }
+    }
+
+    // Render orders
+    function renderOrders() {
+      const recentOrdersContainer = document.getElementById('recentOrders');
+      const allOrdersContainer = document.getElementById('allOrders');
+      
+      if (orders.length === 0) {
+        return; // Keep empty state
+      }
+      
+      const orderHTML = orders.map(order => `
+        <div class="order-card">
+          <div class="order-header">
+            <span class="order-id">Order #${order.id || 'ORD001'}</span>
+            <span class="order-status status-delivered">Delivered</span>
+          </div>
+          <div class="order-items">
+            ${order.items ? order.items.map(item => `
+              <div class="order-item">
+                <span class="order-item-name">${item.name}</span>
+                <span class="order-item-qty">Qty: ${item.quantity}</span>
+              </div>
+            `).join('') : '<div class="order-item"><span>Product details not available</span></div>'}
+          </div>
+          <div class="order-footer">
+            <span class="order-date">${new Date(order.date || Date.now()).toLocaleDateString()}</span>
+            <span class="order-total">₹${(order.total || 0).toFixed(2)}</span>
+          </div>
+        </div>
+      `).join('');
+      
+      recentOrdersContainer.innerHTML = orderHTML;
+      allOrdersContainer.innerHTML = orderHTML;
+    }
+
+    // Update stats
+    function updateStats() {
+      document.getElementById('totalOrders').textContent = orders.length;
+      
+      const totalSpent = orders.reduce((sum, order) => sum + (order.total || 0), 0);
+      document.getElementById('totalSpent').textContent = `₹${totalSpent.toFixed(0)}`;
+      
+      const itemsBought = orders.reduce((sum, order) => {
+        return sum + (order.items ? order.items.reduce((s, item) => s + (item.quantity || 0), 0) : 0);
+      }, 0);
+      document.getElementById('itemsBought').textContent = itemsBought;
+    }
+
+    // Profile form submission
+    document.getElementById('profileForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const name = document.getElementById('editName').value;
+      const phone = document.getElementById('editPhone').value;
+      
+      // Mock save - in real implementation, send to API
+      document.getElementById('userName').textContent = name;
+      showToast('Success', 'Profile updated successfully', 'success');
+    });
+
+    // Logout
+    async function logout() {
+      try {
+        await fetch(`${apiBaseUrl}/logout/`, { method: 'POST' });
+        localStorage.removeItem('cart');
+        window.location.href = '/';
+      } catch (err) {
+        showToast('Error', 'Failed to logout', 'danger');
+      }
+    }
+
+    // Toast notification
+    function showToast(title, message, type = 'info') {
+      const container = document.getElementById('toastContainer');
+      const toast = document.createElement('div');
+      toast.className = 'toast';
+      toast.innerHTML = `
+        <div class="d-flex align-items-center">
+          <i class="fas fa-${type === 'success' ? 'check-circle text-success' : type === 'danger' ? 'exclamation-circle text-danger' : 'info-circle text-info'} me-2"></i>
+          <div>
+            <strong>${title}</strong>
+            <p class="mb-0" style="font-size: 0.875rem; color: var(--text-secondary);">${message}</p>
+          </div>
+        </div>
+      `;
+      container.appendChild(toast);
+      
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateX(100%)';
+        setTimeout(() => toast.remove(), 300);
+      }, 4000);
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', loadUserData);
+  </script>
+</body>
+</html>

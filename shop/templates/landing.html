@@ -1,0 +1,1514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopEasy - Premium Tech & Lifestyle</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      /* Modern Light Theme */
+      --primary: #6366f1;
+      --primary-light: #818cf8;
+      --primary-dark: #4f46e5;
+      --secondary: #ec4899;
+      --accent: #06b6d4;
+      --success: #22c55e;
+      --warning: #f59e0b;
+      
+      /* Light Background */
+      --bg-primary: #f8fafc;
+      --bg-secondary: #ffffff;
+      --bg-card: rgba(255, 255, 255, 0.95);
+      --bg-glass: rgba(255, 255, 255, 0.8);
+      
+      /* Text Colors */
+      --text-primary: #1e293b;
+      --text-secondary: #64748b;
+      --text-muted: #94a3b8;
+      
+      /* Effects */
+      --border: rgba(99, 102, 241, 0.2);
+      --border-glow: rgba(99, 102, 241, 0.3);
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+      --glow-primary: 0 0 40px rgba(99, 102, 241, 0.15);
+      --glow-secondary: 0 0 40px rgba(236, 72, 153, 0.15);
+      
+      /* Gradients */
+      --gradient-mesh: linear-gradient(135deg, #6366f1 0%, #ec4899 50%, #06b6d4 100%);
+      --gradient-card: linear-gradient(145deg, rgba(99, 102, 241, 0.08) 0%, rgba(6, 182, 212, 0.05) 100%);
+      --gradient-1: linear-gradient(135deg, #6366f1 0%, #ec4899 100%);
+      --gradient-2: linear-gradient(135deg, #ec4899 0%, #06b6d4 100%);
+      --gradient-3: linear-gradient(135deg, #06b6d4 0%, #6366f1 100%);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* Light theme soft background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background: 
+        radial-gradient(at 30% 20%, rgba(99, 102, 241, 0.08) 0px, transparent 50%),
+        radial-gradient(at 80% 10%, rgba(236, 72, 153, 0.06) 0px, transparent 50%),
+        radial-gradient(at 10% 50%, rgba(6, 182, 212, 0.06) 0px, transparent 50%),
+        radial-gradient(at 70% 80%, rgba(99, 102, 241, 0.05) 0px, transparent 50%);
+      animation: meshMove 25s ease-in-out infinite;
+      will-change: transform;
+    }
+
+    @keyframes meshMove {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+    }
+
+    /* Floating Orbs */
+    .floating-shapes {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .floating-shape {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.15;
+      animation: orbFloat 15s ease-in-out infinite;
+    }
+
+    .shape-1 {
+      width: 400px;
+      height: 400px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      top: -100px;
+      left: -100px;
+      animation-delay: 0s;
+    }
+
+    .shape-2 {
+      width: 300px;
+      height: 300px;
+      background: linear-gradient(135deg, var(--secondary), var(--accent));
+      bottom: 10%;
+      right: -50px;
+      animation-delay: -5s;
+    }
+
+    .shape-3 {
+      width: 250px;
+      height: 250px;
+      background: linear-gradient(135deg, var(--accent), var(--primary));
+      top: 40%;
+      left: 30%;
+      animation-delay: -10s;
+    }
+
+    @keyframes orbFloat {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(50px, -50px) scale(1.1); }
+      50% { transform: translate(0, 50px) scale(0.9); }
+      75% { transform: translate(-50px, -25px) scale(1.05); }
+    }
+
+    /* Navigation - Light Theme */
+    .navbar {
+      background: rgba(255, 255, 255, 0.95) !important;
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: all 0.3s ease;
+      z-index: 9999 !important;
+    }
+
+    .navbar.scrolled {
+      padding: 0.5rem 0;
+      background: rgba(255, 255, 255, 1) !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-brand {
+      font-weight: 800;
+      font-size: 1.5rem;
+      background: var(--gradient-mesh);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientShift 3s ease infinite;
+    }
+
+    .nav-link {
+      color: var(--text-secondary) !important;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-link:hover {
+      color: var(--text-primary) !important;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gradient-mesh);
+      background-size: 200% 200%;
+      animation: gradientShift 3s ease infinite;
+      transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .btn-glow {
+      background: var(--gradient-mesh);
+      background-size: 200% 200%;
+      border: none;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+      animation: gradientShift 3s ease infinite;
+    }
+
+    .btn-glow:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(139, 92, 246, 0.6);
+      color: white;
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding: 120px 0 80px;
+      overflow: hidden;
+    }
+
+    /* Hero Background Carousel */
+    .hero-background-carousel {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .hero-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
+    }
+
+    .hero-slide.active {
+      opacity: 1;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, 
+        rgba(15, 23, 42, 0.45) 0%, 
+        rgba(30, 41, 59, 0.35) 50%,
+        rgba(51, 65, 85, 0.25) 100%);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 0.6s ease 0.1s both;
+      color: #1e293b;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .hero h1 span {
+      background: var(--gradient-mesh);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientShift 3s ease infinite;
+    }
+
+    .hero p {
+      font-size: 1.125rem;
+      color: #475569;
+      max-width: 500px;
+      margin-bottom: 2rem;
+      animation: fadeInUp 0.6s ease 0.2s both;
+      font-weight: 500;
+    }
+
+
+    /* Stats Section */
+    .stats-section {
+      padding: 80px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-card);
+      backdrop-filter: blur(10px);
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 2rem;
+      background: var(--gradient-card);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .stat-item:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary-light);
+      box-shadow: var(--glow-primary);
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 800;
+      background: var(--gradient-mesh);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+      animation: gradientShift 3s ease infinite;
+    }
+
+    .stat-label {
+      color: var(--text-secondary);
+      font-size: 1rem;
+    }
+
+    /* Features Section */
+    .features-section {
+      padding: 100px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-header h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .section-header h2 span {
+      background: var(--gradient-mesh);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientShift 3s ease infinite;
+    }
+
+    .section-header p {
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      background: var(--gradient-card);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 2.5rem;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--gradient-mesh);
+      background-size: 200% 200%;
+      animation: gradientShift 3s ease infinite;
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
+
+    .feature-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--primary-light);
+      box-shadow: var(--glow-primary);
+    }
+
+    .feature-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .feature-icon {
+      width: 70px;
+      height: 70px;
+      background: var(--gradient-mesh);
+      background-size: 200% 200%;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.75rem;
+      color: white;
+      margin-bottom: 1.5rem;
+      transition: transform 0.4s ease;
+      animation: gradientShift 3s ease infinite;
+    }
+
+    .feature-card:hover .feature-icon {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .feature-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: var(--text-primary);
+    }
+
+    .feature-card p {
+      color: var(--text-secondary);
+      margin: 0;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Products Section */
+    .products-section {
+      padding: 100px 0;
+      background: var(--bg-glass);
+    }
+
+    .product-card {
+      background: var(--gradient-card);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      height: 450px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--glow-primary);
+      border-color: var(--primary-light);
+    }
+
+    .product-image {
+      position: relative;
+      height: 240px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .product-card:hover .product-image img {
+      transform: scale(1.1);
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: var(--gradient-mesh);
+      background-size: 200% 200%;
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      animation: gradientShift 3s ease infinite;
+    }
+
+    .product-wishlist {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      width: 40px;
+      height: 40px;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-primary);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .product-wishlist:hover {
+      background: var(--secondary);
+      border-color: var(--secondary);
+      color: white;
+    }
+
+    .product-info {
+      padding: 1.25rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .product-category {
+      color: var(--primary-light);
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin: 0;
+    }
+
+    .product-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin: 0;
+      color: var(--text-primary);
+      line-height: 1.4;
+      min-height: 2.8rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      line-clamp: 2;
+      -webkit-box-orient: vertical;
+      box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .product-price {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .price-current {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .price-original {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
+
+    .btn-add-cart {
+      width: 100%;
+      background: rgba(139, 92, 246, 0.1);
+      border: 1px solid var(--border);
+      color: var(--text-primary);
+      padding: 0.75rem;
+      border-radius: 12px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .btn-add-cart:hover {
+      background: var(--gradient-mesh);
+      background-size: 200% 200%;
+      border-color: transparent;
+      color: white;
+      animation: gradientShift 3s ease infinite;
+    }
+
+    /* Testimonials Section */
+    .testimonials-section {
+      padding: 100px 0;
+    }
+
+    .testimonial-card {
+      background: var(--gradient-card);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 2.5rem;
+      transition: all 0.4s ease;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--primary-light);
+      box-shadow: var(--glow-primary);
+    }
+
+    .testimonial-stars {
+      color: #fbbf24;
+      margin-bottom: 1rem;
+    }
+
+    .testimonial-text {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--border);
+    }
+
+    .author-info h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      color: var(--text-primary);
+    }
+
+    .author-info p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      padding: 100px 0;
+      position: relative;
+    }
+
+    .cta-box {
+      background: var(--gradient-mesh);
+      background-size: 200% 200%;
+      border-radius: 40px;
+      padding: 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      animation: gradientShift 3s ease infinite;
+    }
+
+    .cta-box::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      animation: rotate 20s linear infinite;
+    }
+
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .cta-box > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-box h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      color: white;
+    }
+
+    .cta-box p {
+      font-size: 1.125rem;
+      opacity: 0.9;
+      max-width: 500px;
+      margin: 0 auto 2rem;
+      color: white;
+    }
+
+    .btn-cta {
+      background: white;
+      color: var(--primary-dark);
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1rem;
+      border: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Footer */
+    .footer {
+      padding: 60px 0 30px;
+      border-top: 1px solid var(--border);
+      background: var(--bg-card);
+      backdrop-filter: blur(10px);
+    }
+
+    .footer-brand {
+      font-size: 1.5rem;
+      font-weight: 800;
+      background: var(--gradient-mesh);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+      display: inline-block;
+      animation: gradientShift 3s ease infinite;
+    }
+
+    .footer-text {
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-links a {
+      width: 44px;
+      height: 44px;
+      background: rgba(139, 92, 246, 0.1);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      transition: all 0.3s ease;
+    }
+
+    .social-links a:hover {
+      background: var(--gradient-mesh);
+      background-size: 200% 200%;
+      border-color: transparent;
+      color: white;
+      transform: translateY(-3px);
+      animation: gradientShift 3s ease infinite;
+    }
+
+    .footer-links h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--text-primary);
+    }
+
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary-light);
+      padding-left: 5px;
+    }
+
+    .footer-bottom {
+      margin-top: 40px;
+      padding-top: 30px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--text-muted);
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .fade-in-up {
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg-primary);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--primary-light);
+    }
+
+    /* Scroll Reveal Animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating Orbs -->
+  <div class="floating-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">ShopEasy</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#products">Products</a></li>
+          <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+          <li class="nav-item"><a class="nav-link" href="#testimonials">Reviews</a></li>
+          <li class="nav-item ms-lg-3">
+            <a href="/shop/" class="btn btn-glow">
+              <i class="fas fa-shopping-bag me-2"></i>Shop Now
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section - Clean Design -->
+  <section class="hero" id="home" style="padding: 100px 0 80px; position: relative; overflow: hidden;">
+    <!-- Background Image Carousel -->
+    <div class="hero-background-carousel" id="heroCarousel">
+      <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1920&h=1080&fit=crop');"></div>
+      <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=1920&h=1080&fit=crop');"></div>
+      <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1607082318824-0a96f2a4a9ea?w=1920&h=1080&fit=crop');"></div>
+      <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1920&h=1080&fit=crop');"></div>
+      <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&h=1080&fit=crop');"></div>
+    </div>
+    
+    <!-- Overlay for text readability -->
+    <div class="hero-overlay"></div>
+    
+    <div class="container" style="position: relative; z-index: 2;">
+      <div class="row align-items-center justify-content-center text-center">
+        <div class="col-lg-8">
+          <!-- Badge -->
+          <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); padding: 8px 20px; border-radius: 50px; margin-bottom: 24px; border: 1px solid rgba(255, 255, 255, 0.2);">
+            <i class="fas fa-fire" style="color: #fbbf24;"></i>
+            <span style="color: white; font-weight: 600; font-size: 0.9rem;">Over 50,000 Happy Customers</span>
+          </div>
+          
+          <!-- Main Heading -->
+          <h1 style="font-size: 3.5rem; font-weight: 800; color: white; line-height: 1.2; margin-bottom: 20px;">
+            Your One-Stop Shop for <span style="color: #60a5fa;">Everything</span>
+          </h1>
+          
+          <!-- Subheading -->
+          <p style="font-size: 1.25rem; color: rgba(255, 255, 255, 0.9); max-width: 600px; margin: 0 auto 32px; line-height: 1.6;">
+            Discover premium electronics, fashion, and home essentials. Quality products, unbeatable prices, fast delivery.
+          </p>
+          
+          <!-- CTA Buttons -->
+          <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+            <a href="/shop/" class="btn" style="background: var(--gradient-mesh); color: white; padding: 16px 32px; border-radius: 12px; font-weight: 600; font-size: 1.1rem; border: none; box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);">
+              <i class="fas fa-shopping-bag me-2"></i>Start Shopping
+            </a>
+            <a href="#categories" class="btn" style="background: white; color: var(--text-primary); padding: 16px 32px; border-radius: 12px; font-weight: 600; font-size: 1.1rem; border: 2px solid var(--border); box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+              <i class="fas fa-th-large me-2"></i>Browse Categories
+            </a>
+          </div>
+          
+          <!-- Trust Badges -->
+          <div style="display: flex; gap: 32px; justify-content: center; margin-top: 40px; flex-wrap: wrap;">
+            <div style="display: flex; align-items: center; gap: 8px; color: rgba(255, 255, 255, 0.8);">
+              <i class="fas fa-truck" style="color: #34d399;"></i>
+              <span style="font-weight: 500;">Free Shipping</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; color: rgba(255, 255, 255, 0.8);">
+              <i class="fas fa-shield-alt" style="color: #34d399;"></i>
+              <span style="font-weight: 500;">Secure Payment</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 8px; color: rgba(255, 255, 255, 0.8);">
+              <i class="fas fa-undo" style="color: #34d399;"></i>
+              <span style="font-weight: 500;">Easy Returns</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section reveal">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-md-3 col-6">
+          <div class="stat-item">
+            <div class="stat-number" data-count="50000">0</div>
+            <div class="stat-label">Happy Customers</div>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="stat-item">
+            <div class="stat-number" data-count="15000">0</div>
+            <div class="stat-label">Products Sold</div>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="stat-item">
+            <div class="stat-number" data-count="500">0</div>
+            <div class="stat-label">Premium Products</div>
+          </div>
+        </div>
+        <div class="col-md-3 col-6">
+          <div class="stat-item">
+            <div class="stat-number" data-count="99">0</div>
+            <div class="stat-label">% Satisfaction</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features-section reveal" id="features">
+    <div class="container">
+      <div class="section-header">
+        <h2>Why Choose <span>ShopEasy</span>?</h2>
+        <p>We bring you the best shopping experience with premium features designed for modern consumers.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-shipping-fast"></i>
+            </div>
+            <h3>Fast Delivery</h3>
+            <p>Free shipping on orders over $50. Get your products delivered within 2-3 business days with real-time tracking.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h3>Secure Payment</h3>
+            <p>Your transactions are protected with 256-bit SSL encryption. Multiple secure payment options available.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-undo"></i>
+            </div>
+            <h3>Easy Returns</h3>
+            <p>30-day hassle-free return policy. Not satisfied? Return it for a full refund, no questions asked.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-headset"></i>
+            </div>
+            <h3>24/7 Support</h3>
+            <p>Our dedicated support team is always ready to help you with any questions or concerns.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-medal"></i>
+            </div>
+            <h3>Premium Quality</h3>
+            <p>We partner with top brands to bring you only the highest quality products that last.</p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <i class="fas fa-tags"></i>
+            </div>
+            <h3>Best Prices</h3>
+            <p>Competitive pricing with regular sales and exclusive member discounts up to 50% off.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section class="products-section reveal" id="products">
+    <div class="container">
+      <div class="section-header">
+        <h2>Featured <span>Products</span></h2>
+        <p>Handpicked premium products from our exclusive collection. Limited stock available.</p>
+      </div>
+      <div class="row g-4" id="featuredProducts">
+        <!-- Products will be loaded dynamically -->
+      </div>
+      <div class="text-center mt-5">
+        <a href="/shop/" class="btn btn-hero-primary">
+          <i class="fas fa-th-large me-2"></i>View All Products
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials-section reveal" id="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <h2>What Our <span>Customers</span> Say</h2>
+        <p>Real feedback from real customers who love our products and service.</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="testimonial-card">
+            <div class="testimonial-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <p class="testimonial-text">"Absolutely love the quality! The wireless headphones I bought exceeded my expectations. Fast shipping and great packaging too."</p>
+            <div class="testimonial-author">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150&auto=format&fit=crop" alt="Sarah" class="author-avatar">
+              <div class="author-info">
+                <h4>Sarah Johnson</h4>
+                <p>Verified Buyer</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="testimonial-card">
+            <div class="testimonial-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <p class="testimonial-text">"Best online shopping experience I've had. The customer service team helped me choose the perfect laptop stand. Highly recommend!"</p>
+            <div class="testimonial-author">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&auto=format&fit=crop" alt="Michael" class="author-avatar">
+              <div class="author-info">
+                <h4>Michael Chen</h4>
+                <p>Verified Buyer</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="testimonial-card">
+            <div class="testimonial-stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </div>
+            <p class="testimonial-text">"Great selection of products at competitive prices. The mechanical keyboard I ordered was delivered in just 2 days. Amazing!"</p>
+            <div class="testimonial-author">
+              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=150&auto=format&fit=crop" alt="Emma" class="author-avatar">
+              <div class="author-info">
+                <h4>Emma Williams</h4>
+                <p>Verified Buyer</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section reveal">
+    <div class="container">
+      <div class="cta-box">
+        <h2>Ready to Upgrade Your Lifestyle?</h2>
+        <p>Join over 50,000 satisfied customers and discover premium products that make a difference.</p>
+        <a href="/shop/" class="btn btn-cta">
+          <i class="fas fa-shopping-bag me-2"></i>Start Shopping Now
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-4">
+          <span class="footer-brand">ShopEasy</span>
+          <p class="footer-text">Your destination for premium tech and lifestyle products. Quality, innovation, and exceptional service in every purchase.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-4">
+          <div class="footer-links">
+            <h4>Shop</h4>
+            <ul>
+              <li><a href="/shop/">All Products</a></li>
+              <li><a href="#">New Arrivals</a></li>
+              <li><a href="#">Best Sellers</a></li>
+              <li><a href="#">Sale</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-4">
+          <div class="footer-links">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="#">Help Center</a></li>
+              <li><a href="#">Track Order</a></li>
+              <li><a href="#">Returns</a></li>
+              <li><a href="#">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-4">
+          <div class="footer-links">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Press</a></li>
+              <li><a href="#">Blog</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-4">
+          <div class="footer-links">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+              <li><a href="#">Cookie Policy</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 ShopEasy. All rights reserved. Crafted with ❤️ for you.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Container -->
+  <div id="toastContainer" class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1100;"></div>
+
+  <!-- Auth Modal -->
+  <div class="modal fade" id="authModal" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+      <div class="modal-content" style="background: #1e293b; color: white; border: 1px solid rgba(255,255,255,0.1);">
+        <div class="modal-header" style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+          <h5 class="modal-title" id="authModalLabel">Account</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: invert(1);"></button>
+        </div>
+        <div class="modal-body">
+          <ul class="nav nav-tabs mb-3" id="authTab" role="tablist" style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button" role="tab" style="background: transparent; color: rgba(255,255,255,0.7); border: none;">Login</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="signup-tab" data-bs-toggle="tab" data-bs-target="#signup" type="button" role="tab" style="background: transparent; color: rgba(255,255,255,0.7); border: none;">Signup</button>
+            </li>
+          </ul>
+          <div class="tab-content" id="authTabContent">
+            <div class="tab-pane fade show active" id="login" role="tabpanel">
+              <form id="loginForm">
+                <div class="mb-3">
+                  <label class="form-label" style="color: rgba(255,255,255,0.8);">Username</label>
+                  <input type="text" class="form-control" name="username" required style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white;">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label" style="color: rgba(255,255,255,0.8);">Password</label>
+                  <input type="password" class="form-control" name="password" required style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white;">
+                </div>
+                <button type="submit" class="btn w-100" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 0.75rem; border-radius: 50px; font-weight: 600;">Login</button>
+              </form>
+            </div>
+            <div class="tab-pane fade" id="signup" role="tabpanel">
+              <form id="signupForm">
+                <div class="mb-3">
+                  <label class="form-label" style="color: rgba(255,255,255,0.8);">Username</label>
+                  <input type="text" class="form-control" name="username" required style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white;">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label" style="color: rgba(255,255,255,0.8);">Email</label>
+                  <input type="email" class="form-control" name="email" required style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white;">
+                </div>
+                <div class="mb-3">
+                  <label class="form-label" style="color: rgba(255,255,255,0.8);">Password</label>
+                  <input type="password" class="form-control" name="password" required style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white;">
+                </div>
+                <button type="submit" class="btn w-100" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; border: none; padding: 0.75rem; border-radius: 50px; font-weight: 600;">Sign Up</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Animated counter
+    const counters = document.querySelectorAll('.stat-number');
+    const speed = 200;
+
+    const animateCounters = () => {
+      counters.forEach(counter => {
+        const target = +counter.getAttribute('data-count');
+        const count = +counter.innerText;
+        const inc = target / speed;
+
+        if (count < target) {
+          counter.innerText = Math.ceil(count + inc);
+          setTimeout(animateCounters, 20);
+        } else {
+          counter.innerText = target.toLocaleString() + (target === 99 ? '%' : '+');
+        }
+      });
+    };
+
+    // Intersection Observer for counters
+    const observerOptions = {
+      threshold: 0.5
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounters();
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelector('.stats-section')?.observer?.observe(document.querySelector('.stats-section'));
+
+    // Load featured products from API
+    let isAuthenticated = false;
+    let pendingCartProduct = null;
+
+    async function checkAuthStatus() {
+      try {
+        const res = await fetch('http://127.0.0.1:8000/api/auth-check/');
+        const data = await res.json();
+        isAuthenticated = data.authenticated;
+        
+        // If user just logged in and has pending cart item, redirect to shop
+        if (isAuthenticated && pendingCartProduct) {
+          pendingCartProduct = null;
+          window.location.href = '/shop/';
+        }
+      } catch (e) {
+        isAuthenticated = false;
+      }
+    }
+
+    function addToCartLanding(productId) {
+      if (!isAuthenticated) {
+        pendingCartProduct = productId;
+        const authModal = document.getElementById('authModal');
+        if (authModal) {
+          const modal = new bootstrap.Modal(authModal);
+          modal.show();
+        }
+        // Show toast
+        const toastHtml = `
+          <div class="toast align-items-center text-bg-warning border-0 mb-2" role="alert">
+            <div class="d-flex">
+              <div class="toast-body">
+                <strong>Login Required</strong> - Please login to add items to cart.
+              </div>
+              <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+            </div>
+          </div>`;
+        document.getElementById('toastContainer').insertAdjacentHTML('beforeend', toastHtml);
+        const toast = new bootstrap.Toast(document.querySelector('.toast:last-child'), { delay: 3000 });
+        toast.show();
+        return;
+      }
+      window.location.href = '/shop/';
+    }
+
+    async function handleAuthForm(e, type) {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      const data = Object.fromEntries(formData.entries());
+      try {
+        const res = await fetch(`http://127.0.0.1:8000/api/${type}/`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        const result = await res.json();
+        if (res.ok) {
+          bootstrap.Modal.getInstance(document.getElementById('authModal')).hide();
+          checkAuthStatus();
+          // Redirect to shop after login
+          window.location.href = '/shop/';
+        } else {
+          alert(result.error || 'Authentication failed');
+        }
+      } catch (err) {
+        alert('Authentication failed');
+      }
+    }
+
+    async function loadFeaturedProducts() {
+      try {
+        const response = await fetch('http://127.0.0.1:8000/api/products/');
+        const products = await response.json();
+        const featuredContainer = document.getElementById('featuredProducts');
+        
+        // Shuffle products and show 4 random ones
+        const shuffled = [...products].sort(() => 0.5 - Math.random());
+        const randomProducts = shuffled.slice(0, 4);
+        
+        randomProducts.forEach(product => {
+          // Truncate long names
+          const displayName = product.name.length > 45 ? product.name.substring(0, 42) + '...' : product.name;
+          const safeName = product.name.replace(/"/g, '&quot;');
+          
+          const productHTML = `
+            <div class="col-md-6 col-lg-3">
+              <div class="product-card">
+                <div class="product-image">
+                  <img src="${product.imageUrl || 'https://via.placeholder.com/300x300?text=No+Image'}" 
+                       alt="${safeName}"
+                       onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
+                  ${product.salePrice ? '<span class="product-badge">SALE</span>' : ''}
+                  <button class="product-wishlist"><i class="far fa-heart"></i></button>
+                </div>
+                <div class="product-info">
+                  <div class="product-category">${product.category || 'General'}</div>
+                  <h3 class="product-title" title="${safeName}">${displayName}</h3>
+                  <div class="product-price">
+                    <span class="price-current">₹${parseFloat(product.salePrice || product.price || 0).toFixed(0)}</span>
+                    ${product.salePrice ? `<span class="price-original">₹${parseFloat(product.price || 0).toFixed(0)}</span>` : ''}
+                  </div>
+                  <button onclick="addToCartLanding(${product.id})" class="btn-add-cart">
+                    <i class="fas fa-shopping-cart"></i> Add to Cart
+                  </button>
+                </div>
+              </div>
+            </div>
+          `;
+          featuredContainer.insertAdjacentHTML('beforeend', productHTML);
+        });
+      } catch (error) {
+        console.error('Failed to load products:', error);
+      }
+    }
+
+    // Hero Background Carousel Auto-Change
+    let currentSlide = 0;
+    const heroSlides = document.querySelectorAll('.hero-slide');
+    let carouselInterval;
+
+    function startHeroCarousel() {
+      if (heroSlides.length === 0) return;
+      
+      carouselInterval = setInterval(() => {
+        heroSlides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % heroSlides.length;
+        heroSlides[currentSlide].classList.add('active');
+      }, 5000); // Change slide every 5 seconds
+    }
+
+    function stopHeroCarousel() {
+      if (carouselInterval) {
+        clearInterval(carouselInterval);
+      }
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      checkAuthStatus();
+      loadFeaturedProducts();
+      
+      // Start hero carousel
+      startHeroCarousel();
+      
+      // Scroll Reveal Animation
+      const revealElements = document.querySelectorAll('.reveal');
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+      revealElements.forEach(el => revealObserver.observe(el));
+      
+      // Auth form handlers
+      const loginForm = document.getElementById('loginForm');
+      const signupForm = document.getElementById('signupForm');
+      if (loginForm) loginForm.addEventListener('submit', (e) => handleAuthForm(e, 'login'));
+      if (signupForm) signupForm.addEventListener('submit', (e) => handleAuthForm(e, 'signup'));
+      
+      // Smooth scroll for navigation
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

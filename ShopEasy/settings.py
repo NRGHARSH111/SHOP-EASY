@@ -121,3 +121,11 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# RapidAPI Configuration for Amazon Product Fetching
+# Get your API key from: https://rapidapi.com/zyla-labs-zyla-labs-default/api/real-time-amazon-data
+RAPIDAPI_KEY = 'e79e3619acmsh83ef70690906981p1cd2b2jsn24f957a718e7'  # <-- Your RapidAPI Key
+
+# Amazon Affiliate Configuration (optional)
+# Get your Associate Tag from: https://affiliate-program.amazon.in
+AMAZON_ASSOCIATE_TAG = ''  # <-- PASTE YOUR AMAZON ASSOCIATE TAG HERE (e.g., 'yourname-20')
