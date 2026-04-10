@@ -1,7 +1,14 @@
-<!-- Auth Modal - Bravo Styled -->
+<!-- Auth Modal - Bravo Styled with Effects -->
 <div class="modal fade" id="authModal" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-md modal-dialog-centered">
     <div class="modal-content bravo-auth-modal">
+      <!-- Animated Background Effects -->
+      <div class="modal-bg-animation">
+        <div class="modal-mesh-gradient"></div>
+        <div class="modal-orb modal-orb-1"></div>
+        <div class="modal-orb modal-orb-2"></div>
+        <div class="modal-particles" id="modalParticles"></div>
+      </div>
       <div class="modal-header border-0 pb-0">
         <div class="bravo-auth-logo mx-auto">
           <i class="fas fa-shopping-bag"></i>
@@ -86,15 +93,154 @@
 </div>
 
 <style>
+  :root {
+    /* Light Theme Matching Auth Page */
+    --primary: #6366f1;
+    --primary-light: #818cf8;
+    --primary-dark: #4f46e5;
+    --secondary: #ec4899;
+    --accent: #06b6d4;
+    --success: #22c55e;
+    --warning: #f59e0b;
+    --error: #ef4444;
+    
+    /* Light Background */
+    --bg-primary: #f8fafc;
+    --bg-secondary: #ffffff;
+    --bg-card: rgba(255, 255, 255, 0.95);
+    --bg-glass: rgba(255, 255, 255, 0.8);
+    
+    /* Text Colors */
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --text-muted: #94a3b8;
+    
+    /* Effects */
+    --border: rgba(99, 102, 241, 0.2);
+    --border-glow: rgba(99, 102, 241, 0.3);
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    --glow-primary: 0 0 40px rgba(99, 102, 241, 0.15);
+    --glow-secondary: 0 0 40px rgba(236, 72, 153, 0.15);
+    
+    /* Gradients */
+    --gradient-mesh: linear-gradient(135deg, #6366f1 0%, #ec4899 50%, #06b6d4 100%);
+    --gradient-card: linear-gradient(145deg, rgba(99, 102, 241, 0.08) 0%, rgba(6, 182, 212, 0.05) 100%);
+  }
+
+  /* Modal Background Animation */
+  .modal-bg-animation {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    border-radius: 24px;
+  }
+
+  .modal-mesh-gradient {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(at 40% 20%, rgba(99, 102, 241, 0.08) 0px, transparent 50%),
+      radial-gradient(at 80% 0%, rgba(236, 72, 153, 0.06) 0px, transparent 50%),
+      radial-gradient(at 0% 50%, rgba(6, 182, 212, 0.06) 0px, transparent 50%),
+      radial-gradient(at 80% 50%, rgba(99, 102, 241, 0.05) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, rgba(236, 72, 153, 0.06) 0px, transparent 50%);
+    animation: modalMeshMove 20s ease infinite;
+  }
+
+  @keyframes modalMeshMove {
+    0%, 100% { 
+      transform: translate(0, 0) scale(1); 
+      filter: hue-rotate(0deg);
+    }
+    33% { 
+      transform: translate(20px, -20px) scale(1.05); 
+      filter: hue-rotate(20deg);
+    }
+    66% { 
+      transform: translate(-15px, 15px) scale(0.95); 
+      filter: hue-rotate(-15deg);
+    }
+  }
+
+  /* Modal Floating Orbs */
+  .modal-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.3;
+    animation: modalOrbFloat 12s ease-in-out infinite;
+  }
+
+  .modal-orb-1 {
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    top: -50px;
+    left: -50px;
+    animation-delay: 0s;
+  }
+
+  .modal-orb-2 {
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(135deg, var(--accent), var(--primary));
+    bottom: -30px;
+    right: -30px;
+    animation-delay: -4s;
+  }
+
+  @keyframes modalOrbFloat {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(30px, -30px) rotate(90deg); }
+    50% { transform: translate(0, 30px) rotate(180deg); }
+    75% { transform: translate(-30px, -15px) rotate(270deg); }
+  }
+
+  /* Modal Particles */
+  .modal-particles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .modal-particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: var(--primary-light);
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: modalParticleFloat 8s linear infinite;
+  }
+
+  @keyframes modalParticleFloat {
+    0% { 
+      transform: translateY(100%) translateX(0); 
+      opacity: 0;
+    }
+    10% { opacity: 0.5; }
+    90% { opacity: 0.5; }
+    100% { 
+      transform: translateY(-100%) translateX(50px); 
+      opacity: 0;
+    }
+  }
+
   /* Bravo Auth Modal Styles */
   .bravo-auth-modal {
-    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #1e1b4b 100%);
-    border: 1px solid rgba(139, 92, 246, 0.3);
+    background: var(--gradient-card);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--border);
     border-radius: 24px;
     box-shadow: 
-      0 25px 50px -12px rgba(0, 0, 0, 0.8),
-      0 0 60px rgba(139, 92, 246, 0.3);
+      var(--shadow-lg),
+      var(--glow-primary),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
     overflow: hidden;
+    position: relative;
   }
 
   .bravo-auth-modal::before {
@@ -103,10 +249,40 @@
     top: 0;
     left: 0;
     right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, #8b5cf6, #ec4899, #22d3ee, #8b5cf6);
-    background-size: 300% 100%;
-    animation: gradientMove 3s ease infinite;
+    height: 2px;
+    background: linear-gradient(90deg, 
+      transparent, 
+      var(--primary-light), 
+      var(--secondary), 
+      var(--accent), 
+      transparent
+    );
+    animation: modalShimmer 3s ease infinite;
+  }
+
+  @keyframes modalShimmer {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+
+  .bravo-auth-modal::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+    transition: left 0.7s ease;
+  }
+
+  .bravo-auth-modal:hover::after {
+    left: 100%;
   }
 
   @keyframes gradientMove {
@@ -120,21 +296,29 @@
     gap: 12px;
     font-size: 1.75rem;
     font-weight: 700;
-    color: white;
+    color: var(--text-primary);
     margin-left: auto;
     margin-right: auto;
+    position: relative;
+    z-index: 1;
   }
 
   .bravo-auth-logo i {
     font-size: 1.5rem;
-    background: linear-gradient(135deg, #8b5cf6, #ec4899);
+    background: var(--gradient-mesh);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    animation: modalLogoPulse 3s ease-in-out infinite;
+  }
+
+  @keyframes modalLogoPulse {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.2); }
   }
 
   .gradient-text {
-    background: linear-gradient(135deg, #8b5cf6, #ec4899);
+    background: var(--gradient-mesh);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -145,9 +329,12 @@
     display: flex;
     gap: 8px;
     margin-bottom: 24px;
-    background: rgba(15, 23, 42, 0.6);
+    background: rgba(255, 255, 255, 0.8);
     padding: 6px;
     border-radius: 16px;
+    border: 1px solid var(--border);
+    position: relative;
+    z-index: 1;
   }
 
   .bravo-tab {
@@ -155,22 +342,39 @@
     padding: 12px 20px;
     border: none;
     background: transparent;
-    color: #94a3b8;
+    color: var(--text-secondary);
     font-weight: 600;
     border-radius: 12px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .bravo-tab::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-mesh);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+    border-radius: 12px;
   }
 
   .bravo-tab.active {
-    background: linear-gradient(135deg, #8b5cf6, #ec4899);
     color: white;
-    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+  }
+
+  .bravo-tab.active::before {
+    opacity: 1;
   }
 
   .bravo-tab:hover:not(.active) {
-    color: #f8fafc;
-    background: rgba(139, 92, 246, 0.1);
+    color: var(--text-primary);
+    background: rgba(99, 102, 241, 0.1);
   }
 
   /* Forms */
@@ -192,28 +396,33 @@
   .bravo-input-group {
     position: relative;
     margin-bottom: 16px;
+    z-index: 1;
   }
 
   .bravo-input {
     width: 100%;
     padding: 14px 44px 14px 44px;
-    background: rgba(15, 23, 42, 0.6);
-    border: 2px solid rgba(139, 92, 246, 0.2);
+    background: rgba(255, 255, 255, 0.8);
+    border: 2px solid var(--border);
     border-radius: 12px;
-    color: #f8fafc;
+    color: var(--text-primary);
     font-size: 0.95rem;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
   }
 
   .bravo-input::placeholder {
-    color: #64748b;
+    color: var(--text-muted);
   }
 
   .bravo-input:focus {
     outline: none;
-    border-color: #8b5cf6;
-    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
-    background: rgba(15, 23, 42, 0.8);
+    border-color: var(--primary-light);
+    box-shadow: 
+      0 0 0 3px rgba(99, 102, 241, 0.1),
+      0 0 15px rgba(99, 102, 241, 0.15),
+      inset 0 2px 4px rgba(0, 0, 0, 0.06);
+    background: rgba(255, 255, 255, 0.95);
   }
 
   .bravo-input-group .input-icon {
@@ -221,12 +430,14 @@
     left: 16px;
     top: 50%;
     transform: translateY(-50%);
-    color: #64748b;
+    color: var(--text-muted);
     font-size: 1rem;
+    transition: all 0.3s ease;
   }
 
   .bravo-input:focus + .input-icon {
-    color: #8b5cf6;
+    color: var(--primary-light);
+    transform: translateY(-50%) scale(1.1);
   }
 
   .toggle-password {
@@ -234,9 +445,9 @@
     right: 12px;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(139, 92, 246, 0.1);
-    border: 1px solid rgba(139, 92, 246, 0.2);
-    color: #94a3b8;
+    background: rgba(99, 102, 241, 0.1);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
     width: 32px;
     height: 32px;
     border-radius: 8px;
@@ -248,9 +459,10 @@
   }
 
   .toggle-password:hover {
-    background: #8b5cf6;
-    border-color: #8b5cf6;
+    background: var(--primary);
+    border-color: var(--primary);
     color: white;
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
   }
 
   /* Checkbox */
@@ -259,8 +471,9 @@
     align-items: center;
     gap: 8px;
     cursor: pointer;
-    color: #94a3b8;
+    color: var(--text-secondary);
     font-size: 0.875rem;
+    z-index: 1;
   }
 
   .bravo-checkbox input {
@@ -270,7 +483,7 @@
   .checkmark {
     width: 18px;
     height: 18px;
-    border: 2px solid rgba(139, 92, 246, 0.3);
+    border: 2px solid var(--border);
     border-radius: 4px;
     display: flex;
     align-items: center;
@@ -279,8 +492,8 @@
   }
 
   .bravo-checkbox input:checked + .checkmark {
-    background: #8b5cf6;
-    border-color: #8b5cf6;
+    background: var(--primary);
+    border-color: var(--primary);
   }
 
   .checkmark::after {
@@ -301,7 +514,7 @@
   .bravo-submit-btn {
     width: 100%;
     padding: 16px;
-    background: linear-gradient(135deg, #8b5cf6, #ec4899);
+    background: var(--gradient-mesh);
     background-size: 200% 200%;
     border: none;
     border-radius: 12px;
@@ -309,24 +522,48 @@
     font-weight: 700;
     font-size: 1rem;
     cursor: pointer;
-    transition: all 0.4s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    animation: gradientShift 3s ease infinite;
+    animation: modalGradientShift 3s ease infinite;
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+    z-index: 1;
   }
 
-  @keyframes gradientShift {
+  @keyframes modalGradientShift {
     0%, 100% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
   }
 
+  .bravo-submit-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
+    transition: left 0.6s ease;
+  }
+
+  .bravo-submit-btn:hover::before {
+    left: 100%;
+  }
+
   .bravo-submit-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(139, 92, 246, 0.5);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 
+      0 10px 40px rgba(99, 102, 241, 0.5),
+      0 0 60px rgba(236, 72, 153, 0.2);
   }
 
   .bravo-submit-btn:active {
@@ -334,11 +571,11 @@
   }
 
   .bravo-submit-btn.btn-success {
-    background: linear-gradient(135deg, #22c55e, #10b981);
+    background: linear-gradient(135deg, var(--success), #10b981);
   }
 
   .bravo-submit-btn.btn-success:hover {
-    box-shadow: 0 10px 30px rgba(34, 197, 94, 0.5);
+    box-shadow: 0 10px 30px rgba(34, 197, 94, 0.4);
   }
 
   .btn-spinner {
@@ -367,11 +604,12 @@
   .password-strength-meter {
     margin-top: -8px;
     margin-bottom: 16px;
+    z-index: 1;
   }
 
   .strength-bar {
     height: 4px;
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--border);
     border-radius: 2px;
     overflow: hidden;
     margin-bottom: 4px;
@@ -385,31 +623,33 @@
   }
 
   .strength-text {
-    color: #64748b;
+    color: var(--text-secondary);
     font-size: 0.75rem;
   }
 
   /* Footer */
   .bravo-auth-footer {
-    color: #94a3b8;
+    color: var(--text-secondary);
     font-size: 0.9rem;
+    position: relative;
+    z-index: 1;
   }
 
   .bravo-auth-footer a {
-    color: #8b5cf6;
+    color: var(--primary);
     text-decoration: none;
     font-weight: 600;
     transition: all 0.3s ease;
   }
 
   .bravo-auth-footer a:hover {
-    color: #ec4899;
+    color: var(--secondary);
     text-decoration: underline;
   }
 </style>
 
 <script>
-  // Bravo Auth Modal JavaScript
+  // Bravo Auth Modal JavaScript with Effects
   (function() {
     const loginTab = document.getElementById('bravoLoginTab');
     const signupTab = document.getElementById('bravoSignupTab');
@@ -417,6 +657,33 @@
     const signupForm = document.getElementById('bravoSignupForm');
     const loginFooter = document.querySelector('.login-footer');
     const signupFooter = document.querySelector('.signup-footer');
+
+    // Create modal particles
+    function createModalParticles() {
+      const particlesContainer = document.getElementById('modalParticles');
+      if (!particlesContainer) return;
+      
+      // Clear existing particles
+      particlesContainer.innerHTML = '';
+      
+      // Create 15 particles
+      for (let i = 0; i < 15; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'modal-particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 8 + 's';
+        particle.style.animationDuration = (8 + Math.random() * 4) + 's';
+        particlesContainer.appendChild(particle);
+      }
+    }
+
+    // Initialize particles when modal is shown
+    const authModal = document.getElementById('authModal');
+    if (authModal) {
+      authModal.addEventListener('shown.bs.modal', function() {
+        createModalParticles();
+      });
+    }
 
     function switchTab(tab) {
       if (tab === 'login') {
