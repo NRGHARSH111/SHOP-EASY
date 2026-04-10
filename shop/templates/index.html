@@ -3542,31 +3542,37 @@
   <!-- Orders History Modal -->
   <div class="modal fade" id="ordersModal" tabindex="-1" aria-labelledby="ordersModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="ordersModalLabel">Order History</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="modal-content" style="background: var(--bg-card); backdrop-filter: blur(20px); border: 1px solid var(--border); border-radius: 24px; box-shadow: var(--shadow-lg);">
+        <div class="modal-header" style="border-bottom: 1px solid var(--border); padding: 1.5rem;">
+          <h5 class="modal-title" id="ordersModalLabel" style="font-weight: 800; background: var(--gradient-mesh); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; margin: 0;">
+            <i class="fas fa-box me-2"></i>Order History
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: none;"></button>
         </div>
-        <div class="modal-body">
-          <div id="ordersEmpty" class="text-center text-muted py-4 d-none">No orders yet. Place your first order to see
-            it here.</div>
+        <div class="modal-body" style="padding: 1.5rem;">
+          <div id="ordersEmpty" class="text-center py-5">
+            <i class="fas fa-box fa-3x mb-3" style="opacity: 0.3; color: var(--text-muted);"></i>
+            <p style="color: var(--text-secondary); margin: 0;">No orders yet. Place your first order to see it here.</p>
+          </div>
           <div class="table-responsive">
-            <table class="table align-middle">
+            <table class="table align-middle" style="color: var(--text-primary);">
               <thead>
                 <tr>
-                  <th>Order ID</th>
-                  <th>Date</th>
-                  <th>Items</th>
-                  <th>Total</th>
-                  <th>Preview</th>
+                  <th style="background: rgba(99, 102, 241, 0.1); border-color: var(--border); color: var(--text-primary); font-weight: 600;">Order ID</th>
+                  <th style="background: rgba(99, 102, 241, 0.1); border-color: var(--border); color: var(--text-primary); font-weight: 600;">Date</th>
+                  <th style="background: rgba(99, 102, 241, 0.1); border-color: var(--border); color: var(--text-primary); font-weight: 600;">Items</th>
+                  <th style="background: rgba(99, 102, 241, 0.1); border-color: var(--border); color: var(--text-primary); font-weight: 600;">Total</th>
+                  <th style="background: rgba(99, 102, 241, 0.1); border-color: var(--border); color: var(--text-primary); font-weight: 600;">Preview</th>
                 </tr>
               </thead>
               <tbody id="ordersBody"></tbody>
             </table>
           </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <div class="modal-footer" style="border-top: 1px solid var(--border); padding: 1.5rem;">
+          <button type="button" class="btn" data-bs-dismiss="modal" style="background: var(--gradient-mesh); background-size: 200% 200%; border: none; color: white; padding: 0.75rem 2rem; border-radius: 12px; font-weight: 600; box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);">
+            <i class="fas fa-check me-2"></i>Close
+          </button>
         </div>
       </div>
     </div>
