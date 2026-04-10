@@ -2547,17 +2547,11 @@
         pendingCartProduct = productId;
         // Store pending product for after login
         sessionStorage.setItem('pendingCartProduct', productId);
-        console.log('[ShopEasy] User not logged in, showing login modal');
+        console.log('[ShopEasy] User not logged in, redirecting to login');
         
-        // Show login required modal instead of redirect
-        const loginModalEl = document.getElementById('loginRequiredModal');
-        if (loginModalEl) {
-          const loginModal = new bootstrap.Modal(loginModalEl);
-          loginModal.show();
-        } else {
-          // Fallback to redirect if modal not found
-          window.location.href = '/auth/';
-        }
+        // Store current page for return after login
+        const returnUrl = encodeURIComponent(window.location.pathname + window.location.search);
+        window.location.href = `/auth/?return=${returnUrl}`;
         return;
       }
       
@@ -3499,18 +3493,14 @@
         const quickViewModal = bootstrap.Modal.getInstance(document.getElementById('quickViewModal'));
         if (quickViewModal) quickViewModal.hide();
         
-        // Store pending product and show login modal
+        // Store pending product and redirect to login
         pendingCartProduct = currentQuickViewProductId;
         sessionStorage.setItem('pendingCartProduct', currentQuickViewProductId);
-        console.log('[ShopEasy] User not logged in (from Quick View), showing login modal');
+        console.log('[ShopEasy] User not logged in (from Quick View), redirecting to login');
         
-        const loginModalEl = document.getElementById('loginRequiredModal');
-        if (loginModalEl) {
-          const loginModal = new bootstrap.Modal(loginModalEl);
-          loginModal.show();
-        } else {
-          window.location.href = '/auth/';
-        }
+        // Store current page for return after login
+        const returnUrl = encodeURIComponent(window.location.pathname + window.location.search);
+        window.location.href = `/auth/?return=${returnUrl}`;
         return;
       }
       
@@ -4159,31 +4149,6 @@
     </div>
   </div>
   
-  <!-- Login Required Modal -->
-  <div class="modal fade" id="loginRequiredModal" tabindex="-1" aria-labelledby="loginRequiredModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content" style="background: var(--gradient-card); backdrop-filter: blur(20px); border: 1px solid var(--border); border-radius: 24px; overflow: hidden;">
-        <div class="modal-body text-center p-5">
-          <div style="width: 80px; height: 80px; background: var(--gradient-mesh); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; animation: gradientShift 3s ease infinite;">
-            <i class="fas fa-lock" style="font-size: 2rem; color: white;"></i>
-          </div>
-          <h4 style="font-weight: 700; color: var(--text-primary); margin-bottom: 12px;">Login Required</h4>
-          <p style="color: var(--text-secondary); margin-bottom: 24px;">Please sign in or create an account to add items to your cart.</p>
-          <div class="d-grid gap-3">
-            <a href="/auth/" class="btn btn-primary" style="background: var(--gradient-mesh); border: none; padding: 12px 24px; font-weight: 600; border-radius: 12px; text-decoration: none;">
-              <i class="fas fa-sign-in-alt me-2"></i>Sign In
-            </a>
-            <a href="/auth/?tab=signup" class="btn btn-outline-primary" style="border: 1px solid var(--primary); color: var(--primary); background: transparent; padding: 12px 24px; font-weight: 600; border-radius: 12px; text-decoration: none;">
-              <i class="fas fa-user-plus me-2"></i>Create Account
-            </a>
-            <button type="button" class="btn btn-link" data-bs-dismiss="modal" style="color: var(--text-muted); text-decoration: none;">
-              Continue Shopping
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</body>
+  </body>
 
 </html>

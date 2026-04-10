@@ -1543,7 +1543,7 @@
           
           // Redirect after delay
           setTimeout(() => {
-            window.location.href = '/shop/';
+            window.location.href = getReturnUrl();
           }, 1500);
         }
       } catch (error) {
@@ -1617,7 +1617,7 @@
         
         // Auto-login after signup
         setTimeout(() => {
-          window.location.href = '/shop/';
+          window.location.href = getReturnUrl();
         }, 1500);
       } catch (error) {
         showToast(error.message || 'Signup failed. Please try again.', 'error');
@@ -1667,7 +1667,7 @@
         showToast('Two-factor authentication successful!', 'success');
         
         setTimeout(() => {
-          window.location.href = '/shop/';
+          window.location.href = getReturnUrl();
         }, 1500);
       } catch (error) {
         showToast(error.message || 'Invalid verification code', 'error');
@@ -1711,8 +1711,8 @@
       try {
         const result = await apiRequest('/auth-check/');
         if (result.authenticated) {
-          // User is already logged in, redirect to shop
-          window.location.href = '/shop/';
+          // User is already logged in, redirect to return URL or shop
+          window.location.href = getReturnUrl();
         }
       } catch (error) {
         // Not authenticated, stay on login page
@@ -1763,7 +1763,25 @@
       }
     }, true);
 
-    console.log('🚀 ShopEasy Premium Auth System Loaded');
+    // ============================================
+    // RETURN URL HANDLING
+    // ============================================
+    
+    function getReturnUrl() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const returnUrl = urlParams.get('return');
+      if (returnUrl) {
+        try {
+          return decodeURIComponent(returnUrl);
+        } catch (e) {
+          console.warn('Invalid return URL:', returnUrl);
+          return '/shop/';
+        }
+      }
+      return '/shop/';
+    }
+
+    console.log(' ShopEasy Premium Auth System Loaded');
 
     // ============================================
     // BRAVO PARTICLE EFFECT
