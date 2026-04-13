@@ -8,14 +8,18 @@
   <!-- Google Fonts - Professional & Unique -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
   <!-- Preconnect to CDNs for faster loading -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-  
+
   <!-- Async CSS loading -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print"
+    onload="this.media='all'">
   <style>
     :root {
       /* Light Fresh Theme */
@@ -26,23 +30,23 @@
       --success: #22c55e;
       --warning: #f59e0b;
       --error: #ef4444;
-      
+
       /* Light Background */
       --bg-primary: #f8fafc;
       --bg-secondary: #ffffff;
       --bg-card: rgba(255, 255, 255, 0.9);
       --bg-glass: rgba(255, 255, 255, 0.8);
-      
+
       /* Text Colors */
       --text-primary: #1e293b;
       --text-secondary: #64748b;
       --text-muted: #94a3b8;
-      
+
       /* Effects */
       --border: rgba(99, 102, 241, 0.2);
       --glow-primary: 0 0 40px rgba(99, 102, 241, 0.15);
       --glow-secondary: 0 0 40px rgba(236, 72, 153, 0.15);
-      
+
       /* Gradients */
       --gradient-mesh: linear-gradient(135deg, #6366f1 0%, #ec4899 50%, #06b6d4 100%);
       --gradient-card: linear-gradient(145deg, rgba(99, 102, 241, 0.08) 0%, rgba(6, 182, 212, 0.05) 100%);
@@ -65,30 +69,37 @@
     }
 
     /* Unique Typography */
-    h1, h2, h3, h4, h5, h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
       font-family: 'Space Grotesk', sans-serif;
       font-weight: 600;
       letter-spacing: -0.02em;
     }
-    
-    .brand-accent, .logo {
+
+    .brand-accent,
+    .logo {
       font-family: 'Space Grotesk', sans-serif;
       font-weight: 700;
       letter-spacing: -0.03em;
     }
-    
-    .price, .product-title {
+
+    .price,
+    .product-title {
       font-family: 'Space Grotesk', sans-serif;
       font-weight: 600;
     }
-    
+
     /* Light theme soft background */
     body::before {
       content: '';
       position: fixed;
       inset: 0;
       z-index: -1;
-      background: 
+      background:
         radial-gradient(ellipse at top, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
         radial-gradient(ellipse at bottom right, rgba(236, 72, 153, 0.06) 0%, transparent 50%),
         radial-gradient(ellipse at bottom left, rgba(6, 182, 212, 0.06) 0%, transparent 50%);
@@ -98,8 +109,15 @@
 
     /* Reduced animation complexity for better performance */
     @keyframes meshMove {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.05);
+      }
     }
 
     /* Floating Orbs */
@@ -140,10 +158,23 @@
     }
 
     @keyframes orbFloat {
-      0%, 100% { transform: translate(0, 0) rotate(0deg); }
-      25% { transform: translate(50px, -50px) rotate(90deg); }
-      50% { transform: translate(0, 50px) rotate(180deg); }
-      75% { transform: translate(-50px, -25px) rotate(270deg); }
+
+      0%,
+      100% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+
+      25% {
+        transform: translate(50px, -50px) rotate(90deg);
+      }
+
+      50% {
+        transform: translate(0, 50px) rotate(180deg);
+      }
+
+      75% {
+        transform: translate(-50px, -25px) rotate(270deg);
+      }
     }
 
     /* Amazon-Style Header */
@@ -306,7 +337,8 @@
       border-radius: 10px;
       min-width: 18px;
       text-align: center;
-      display: none; /* Hidden when empty */
+      display: none;
+      /* Hidden when empty */
       align-items: center;
       justify-content: center;
       transition: transform 0.3s ease;
@@ -317,9 +349,17 @@
     }
 
     @keyframes badgeBump {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.3); }
-      100% { transform: scale(1); }
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.3);
+      }
+
+      100% {
+        transform: scale(1);
+      }
     }
 
     .cart-action {
@@ -557,8 +597,15 @@
     }
 
     @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.05);
+      }
     }
 
     .deal-img {
@@ -651,7 +698,7 @@
       .deal-card {
         width: 240px;
       }
-      
+
       .carousel-btn {
         width: 36px;
         height: 36px;
@@ -869,7 +916,7 @@
       transition: all 0.3s ease;
     }
 
-    .filter-checkbox input:checked + .check-box {
+    .filter-checkbox input:checked+.check-box {
       background: var(--gradient-mesh);
       background-size: 200% 200%;
       border-color: transparent;
@@ -886,7 +933,7 @@
       transition: opacity 0.3s ease;
     }
 
-    .filter-checkbox input:checked + .check-box::after {
+    .filter-checkbox input:checked+.check-box::after {
       opacity: 1;
     }
 
@@ -996,8 +1043,15 @@
     }
 
     @keyframes gradientShift {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
+
+      0%,
+      100% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
     }
 
     /* Category Chips */
@@ -1060,7 +1114,8 @@
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       overflow: hidden;
       position: relative;
-      height: 420px; /* Fixed height */
+      height: 420px;
+      /* Fixed height */
       display: flex;
       flex-direction: column;
     }
@@ -1119,7 +1174,7 @@
       font-weight: 600;
       font-size: 0.7rem;
       z-index: 10;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     }
 
     /* Product Card Body */
@@ -1211,7 +1266,8 @@
     }
 
     /* Cart & Orders Buttons */
-    #cartBtn, #ordersBtn {
+    #cartBtn,
+    #ordersBtn {
       background: rgba(15, 23, 42, 0.6) !important;
       border: 1px solid var(--border) !important;
       color: var(--text-primary) !important;
@@ -1219,7 +1275,8 @@
       transition: all 0.3s ease;
     }
 
-    #cartBtn:hover, #ordersBtn:hover {
+    #cartBtn:hover,
+    #ordersBtn:hover {
       background: var(--gradient-mesh) !important;
       background-size: 200% 200% !important;
       border-color: transparent !important;
@@ -1235,8 +1292,13 @@
     }
 
     @keyframes shine {
-      0% { background-position: 100% 0; }
-      100% { background-position: -100% 0; }
+      0% {
+        background-position: 100% 0;
+      }
+
+      100% {
+        background-position: -100% 0;
+      }
     }
 
     .skeleton-card {
@@ -1449,16 +1511,35 @@
     }
 
     /* Stagger children */
-    .reveal-stagger > * {
+    .reveal-stagger>* {
       opacity: 0;
       transform: translateY(20px);
       transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .reveal-stagger.active > *:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
-    .reveal-stagger.active > *:nth-child(2) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
-    .reveal-stagger.active > *:nth-child(3) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
-    .reveal-stagger.active > *:nth-child(4) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
+    .reveal-stagger.active>*:nth-child(1) {
+      transition-delay: 0.1s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-stagger.active>*:nth-child(2) {
+      transition-delay: 0.2s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-stagger.active>*:nth-child(3) {
+      transition-delay: 0.3s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-stagger.active>*:nth-child(4) {
+      transition-delay: 0.4s;
+      opacity: 1;
+      transform: translateY(0);
+    }
 
     /* Better Empty State */
     .empty-state {
@@ -1482,8 +1563,15 @@
     }
 
     @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
     }
 
     .empty-state h3 {
@@ -1516,7 +1604,9 @@
     }
 
     @keyframes spin {
-      to { transform: rotate(360deg); }
+      to {
+        transform: rotate(360deg);
+      }
     }
 
     .loading-text {
@@ -1526,8 +1616,15 @@
     }
 
     @keyframes pulse {
-      0%, 100% { opacity: 0.5; }
-      50% { opacity: 1; }
+
+      0%,
+      100% {
+        opacity: 0.5;
+      }
+
+      50% {
+        opacity: 1;
+      }
     }
 
     /* Product Badge Animation */
@@ -1536,8 +1633,15 @@
     }
 
     @keyframes badgePulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
+
+      0%,
+      100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.05);
+      }
     }
 
     /* Quick View Button */
@@ -1574,7 +1678,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.4), transparent);
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent);
       opacity: 0;
       transition: opacity 0.3s ease;
     }
@@ -1606,7 +1710,7 @@
       align-items: center;
       padding: 20px 0;
     }
-    
+
     .pagination {
       display: flex;
       gap: 8px;
@@ -1615,11 +1719,11 @@
       padding: 0;
       list-style: none;
     }
-    
+
     .pagination li {
       margin: 0;
     }
-    
+
     .pagination .page-link {
       display: flex;
       align-items: center;
@@ -1636,7 +1740,7 @@
       cursor: pointer;
       text-decoration: none;
     }
-    
+
     .pagination .page-link:hover {
       background: var(--primary-light);
       border-color: var(--primary-light);
@@ -1644,26 +1748,26 @@
       transform: translateY(-2px);
       box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
     }
-    
+
     .pagination .page-item.active .page-link {
       background: var(--gradient-mesh);
       border-color: var(--primary-light);
       color: white;
       box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
     }
-    
+
     .pagination .page-item.disabled .page-link {
       opacity: 0.5;
       cursor: not-allowed;
       pointer-events: none;
     }
-    
+
     .pagination .page-prev,
     .pagination .page-next {
       width: 45px;
       height: 45px;
     }
-    
+
     .pagination-info {
       margin: 0 20px;
       color: var(--text-secondary);
@@ -1739,7 +1843,7 @@
     .footer-link:hover {
       color: var(--primary);
     }
-    
+
     .social-link:hover {
       background: var(--gradient-mesh) !important;
       color: white !important;
@@ -1779,7 +1883,7 @@
       .hero h1 {
         font-size: 2.5rem;
       }
-      
+
       .product-card:hover {
         transform: translateY(-4px) scale(1.01);
       }
@@ -1807,11 +1911,53 @@
 
     /* Accessibility */
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
+
+      *,
+      *::before,
+      *::after {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
       }
+    }
+
+    /* Scroll to Top Button */
+    .scroll-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background: var(--gradient-mesh);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      transform: translateY(100px);
+    }
+
+    .scroll-to-top:hover {
+      transform: translateY(0) scale(1.1);
+      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+    }
+
+    .scroll-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .scroll-to-top i {
+      color: white;
+      font-size: 18px;
+      font-weight: 600;
     }
   </style>
 </head>
@@ -1838,7 +1984,7 @@
           <!-- Search Bar -->
           <div class="search-container d-none d-md-block">
             <div style="display: flex; align-items: center; gap: 0.5rem;">
-              <select id="searchCategory" class="search-category" onchange="renderProducts()" 
+              <select id="searchCategory" class="search-category"
                 style="padding: 0.6rem 0.75rem; border-radius: 10px; border: 2px solid var(--border); background: white; color: var(--text-primary); font-size: 0.9rem; cursor: pointer;">
                 <option value="All">All</option>
                 <option value="Electronics">Electronics</option>
@@ -1846,10 +1992,12 @@
                 <option value="Home">Home</option>
               </select>
               <div style="position: relative; flex: 1; min-width: 250px;">
-                <input type="text" id="searchInput" placeholder="Search products by name, description..." class="form-control" 
+                <input type="text" id="searchInput" placeholder="Search products by name, description..."
+                  class="form-control"
                   style="padding: 0.6rem 2.5rem 0.6rem 2.5rem; border-radius: 10px; border: 2px solid rgba(99, 102, 241, 0.3); background: white; font-size: 0.95rem; width: 100%; transition: all 0.3s ease;">
-                <i class="fas fa-search" style="position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%); color: var(--primary); font-size: 1rem;"></i>
-                <button id="clearSearchBtn" onclick="clearSearch()" 
+                <i class="fas fa-search"
+                  style="position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%); color: var(--primary); font-size: 1rem;"></i>
+                <button id="clearSearchBtn" onclick="clearSearch()"
                   style="position: absolute; right: 0.5rem; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--text-muted); cursor: pointer; padding: 0.25rem; display: none; font-size: 0.9rem;">
                   <i class="fas fa-times-circle"></i>
                 </button>
@@ -1882,47 +2030,56 @@
       <div class="container">
         <ul class="category-list">
           <li class="category-item">
-            <a href="javascript:void(0)" class="category-link active" data-cat="All" onclick="handleCategoryClick('All', this)">
+            <a href="javascript:void(0)" class="category-link active" data-cat="All"
+              onclick="handleCategoryClick('All', this)">
               <i class="fas fa-th-large"></i> All
             </a>
           </li>
           <li class="category-item">
-            <a href="javascript:void(0)" class="category-link" data-cat="Electronics" onclick="handleCategoryClick('Electronics', this)">
+            <a href="javascript:void(0)" class="category-link" data-cat="Electronics"
+              onclick="handleCategoryClick('Electronics', this)">
               <i class="fas fa-laptop"></i> Electronics
             </a>
           </li>
           <li class="category-item">
-            <a href="javascript:void(0)" class="category-link" data-cat="Fashion" onclick="handleCategoryClick('Fashion', this)">
+            <a href="javascript:void(0)" class="category-link" data-cat="Fashion"
+              onclick="handleCategoryClick('Fashion', this)">
               <i class="fas fa-tshirt"></i> Fashion
             </a>
           </li>
           <li class="category-item">
-            <a href="javascript:void(0)" class="category-link" data-cat="Home" onclick="handleCategoryClick('Home', this)">
+            <a href="javascript:void(0)" class="category-link" data-cat="Home"
+              onclick="handleCategoryClick('Home', this)">
               <i class="fas fa-home"></i> Home
             </a>
           </li>
           <li class="category-item">
-            <a href="javascript:void(0)" class="category-link" data-cat="Beauty" onclick="handleCategoryClick('Beauty', this)">
+            <a href="javascript:void(0)" class="category-link" data-cat="Beauty"
+              onclick="handleCategoryClick('Beauty', this)">
               <i class="fas fa-sparkles"></i> Beauty
             </a>
           </li>
           <li class="category-item">
-            <a href="javascript:void(0)" class="category-link" data-cat="Sports" onclick="handleCategoryClick('Sports', this)">
+            <a href="javascript:void(0)" class="category-link" data-cat="Sports"
+              onclick="handleCategoryClick('Sports', this)">
               <i class="fas fa-futbol"></i> Sports
             </a>
           </li>
           <li class="category-item">
-            <a href="javascript:void(0)" class="category-link" data-cat="Toys" onclick="handleCategoryClick('Toys', this)">
+            <a href="javascript:void(0)" class="category-link" data-cat="Toys"
+              onclick="handleCategoryClick('Toys', this)">
               <i class="fas fa-gamepad"></i> Toys
             </a>
           </li>
           <li class="category-item">
-            <a href="javascript:void(0)" class="category-link" data-cat="Books" onclick="handleCategoryClick('Books', this)">
+            <a href="javascript:void(0)" class="category-link" data-cat="Books"
+              onclick="handleCategoryClick('Books', this)">
               <i class="fas fa-book"></i> Books
             </a>
           </li>
           <li class="category-item">
-            <a href="javascript:void(0)" class="category-link" data-cat="Grocery" onclick="handleCategoryClick('Grocery', this)">
+            <a href="javascript:void(0)" class="category-link" data-cat="Grocery"
+              onclick="handleCategoryClick('Grocery', this)">
               <i class="fas fa-shopping-basket"></i> Grocery
             </a>
           </li>
@@ -1967,7 +2124,7 @@
         <div class="filter-section">
           <h4 class="filter-title"><i class="fas fa-filter"></i> Filters</h4>
         </div>
-        
+
         <div class="filter-section">
           <h4 class="filter-title"><i class="fas fa-tags"></i> Categories</h4>
           <ul class="filter-list">
@@ -2058,7 +2215,7 @@
           <div class="loading-spinner"></div>
           <div class="loading-text">Loading amazing products...</div>
         </div>
-        
+
         <!-- Empty State -->
         <div id="emptyState" class="empty-state d-none">
           <div class="empty-state-icon">
@@ -2066,12 +2223,16 @@
           </div>
           <h3 id="emptyStateTitle">No Products Available</h3>
           <p id="emptyStateDesc">Click a category above to fetch products from Amazon.</p>
-          <button id="fetchCategoryBtn" class="btn btn-primary mt-3 d-none" style="background: var(--gradient-mesh); border: none; padding: 12px 24px; border-radius: 12px; font-weight: 600;">
+          <button id="fetchCategoryBtn" class="btn btn-primary mt-3 d-none"
+            style="background: var(--gradient-mesh); border: none; padding: 12px 24px; border-radius: 12px; font-weight: 600;">
             <i class="fas fa-download me-2"></i>Fetch <span id="fetchCategoryName">Category</span> Products
           </button>
-          <div id="manualFetchInfo" style="background: var(--gradient-card); padding: 20px; border-radius: 16px; margin-top: 20px; text-align: left; max-width: 500px;">
-            <p style="color: var(--text-secondary); margin-bottom: 12px; font-size: 0.9rem;"><strong style="color: var(--text-primary);">Or run manually:</strong></p>
-            <code style="background: var(--bg-secondary); padding: 12px 16px; border-radius: 8px; display: block; color: var(--accent); font-family: monospace; font-size: 0.85rem;">
+          <div id="manualFetchInfo"
+            style="background: var(--gradient-card); padding: 20px; border-radius: 16px; margin-top: 20px; text-align: left; max-width: 500px;">
+            <p style="color: var(--text-secondary); margin-bottom: 12px; font-size: 0.9rem;"><strong
+                style="color: var(--text-primary);">Or run manually:</strong></p>
+            <code
+              style="background: var(--bg-secondary); padding: 12px 16px; border-radius: 8px; display: block; color: var(--accent); font-family: monospace; font-size: 0.85rem;">
               python manage.py fetch_amazon_products --categories Electronics --count 50
             </code>
           </div>
@@ -2079,7 +2240,7 @@
 
         <!-- Products Grid -->
         <div id="productsGrid" class="row g-4"></div>
-        
+
         <!-- Pagination Controls -->
         <div id="paginationContainer" class="pagination-container mt-4" style="display: none;">
           <nav aria-label="Product pagination">
@@ -2092,9 +2253,10 @@
     </div>
   </main>
 
-  
+
   <!-- Footer -->
-  <footer style="background: var(--bg-card); backdrop-filter: blur(10px); border-top: 1px solid var(--border); margin-top: 60px; padding: 40px 0 20px;">
+  <footer
+    style="background: var(--bg-card); backdrop-filter: blur(10px); border-top: 1px solid var(--border); margin-top: 60px; padding: 40px 0 20px;">
     <div class="container">
       <div class="row g-4">
         <div class="col-lg-4">
@@ -2108,13 +2270,16 @@
             Your one-stop destination for premium products at unbeatable prices. Quality meets affordability.
           </p>
           <div class="social-links" style="display: flex; gap: 12px; margin-top: 20px;">
-            <a href="#" class="social-link" style="width: 40px; height: 40px; background: rgba(139, 92, 246, 0.1); border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--text-secondary); transition: all 0.3s ease;">
+            <a href="#" class="social-link"
+              style="width: 40px; height: 40px; background: rgba(139, 92, 246, 0.1); border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--text-secondary); transition: all 0.3s ease;">
               <i class="fab fa-facebook-f"></i>
             </a>
-            <a href="#" class="social-link" style="width: 40px; height: 40px; background: rgba(139, 92, 246, 0.1); border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--text-secondary); transition: all 0.3s ease;">
+            <a href="#" class="social-link"
+              style="width: 40px; height: 40px; background: rgba(139, 92, 246, 0.1); border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--text-secondary); transition: all 0.3s ease;">
               <i class="fab fa-twitter"></i>
             </a>
-            <a href="#" class="social-link" style="width: 40px; height: 40px; background: rgba(139, 92, 246, 0.1); border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--text-secondary); transition: all 0.3s ease;">
+            <a href="#" class="social-link"
+              style="width: 40px; height: 40px; background: rgba(139, 92, 246, 0.1); border: 1px solid var(--border); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--text-secondary); transition: all 0.3s ease;">
               <i class="fab fa-instagram"></i>
             </a>
           </div>
@@ -2122,53 +2287,86 @@
         <div class="col-lg-2 col-md-4">
           <h5 style="color: var(--text-primary); font-weight: 700; margin-bottom: 16px;">Shop</h5>
           <ul style="list-style: none; padding: 0; margin: 0;">
-            <li style="margin-bottom: 10px;"><a href="#" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">All Products</a></li>
-            <li style="margin-bottom: 10px;"><a href="#" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">New Arrivals</a></li>
-            <li style="margin-bottom: 10px;"><a href="#" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">Best Sellers</a></li>
-            <li style="margin-bottom: 10px;"><a href="#" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">Deals</a></li>
+            <li style="margin-bottom: 10px;"><a href="#"
+                style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">All
+                Products</a></li>
+            <li style="margin-bottom: 10px;"><a href="#"
+                style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">New
+                Arrivals</a></li>
+            <li style="margin-bottom: 10px;"><a href="#"
+                style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">Best
+                Sellers</a></li>
+            <li style="margin-bottom: 10px;"><a href="#"
+                style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">Deals</a>
+            </li>
           </ul>
         </div>
         <div class="col-lg-2 col-md-4">
           <h5 style="color: var(--text-primary); font-weight: 700; margin-bottom: 16px;">Help</h5>
           <ul style="list-style: none; padding: 0; margin: 0;">
-            <li style="margin-bottom: 10px;"><a href="#" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">Track Order</a></li>
-            <li style="margin-bottom: 10px;"><a href="#" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">Returns</a></li>
-            <li style="margin-bottom: 10px;"><a href="#" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">Shipping Info</a></li>
-            <li style="margin-bottom: 10px;"><a href="#" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">FAQ</a></li>
+            <li style="margin-bottom: 10px;"><a href="#"
+                style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">Track
+                Order</a></li>
+            <li style="margin-bottom: 10px;"><a href="#"
+                style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">Returns</a>
+            </li>
+            <li style="margin-bottom: 10px;"><a href="#"
+                style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">Shipping
+                Info</a></li>
+            <li style="margin-bottom: 10px;"><a href="#"
+                style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">FAQ</a>
+            </li>
           </ul>
         </div>
         <div class="col-lg-2 col-md-4">
           <h5 style="color: var(--text-primary); font-weight: 700; margin-bottom: 16px;">Company</h5>
           <ul style="list-style: none; padding: 0; margin: 0;">
-            <li style="margin-bottom: 10px;"><a href="#" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">About Us</a></li>
-            <li style="margin-bottom: 10px;"><a href="#" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">Careers</a></li>
-            <li style="margin-bottom: 10px;"><a href="#" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">Press</a></li>
-            <li style="margin-bottom: 10px;"><a href="#" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">Contact</a></li>
+            <li style="margin-bottom: 10px;"><a href="#"
+                style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">About
+                Us</a></li>
+            <li style="margin-bottom: 10px;"><a href="#"
+                style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">Careers</a>
+            </li>
+            <li style="margin-bottom: 10px;"><a href="#"
+                style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">Press</a>
+            </li>
+            <li style="margin-bottom: 10px;"><a href="#"
+                style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">Contact</a>
+            </li>
           </ul>
         </div>
         <div class="col-lg-2 col-md-4">
           <h5 style="color: var(--text-primary); font-weight: 700; margin-bottom: 16px;">Legal</h5>
           <ul style="list-style: none; padding: 0; margin: 0;">
-            <li style="margin-bottom: 10px;"><a href="#" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">Privacy Policy</a></li>
-            <li style="margin-bottom: 10px;"><a href="#" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">Terms of Service</a></li>
-            <li style="margin-bottom: 10px;"><a href="#" style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">Cookie Policy</a></li>
+            <li style="margin-bottom: 10px;"><a href="#"
+                style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">Privacy
+                Policy</a></li>
+            <li style="margin-bottom: 10px;"><a href="#"
+                style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">Terms
+                of Service</a></li>
+            <li style="margin-bottom: 10px;"><a href="#"
+                style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.3s ease;">Cookie
+                Policy</a></li>
           </ul>
         </div>
       </div>
       <div style="border-top: 1px solid var(--border); margin-top: 30px; padding-top: 20px; text-align: center;">
         <div class="text-center mt-4" style="color: var(--text-secondary);">
-          <small> 2024 ShopEasy. All rights reserved. Made with <i class="fas fa-heart" style="color: var(--secondary);"></i> in India.</small>
+          <small> 2024 ShopEasy. All rights reserved. Made with <i class="fas fa-heart"
+              style="color: var(--secondary);"></i> in India.</small>
         </div>
       </div>
     </div>
   </footer>
 
-  
+
   <!-- Toasts -->
   <div id="toastContainer" class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1100;"></div>
 
   <!-- Async JavaScript loading for better performance -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"
+    defer></script>
   <script>
     const apiBaseUrl = 'http://127.0.0.1:8000/api';
     let products = [];
@@ -2177,7 +2375,7 @@
     let activeCategory = 'All';
     let isAuthenticated = false;
     let pendingCartProduct = null;
-    
+
     // Pagination settings for performance
     const PRODUCTS_PER_PAGE = 12;
     let currentPage = 1;
@@ -2202,16 +2400,16 @@
     }
 
     function renderProducts() {
-      console.log('[ShopEasy] renderProducts called, products count:', products ? products.length : 'undefined');
+      console.log('[ShopEasy] Rendering products...');
       const productsGrid = document.getElementById('productsGrid');
       const loading = document.getElementById('loading');
-      const emptyState = document.getElementById('emptyState');
       const skeletons = document.getElementById('skeletons');
+      const emptyState = document.getElementById('emptyState');
       const resultsCount = document.getElementById('resultsCount');
-      
+
       if (loading) loading.classList.add('d-none');
       if (skeletons) skeletons.classList.add('d-none');
-      
+
       if (!products || products.length === 0) {
         console.log('[ShopEasy] No products to display, showing empty state');
         if (emptyState) {
@@ -2221,28 +2419,29 @@
           document.getElementById('fetchCategoryBtn').classList.add('d-none');
           document.getElementById('manualFetchInfo').classList.remove('d-none');
         }
+        if (resultsCount) resultsCount.innerText = '0';
         return;
       }
 
       if (emptyState) emptyState.classList.add('d-none');
 
       let filtered = products;
-      
+
       // Use activeCategory (set by category clicks) or fallback to dropdown
       let selectedCategory = activeCategory || 'All';
-      
+
       // If user is using search dropdown, override with that value
       const categorySelect = document.getElementById('searchCategory');
       if (categorySelect && categorySelect.value !== 'All') {
         selectedCategory = categorySelect.value;
       }
-      
+
       console.log('[ShopEasy] Filtering by category:', selectedCategory);
-      
+
       if (searchQuery && searchQuery.trim()) {
         const query = searchQuery.toLowerCase().trim();
-        filtered = filtered.filter(p => 
-          p.name.toLowerCase().includes(query) || 
+        filtered = filtered.filter(p =>
+          p.name.toLowerCase().includes(query) ||
           (p.description && p.description.toLowerCase().includes(query)) ||
           (p.category && p.category.toLowerCase().includes(query))
         );
@@ -2253,7 +2452,7 @@
 
       // Apply rating filter
       if (selectedRating !== null) {
-        filtered = filtered.filter(p => 
+        filtered = filtered.filter(p =>
           p.rating && parseFloat(p.rating) >= selectedRating
         );
         console.log('[ShopEasy] Applied rating filter >=', selectedRating, 'products:', filtered.length);
@@ -2265,6 +2464,13 @@
       console.log('[ShopEasy] Final filtered products:', filtered.length);
 
       if (filtered.length === 0) {
+        // If search query exists, try external search
+        if (searchQuery && searchQuery.trim()) {
+          console.log('[ShopEasy] No local results, trying external search for:', searchQuery);
+          performExternalSearch(searchQuery.trim());
+          return;
+        }
+        
         if (emptyState) {
           emptyState.classList.remove('d-none');
           const titleEl = document.getElementById('emptyStateTitle');
@@ -2272,38 +2478,36 @@
           const fetchBtn = document.getElementById('fetchCategoryBtn');
           const fetchName = document.getElementById('fetchCategoryName');
           const manualInfo = document.getElementById('manualFetchInfo');
-          
-          // If user searched for something not found, offer to search Amazon
-          if (searchQuery && searchQuery.trim()) {
-            titleEl.textContent = 'Product Not Found';
-            descEl.innerHTML = `No results for "<strong>${searchQuery}</strong>" in our store.<br>Would you like to search Amazon?`;
-            fetchBtn.classList.remove('d-none');
-            fetchBtn.textContent = 'Search on Amazon';
-            fetchName.textContent = searchQuery;
-            manualInfo.classList.add('d-none');
-            
-            // Setup Amazon search handler
-            fetchBtn.onclick = async () => {
-              await searchAmazonForProduct(searchQuery);
-            };
-          } else if (selectedCategory !== 'All') {
-            titleEl.textContent = `No ${selectedCategory} Products`;
-            descEl.textContent = `Click below to fetch ${selectedCategory} products from Amazon.`;
-            fetchBtn.classList.remove('d-none');
-            fetchName.textContent = selectedCategory;
-            manualInfo.classList.add('d-none');
-            
-            // Setup fetch button click handler
-            fetchBtn.onclick = async () => {
-              await fetchProductsForCategory(selectedCategory);
-              renderProducts();
-            };
-          } else {
-            titleEl.textContent = 'No Products Found';
-            descEl.textContent = 'Try a different search term or category.';
-            fetchBtn.classList.add('d-none');
-            manualInfo.classList.add('d-none');
-          }
+          if (titleEl) titleEl.textContent = 'No Products Available';
+          if (descEl) descEl.textContent = 'Click a category above to fetch products from Amazon.';
+          if (fetchBtn) fetchBtn.classList.add('d-none');
+          if (manualInfo) manualInfo.classList.remove('d-none');
+        } else if (selectedCategory !== 'All') {
+          const titleEl = document.getElementById('emptyStateTitle');
+          const descEl = document.getElementById('emptyStateDesc');
+          const fetchBtn = document.getElementById('fetchCategoryBtn');
+          const fetchName = document.getElementById('fetchCategoryName');
+          const manualInfo = document.getElementById('manualFetchInfo');
+          titleEl.textContent = `No ${selectedCategory} Products`;
+          descEl.textContent = `Click below to fetch ${selectedCategory} products from Amazon.`;
+          fetchBtn.classList.remove('d-none');
+          fetchName.textContent = selectedCategory;
+          manualInfo.classList.add('d-none');
+
+          // Setup fetch button click handler
+          fetchBtn.onclick = async () => {
+            await fetchProductsForCategory(selectedCategory);
+            renderProducts();
+          };
+        } else {
+          const titleEl = document.getElementById('emptyStateTitle');
+          const descEl = document.getElementById('emptyStateDesc');
+          const fetchBtn = document.getElementById('fetchCategoryBtn');
+          const manualInfo = document.getElementById('manualFetchInfo');
+          titleEl.textContent = 'No Products Found';
+          descEl.textContent = 'Try a different search term or category.';
+          fetchBtn.classList.add('d-none');
+          manualInfo.classList.add('d-none');
         }
         return;
       }
@@ -2312,43 +2516,43 @@
       const startIndex = (currentPage - 1) * PRODUCTS_PER_PAGE;
       const endIndex = Math.min(filtered.length, currentPage * PRODUCTS_PER_PAGE);
       const productsToShow = filtered.slice(startIndex, endIndex);
-      
+
       // Always clear grid for proper pagination
       productsGrid.innerHTML = '';
 
-        productsToShow.forEach((product) => {
+      productsToShow.forEach((product) => {
         const col = document.createElement('div');
         col.className = 'col-sm-6 col-md-4 col-lg-3';
-        
+
         // Safe price formatting
         const price = parseFloat(product.price) || 0;
         const salePrice = product.salePrice ? parseFloat(product.salePrice) : null;
         const priceHtml = salePrice
           ? `<span class="text-muted text-decoration-line-through me-1" style="font-size: 0.85rem;">₹${price.toFixed(0)}</span><span class="price" style="font-size: 1rem; font-weight: 700; color: var(--accent);">₹${salePrice.toFixed(0)}</span>`
           : `<span class="price" style="font-size: 1rem; font-weight: 700; color: var(--accent);">₹${price.toFixed(0)}</span>`;
-        
+
         // Determine badge and button based on product source
         const source = product.source || 'local';
         const isExternal = source === 'amazon' || source === 'flipkart';
-        const badgeHtml = isExternal 
+        const badgeHtml = isExternal
           ? `<span class="badge badge-float" style="background: ${source === 'amazon' ? '#FF9900' : '#2874F0'}; text-transform: capitalize; z-index: 5;">${source}</span>`
           : `<span class="badge badge-float" style="z-index: 5;">${salePrice ? 'Sale' : 'New'}</span>`;
-        
+
         // Safe string handling for display
         const safeName = (product.name || 'Unknown Product').replace(/'/g, "\\'").replace(/"/g, '&quot;');
         const safeCategory = (product.category || 'General').substring(0, 20);
         const displayPrice = salePrice || price;
-        
+
         // All products can be added to cart - external ones will open affiliate link on checkout
         const btnText = isExternal ? `Add (${source})` : 'Add';
         const btnStyle = isExternal ? 'background: linear-gradient(135deg, #FF9900, #2874F0) !important;' : '';
         const actionBtn = `<button class="btn btn-sm add-to-cart-btn" data-id="${product.id}" onclick="addToCart(${product.id});" style="font-size: 0.8rem; padding: 6px 12px; ${btnStyle}">
                <i class="fas fa-cart-plus me-1"></i>${btnText}
              </button>`;
-        
+
         // Truncate name for display
         const displayName = safeName.length > 45 ? safeName.substring(0, 42) + '...' : safeName;
-        
+
         col.innerHTML = `
           <div class="product-card">
             <div class="product-img-container">
@@ -2376,28 +2580,28 @@
           </div>`;
         productsGrid.appendChild(col);
       });
-      
+
       // Update results count
       if (resultsCount) resultsCount.innerText = filtered.length;
 
       // Attach add-to-cart listeners using event delegation for better performance
       const cartButtons = productsGrid.querySelectorAll('button.add-to-cart-btn');
       console.log('[ShopEasy] Found', cartButtons.length, 'cart buttons to attach listeners');
-      
+
       cartButtons.forEach((btn, index) => {
         const id = btn.getAttribute('data-id');
         console.log(`[ShopEasy] Attaching listener to button ${index}, product ID:`, id);
-        
+
         // Add click listener directly (don't clone to keep it simple)
         btn.onclick = async (e) => {
           e.preventDefault();
           e.stopPropagation();
           const productId = parseInt(btn.getAttribute('data-id'));
-          
+
           console.log('[ShopEasy] Button clicked for product:', productId);
-          
+
           console.log('[ShopEasy] Button clicked! Product ID:', productId, 'Auth status:', isAuthenticated);
-          
+
           if (!isNaN(productId)) {
             await addToCart(productId);
           } else {
@@ -2406,9 +2610,9 @@
           }
         };
       });
-      
+
       console.log('[ShopEasy] Finished rendering, attached listeners to', cartButtons.length, 'buttons');
-      
+
       // Render pagination controls
       renderPagination(filtered.length);
     }
@@ -2421,23 +2625,23 @@
       // Scroll to top of products
       document.getElementById('products').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-    
+
     // Render pagination controls
     function renderPagination(totalItems) {
       const paginationContainer = document.getElementById('paginationContainer');
       const paginationList = document.getElementById('paginationList');
-      
+
       const itemsPerPage = PRODUCTS_PER_PAGE;
       totalPages = Math.ceil(totalItems / itemsPerPage);
-      
+
       if (totalPages <= 1) {
         paginationContainer.style.display = 'none';
         return;
       }
-      
+
       paginationContainer.style.display = 'block';
       paginationList.innerHTML = '';
-      
+
       // Previous button
       const prevLi = document.createElement('li');
       prevLi.className = `page-item ${currentPage === 1 ? 'disabled' : ''}`;
@@ -2445,18 +2649,18 @@
         <i class="fas fa-chevron-left"></i>
       </a>`;
       paginationList.appendChild(prevLi);
-      
+
       // Page numbers
       let startPage = Math.max(1, currentPage - 2);
       let endPage = Math.min(totalPages, currentPage + 2);
-      
+
       // Always show first page
       if (startPage > 1) {
         const firstLi = document.createElement('li');
         firstLi.className = `page-item ${currentPage === 1 ? 'active' : ''}`;
         firstLi.innerHTML = `<a class="page-link" onclick="goToPage(1)">1</a>`;
         paginationList.appendChild(firstLi);
-        
+
         if (startPage > 2) {
           const dotsLi = document.createElement('li');
           dotsLi.className = 'page-item disabled';
@@ -2464,7 +2668,7 @@
           paginationList.appendChild(dotsLi);
         }
       }
-      
+
       // Show page range
       for (let i = startPage; i <= endPage; i++) {
         const pageLi = document.createElement('li');
@@ -2472,7 +2676,7 @@
         pageLi.innerHTML = `<a class="page-link" onclick="goToPage(${i})">${i}</a>`;
         paginationList.appendChild(pageLi);
       }
-      
+
       // Always show last page
       if (endPage < totalPages) {
         if (endPage < totalPages - 1) {
@@ -2481,13 +2685,13 @@
           dotsLi.innerHTML = `<a class="page-link">...</a>`;
           paginationList.appendChild(dotsLi);
         }
-        
+
         const lastLi = document.createElement('li');
         lastLi.className = `page-item ${currentPage === totalPages ? 'active' : ''}`;
         lastLi.innerHTML = `<a class="page-link" onclick="goToPage(${totalPages})">${totalPages}</a>`;
         paginationList.appendChild(lastLi);
       }
-      
+
       // Next button
       const nextLi = document.createElement('li');
       nextLi.className = `page-item ${currentPage === totalPages ? 'disabled' : ''}`;
@@ -2495,7 +2699,7 @@
         <i class="fas fa-chevron-right"></i>
       </a>`;
       paginationList.appendChild(nextLi);
-      
+
       // Add pagination info
       const infoLi = document.createElement('li');
       const startItem = (currentPage - 1) * itemsPerPage + 1;
@@ -2524,14 +2728,14 @@
 
     async function addToCart(productId) {
       console.log('[ShopEasy] Adding to cart, productId:', productId, 'type:', typeof productId);
-      
+
       // Validate productId
       if (!productId || isNaN(productId)) {
         console.error('[ShopEasy] Invalid productId:', productId);
         showToast('Error', 'Invalid product ID', 'danger');
         return;
       }
-      
+
       // Double-check auth status (in case it changed)
       try {
         const res = await fetch(`${apiBaseUrl}/auth-check/`);
@@ -2541,27 +2745,27 @@
       } catch (e) {
         console.error('[ShopEasy] Auth check failed:', e);
       }
-      
+
       // Check if user is authenticated
       if (!isAuthenticated) {
         pendingCartProduct = productId;
         // Store pending product for after login
         sessionStorage.setItem('pendingCartProduct', productId);
         console.log('[ShopEasy] User not logged in, redirecting to login');
-        
+
         // Store current page for return after login
         const returnUrl = encodeURIComponent(window.location.pathname + window.location.search);
         window.location.href = `/auth/?return=${returnUrl}`;
         return;
       }
-      
+
       // Check if products array is loaded
       if (!products || products.length === 0) {
         console.error('[ShopEasy] Products not loaded yet');
         showToast('Error', 'Products not loaded. Please wait.', 'danger');
         return;
       }
-      
+
       // Find the product
       const product = products.find(p => p.id === productId);
       console.log('[ShopEasy] Found product:', product);
@@ -2570,16 +2774,16 @@
         showToast('Error', 'Product not found', 'danger');
         return;
       }
-      
+
       // Add to cart (external products will have affiliate links stored)
       const found = cart.find(item => item.id === productId);
       const unitPrice = parseFloat(product.salePrice) || parseFloat(product.price) || 0;
-      
+
       if (found) {
         found.quantity++;
         console.log('[ShopEasy] Increased quantity for:', product.name, 'New qty:', found.quantity);
       } else {
-        const newItem = { 
+        const newItem = {
           id: product.id,
           name: product.name,
           price: unitPrice,
@@ -2591,11 +2795,11 @@
         cart.push(newItem);
         console.log('[ShopEasy] Added new item to cart:', newItem);
       }
-      
+
       // Save to localStorage
       localStorage.setItem('cart', JSON.stringify(cart));
       console.log('[ShopEasy] Saved cart to localStorage');
-      
+
       // Update UI
       updateCartCount();
       showToast('Added to cart', `${product.name} has been added to your cart.`);
@@ -2606,15 +2810,15 @@
       const cartItems = document.getElementById('cartItems');
       const cartEmpty = document.getElementById('cartEmpty');
       const cartTableContainer = document.getElementById('cartTableContainer');
-      
+
       if (!cartItems) {
         console.error('[ShopEasy] Cart items element not found');
         return;
       }
-      
+
       cartItems.innerHTML = '';
       let total = 0;
-      
+
       // Show/hide empty state and table
       if (cart.length === 0) {
         if (cartEmpty) cartEmpty.style.display = 'block';
@@ -2623,7 +2827,7 @@
         if (cartEmpty) cartEmpty.style.display = 'none';
         if (cartTableContainer) cartTableContainer.style.display = 'block';
       }
-      
+
       cart.forEach(item => {
         total += item.price * item.quantity;
         const tr = document.createElement('tr');
@@ -2637,7 +2841,7 @@
         `;
         cartItems.appendChild(tr);
       });
-      
+
       const totalEl = document.getElementById('cartTotal');
       if (totalEl) totalEl.innerText = `₹${total.toFixed(2)}`;
 
@@ -2656,7 +2860,7 @@
           removeFromCart(id);
         });
       });
-      
+
       console.log('[ShopEasy] Cart rendered with', cart.length, 'items');
     }
 
@@ -2682,11 +2886,11 @@
         showToast('Cart is empty', 'Please add some items before checking out.', 'warning');
         return;
       }
-      
+
       // Separate local and external products
       const externalProducts = cart.filter(item => item.source === 'amazon' || item.source === 'flipkart');
       const localProducts = cart.filter(item => !item.source || item.source === 'local');
-      
+
       // Open external product links in new tabs
       if (externalProducts.length > 0) {
         externalProducts.forEach(item => {
@@ -2696,7 +2900,7 @@
         });
         showToast('External Links', `Opening ${externalProducts.length} external product(s) in new tabs`, 'info');
       }
-      
+
       // Process local products through backend
       if (localProducts.length > 0) {
         const cartSnapshot = localProducts.map(({ id, name, price, quantity }) => ({ id, name, price, quantity }));
@@ -2715,7 +2919,7 @@
           return;
         }
       }
-      
+
       // Clear cart and update UI
       cart = [];
       localStorage.setItem('cart', JSON.stringify(cart));
@@ -2750,7 +2954,7 @@
       const tbody = document.getElementById('ordersBody');
       const empty = document.getElementById('ordersEmpty');
       if (!tbody || !empty) return;
-      
+
       let orders = [];
       try {
         const res = await fetch(`${apiBaseUrl}/orders/`);
@@ -2799,10 +3003,11 @@
         const res = await fetch(`${apiBaseUrl}/auth-check/`);
         const data = await res.json();
         isAuthenticated = data.authenticated;
-        updateAuthUI(data.authenticated, data.username);
-        
+        const username = data.authenticated ? data.user.username : null;
+        updateAuthUI(data.authenticated, username);
+
         console.log('[ShopEasy] Auth status:', isAuthenticated ? 'Logged in' : 'Not logged in');
-        
+
         // If user just logged in and has pending cart item in sessionStorage, add it
         const pendingProductFromStorage = sessionStorage.getItem('pendingCartProduct');
         if (isAuthenticated && pendingProductFromStorage && products.length > 0) {
@@ -2830,6 +3035,7 @@
               <span>Hi, ${username}</span>
             </a>
             <ul class="dropdown-menu dropdown-menu-dark" style="background: var(--bg-card); border: 1px solid var(--border);">
+              <li><a class="dropdown-item" href="/profile/" style="color: var(--text-primary);"><i class="fas fa-user me-2"></i>My Profile</a></li>
               <li><a class="dropdown-item" href="#" id="logoutBtn" style="color: var(--text-primary);"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
             </ul>
           </div>
@@ -2893,14 +3099,14 @@
     async function searchAmazonForProduct(query) {
       const loading = document.getElementById('loading');
       if (loading) loading.classList.remove('d-none');
-      
+
       showToast('Searching Amazon', `Looking for "${query}"...`, 'info');
-      
+
       try {
         // Call backend API to search Amazon
         const response = await fetch(`${apiBaseUrl}/search-amazon/?query=${encodeURIComponent(query)}`);
         const data = await response.json();
-        
+
         if (data.products && data.products.length > 0) {
           // Add Amazon products to the products array
           const amazonProducts = data.products.map(p => ({
@@ -2908,13 +3114,13 @@
             source: 'amazon',
             externalUrl: p.url || `https://www.amazon.in/s?k=${encodeURIComponent(query)}`
           }));
-          
+
           products = [...products, ...amazonProducts];
-          
+
           // Save to localStorage for caching
           localStorage.setItem('products', JSON.stringify(products));
           localStorage.setItem('productsTimestamp', Date.now().toString());
-          
+
           showToast('Products Found', `Found ${amazonProducts.length} products from Amazon!`, 'success');
           renderProducts();
         } else {
@@ -2923,7 +3129,7 @@
       } catch (error) {
         console.error('[ShopEasy] Amazon search error:', error);
         showToast('Search Failed', 'Could not fetch from Amazon. Please try again.', 'danger');
-        
+
         // Fallback: Open Amazon search in new tab
         window.open(`https://www.amazon.in/s?k=${encodeURIComponent(query)}`, '_blank');
       } finally {
@@ -2935,13 +3141,13 @@
     async function fetchProductsForCategory(category) {
       const loading = document.getElementById('loading');
       if (loading) loading.classList.remove('d-none');
-      
+
       showToast('Fetching Products', `Looking for ${category} products on Amazon...`, 'info');
-      
+
       try {
         // Get CSRF token
         const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]')?.value || '';
-        
+
         // Call backend API to fetch category products (POST request)
         const response = await fetch(`${apiBaseUrl}/fetch-category/`, {
           method: 'POST',
@@ -2951,9 +3157,9 @@
           },
           body: JSON.stringify({ category: category, count: 12 })
         });
-        
+
         const data = await response.json();
-        
+
         if (data.success && data.products && data.products.length > 0) {
           // Add Amazon products to the products array
           const amazonProducts = data.products.map(p => ({
@@ -2962,13 +3168,13 @@
             source: 'amazon',
             externalUrl: p.url || `https://www.amazon.in/s?k=${encodeURIComponent(category)}`
           }));
-          
+
           products = [...products, ...amazonProducts];
-          
+
           // Save to localStorage for caching
           localStorage.setItem('products', JSON.stringify(products));
           localStorage.setItem('productsTimestamp', Date.now().toString());
-          
+
           showToast('Products Found', `Found ${amazonProducts.length} ${category} products from Amazon!`, 'success');
           renderProducts();
         } else {
@@ -2977,7 +3183,7 @@
       } catch (error) {
         console.error('[ShopEasy] Category fetch error:', error);
         showToast('Fetch Failed', 'Could not fetch from Amazon. Opening Amazon instead...', 'warning');
-        
+
         // Fallback: Open Amazon search in new tab
         window.open(`https://www.amazon.in/s?k=${encodeURIComponent(category)}`, '_blank');
       } finally {
@@ -2996,31 +3202,31 @@
       const dealsRow = document.getElementById('dealsRow');
       const dealsIndicators = document.getElementById('dealsIndicators');
       if (!dealsRow || !products || products.length === 0) return;
-      
+
       // Filter products by selected category
       let categoryProducts = products;
       if (activeCategory && activeCategory !== 'All') {
-        categoryProducts = products.filter(p => 
+        categoryProducts = products.filter(p =>
           p.category && p.category.toLowerCase() === activeCategory.toLowerCase()
         );
       }
-      
+
       // If no products in selected category, use all products
       if (categoryProducts.length === 0) {
         categoryProducts = products;
       }
-      
+
       // Apply search filter if there's a search query
       if (searchQuery && searchQuery.trim()) {
         const query = searchQuery.toLowerCase().trim();
-        categoryProducts = categoryProducts.filter(p => 
-          p.name.toLowerCase().includes(query) || 
+        categoryProducts = categoryProducts.filter(p =>
+          p.name.toLowerCase().includes(query) ||
           (p.description && p.description.toLowerCase().includes(query)) ||
           (p.category && p.category.toLowerCase().includes(query))
         );
         console.log('[ShopEasy] Carousel search filter applied, found:', categoryProducts.length, 'products');
       }
-      
+
       // Get random products from filtered category
       const shuffled = [...categoryProducts].sort(() => 0.5 - Math.random());
       let deals = shuffled.filter(p => p.salePrice).slice(0, 4);
@@ -3029,10 +3235,10 @@
         deals = deals.concat(remainingNonSale.slice(0, 8 - deals.length));
       }
       deals = deals.slice(0, 8); // Ensure max 8 deals
-      
+
       dealsRow.innerHTML = '';
       dealsIndicators.innerHTML = '';
-      
+
       // Calculate slides based on screen size
       if (window.innerWidth <= 768) {
         dealsPerSlide = 2;
@@ -3041,17 +3247,17 @@
       } else {
         dealsPerSlide = 4;
       }
-      
+
       totalDealSlides = Math.ceil(deals.length / dealsPerSlide);
-      
+
       deals.forEach((product, index) => {
         const price = parseFloat(product.price) || 0;
         const salePrice = product.salePrice ? parseFloat(product.salePrice) : price;
         const discount = Math.floor(((price - salePrice) / price) * 100) || Math.floor(Math.random() * 30) + 10;
-        
+
         const safeName = (product.name || 'Product').substring(0, 30);
         const isExternal = product.source === 'amazon' || product.source === 'flipkart';
-        
+
         const dealCard = document.createElement('div');
         dealCard.className = 'deal-card';
         dealCard.innerHTML = `
@@ -3074,15 +3280,15 @@
             </div>
           </div>
         `;
-        
+
         dealCard.addEventListener('click', () => {
           // Always show Quick View modal (same behavior as main product grid)
           showQuickView(product.name, product.imageUrl, product.description || 'Premium product', salePrice, product.id);
         });
-        
+
         dealsRow.appendChild(dealCard);
       });
-      
+
       // Create indicators
       for (let i = 0; i < totalDealSlides; i++) {
         const indicator = document.createElement('div');
@@ -3090,10 +3296,10 @@
         indicator.addEventListener('click', () => goToDealSlide(i));
         dealsIndicators.appendChild(indicator);
       }
-      
+
       // Initialize carousel controls
       initCarouselControls();
-      
+
       // Start auto-rotate after a delay
       setTimeout(startDealsAutoRotate, 3000);
     }
@@ -3112,12 +3318,12 @@
     function updateDealsCarousel() {
       const dealsRow = document.getElementById('dealsRow');
       const indicators = document.querySelectorAll('.indicator');
-      
+
       if (dealsRow) {
         const offset = currentDealSlide * (100 / totalDealSlides);
         dealsRow.style.transform = `translateX(-${offset}%)`;
       }
-      
+
       // Update indicators
       indicators.forEach((indicator, index) => {
         indicator.classList.toggle('active', index === currentDealSlide);
@@ -3130,7 +3336,7 @@
       if (carouselInterval) {
         clearInterval(carouselInterval);
       }
-      
+
       console.log('[ShopEasy] Starting auto-rotate carousel');
       carouselInterval = setInterval(() => {
         currentDealSlide = currentDealSlide < totalDealSlides - 1 ? currentDealSlide + 1 : 0;
@@ -3141,7 +3347,7 @@
     // Sorting functionality
     let currentSort = 'featured';
     let selectedRating = null; // Rating filter
-    
+
     function handleSortChange() {
       const sortDropdown = document.getElementById('sortDropdown');
       currentSort = sortDropdown.value;
@@ -3149,34 +3355,34 @@
       currentPage = 1; // Reset pagination on sort
       renderProducts();
     }
-    
+
     function sortProducts(products, sortType) {
       const sorted = [...products];
-      
-      switch(sortType) {
+
+      switch (sortType) {
         case 'price-low':
           return sorted.sort((a, b) => {
             const priceA = a.salePrice || a.price || 0;
             const priceB = b.salePrice || b.price || 0;
             return priceA - priceB;
           });
-          
+
         case 'price-high':
           return sorted.sort((a, b) => {
             const priceA = a.salePrice || a.price || 0;
             const priceB = b.salePrice || b.price || 0;
             return priceB - priceA;
           });
-          
+
         case 'name-az':
           return sorted.sort((a, b) => (a.name || '').localeCompare(b.name || ''));
-          
+
         case 'name-za':
           return sorted.sort((a, b) => (b.name || '').localeCompare(a.name || ''));
-          
+
         case 'newest':
           return sorted.sort((a, b) => (b.id || 0) - (a.id || 0));
-          
+
         case 'featured':
         default:
           // Featured: prioritize sale items, then by ID
@@ -3201,7 +3407,7 @@
     async function handleCategoryClick(category, linkElement) {
       console.log('[ShopEasy] Category clicked:', category);
       console.log('[ShopEasy] Products array:', products ? products.length : 'undefined');
-      
+
       try {
         // Update UI - remove active from all category links
         console.log('[ShopEasy] Removing active class from all links...');
@@ -3210,38 +3416,38 @@
           console.log('[ShopEasy] Adding active class to clicked link...');
           linkElement.classList.add('active');
         }
-        
+
         // Update sidebar checkboxes
         console.log('[ShopEasy] Updating sidebar checkboxes...');
         document.querySelectorAll('input[name="category"]').forEach(cb => {
           cb.checked = cb.value === category;
         });
-        
+
         activeCategory = category;
         currentPage = 1;
         console.log('[ShopEasy] Set activeCategory to:', activeCategory);
-        
+
         // Check if we need to fetch from Amazon API
         if (category !== 'All') {
           console.log('[ShopEasy] Checking for existing products in category:', category);
-          const existingProducts = products.filter(p => 
+          const existingProducts = products.filter(p =>
             p.category && p.category.toLowerCase() === category.toLowerCase()
           );
           console.log('[ShopEasy] Found existing products:', existingProducts.length);
-          
+
           if (existingProducts.length === 0) {
             console.log('[ShopEasy] No products found for category, fetching from Amazon API...');
             await fetchProductsForCategory(category);
           }
         }
-        
+
         console.log('[ShopEasy] Calling renderProducts...');
         renderProducts();
-        
+
         // Update carousel with category-specific deals
         console.log('[ShopEasy] Updating carousel for category:', category);
         loadDeals();
-        
+
         console.log('[ShopEasy] handleCategoryClick completed');
       } catch (error) {
         console.error('[ShopEasy] Error in handleCategoryClick:', error);
@@ -3255,12 +3461,12 @@
       const loading = document.getElementById('loading');
       const skeletons = document.getElementById('skeletons');
       const emptyState = document.getElementById('emptyState');
-      
+
       // Check if we have cached products (less than 5 minutes old)
       const cachedProducts = localStorage.getItem('cachedProducts');
       const cacheTime = localStorage.getItem('cachedProductsTime');
       const cacheValid = cachedProducts && cacheTime && (Date.now() - parseInt(cacheTime) < 300000); // 5 minutes
-      
+
       if (cacheValid) {
         console.log('[ShopEasy] Using cached products');
         products = JSON.parse(cachedProducts);
@@ -3271,7 +3477,7 @@
         fetchFreshProducts();
         return;
       }
-      
+
       // Show loading state
       if (loading) loading.classList.remove('d-none');
       if (skeletons) {
@@ -3279,15 +3485,15 @@
         renderSkeletons(8);
       }
       if (emptyState) emptyState.classList.add('d-none');
-      
+
       await fetchFreshProducts();
     }
-    
+
     async function fetchFreshProducts() {
       console.log('[ShopEasy] Fetching fresh products from:', `${apiBaseUrl}/products/`);
       const loading = document.getElementById('loading');
       const skeletons = document.getElementById('skeletons');
-      
+
       try {
         const res = await fetch(`${apiBaseUrl}/products/`);
         console.log('[ShopEasy] Response status:', res.status);
@@ -3295,11 +3501,11 @@
           throw new Error(`HTTP error! status: ${res.status}`);
         }
         products = await res.json();
-        
+
         // Cache the products
         localStorage.setItem('cachedProducts', JSON.stringify(products));
         localStorage.setItem('cachedProductsTime', Date.now().toString());
-        
+
         console.log('[ShopEasy] Products loaded:', products.length, products);
       } catch (e) {
         console.error('[ShopEasy] Failed to load products:', e);
@@ -3312,7 +3518,7 @@
         renderProducts();
         loadDeals();
         updateCartCount();
-        
+
         // Check for pending cart product now that products are loaded
         const pendingProductFromStorage = sessionStorage.getItem('pendingCartProduct');
         if (isAuthenticated && pendingProductFromStorage) {
@@ -3329,40 +3535,50 @@
 
     document.addEventListener('DOMContentLoaded', async () => {
       console.log('[ShopEasy] Page loaded, starting initialization...');
-      
+
       // Check auth status FIRST before anything else
       await checkAuthStatus();
       console.log('[ShopEasy] Auth check complete, isAuthenticated:', isAuthenticated);
-      
+
       // Check for pending cart product from auth redirect
       const pendingCartProduct = sessionStorage.getItem('pendingCartProduct');
       if (pendingCartProduct) {
         console.log('[ShopEasy] Found pending cart product from auth:', pendingCartProduct);
       }
-      
+
       const loginForm = document.getElementById('loginForm');
       const signupForm = document.getElementById('signupForm');
       if (loginForm) loginForm.addEventListener('submit', (e) => handleAuthForm(e, 'login'));
       if (signupForm) signupForm.addEventListener('submit', (e) => handleAuthForm(e, 'signup'));
-      
+
       const checkoutBtn = document.getElementById('checkoutBtn');
       if (checkoutBtn) checkoutBtn.addEventListener('click', checkout);
-      
+
       const searchInput = document.getElementById('searchInput');
       const clearSearchBtn = document.getElementById('clearSearchBtn');
-      if (searchInput) searchInput.addEventListener('input', (e) => { 
-        searchQuery = e.target.value; 
+      const searchCategory = document.getElementById('searchCategory');
+      
+      if (searchInput) searchInput.addEventListener('input', (e) => {
+        searchQuery = e.target.value;
         currentPage = 1; // Reset pagination on search
+        console.log('[ShopEasy] Search input changed:', searchQuery);
         if (clearSearchBtn) {
           clearSearchBtn.style.display = searchQuery ? 'block' : 'none';
         }
-        renderProducts(); 
-        
+        renderProducts();
+
         // Update carousel with search results
         console.log('[ShopEasy] Updating carousel for search:', searchQuery);
         loadDeals();
       });
-      
+
+      // Add event listener for search category dropdown
+      if (searchCategory) searchCategory.addEventListener('change', (e) => {
+        console.log('[ShopEasy] Search category changed to:', e.target.value);
+        currentPage = 1; // Reset pagination on category change
+        renderProducts();
+      });
+
       // Category nav links
       const categoryLinks = document.querySelectorAll('.category-link');
       console.log('[ShopEasy] Found category links:', categoryLinks.length);
@@ -3375,7 +3591,7 @@
           await handleCategoryClick(category, btn);
         });
       });
-      
+
       // Sidebar category checkboxes
       document.querySelectorAll('input[name="category"]').forEach(cb => {
         cb.addEventListener('change', async () => {
@@ -3386,14 +3602,14 @@
                 otherCb.checked = false;
               }
             });
-            
+
             const category = cb.value;
             console.log('[ShopEasy] Sidebar category clicked:', category);
             await handleCategoryClick(category, null);
           }
         });
       });
-      
+
       // Rating filter checkboxes
       document.querySelectorAll('input[name="rating"]').forEach(cb => {
         cb.addEventListener('change', async () => {
@@ -3404,14 +3620,14 @@
                 otherCb.checked = false;
               }
             });
-            
+
             selectedRating = parseFloat(cb.value);
             console.log('[ShopEasy] Rating filter selected:', selectedRating);
           } else {
             selectedRating = null;
             console.log('[ShopEasy] Rating filter cleared');
           }
-          
+
           currentPage = 1; // Reset pagination on filter change
           renderProducts();
         });
@@ -3435,9 +3651,159 @@
       loadProducts();
     });
 
+    // External Search Function
+    async function performExternalSearch(query) {
+      console.log('[ShopEasy] Performing external search for:', query);
+      const loading = document.getElementById('loading');
+      const emptyState = document.getElementById('emptyState');
+      
+      // Show loading state
+      if (loading) loading.classList.remove('d-none');
+      if (emptyState) emptyState.classList.add('d-none');
+      
+      try {
+        const response = await fetch(`${apiBaseUrl}/external-search/?query=${encodeURIComponent(query)}`);
+        const data = await response.json();
+        
+        if (data.success && data.products && data.products.length > 0) {
+          console.log('[ShopEasy] External search successful, found:', data.products.length, 'products');
+          
+          // Display external products
+          displayExternalProducts(data.products, query);
+        } else {
+          console.log('[ShopEasy] No external products found');
+          showNoExternalResults(query);
+        }
+      } catch (error) {
+        console.error('[ShopEasy] External search failed:', error);
+        showExternalSearchError(query);
+      } finally {
+        if (loading) loading.classList.add('d-none');
+      }
+    }
+
+    function createProductCard(product) {
+      const col = document.createElement('div');
+      col.className = 'col-md-6 col-lg-4 col-xl-3 mb-4';
+      
+      const safeName = (product.name || 'Unknown Product').replace(/"/g, '&quot;');
+      const displayName = safeName.length > 45 ? safeName.substring(0, 42) + '...' : safeName;
+      const safeCategory = (product.category || 'External').replace(/"/g, '&quot;');
+      
+      const badgeHtml = product.salePrice ? '<span class="product-badge">SALE</span>' : '';
+      
+      col.innerHTML = `
+        <div class="product-card">
+          <div class="product-img-container">
+            ${badgeHtml}
+            <img src="${product.imageUrl || 'https://via.placeholder.com/300x300?text=No+Image'}" 
+                 alt="${safeName}"
+                 onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'"
+                 loading="lazy">
+            <button class="quick-view-btn" onclick="showQuickView('${safeName}', '${product.imageUrl || ''}', '${product.description || ''}', ${product.price || 0}, ${product.id || 0})">
+              <i class="fas fa-eye me-2"></i>Quick View
+            </button>
+          </div>
+          <div class="product-card-body">
+            <div class="product-meta">
+              <small class="product-id">#${String(product.id || 0).padStart(3, '0')}</small>
+              <span class="product-category-badge">${safeCategory}</span>
+            </div>
+            <h5 class="product-title" title="${safeName}">${displayName}</h5>
+            <div class="product-price">
+              <span class="price-current">Rs${parseFloat(product.price || 0).toFixed(0)}</span>
+              ${product.salePrice ? `<span class="price-original">Rs${parseFloat(product.salePrice).toFixed(0)}</span>` : ''}
+            </div>
+            <div class="product-actions">
+              <button class="btn-view-product" onclick="viewProduct(${product.id || 0})">
+                <i class="fas fa-eye"></i> View Details
+              </button>
+              <button class="btn-add-cart" onclick="addToCart(${product.id || 0})">
+                <i class="fas fa-shopping-cart"></i> Add
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+      
+      return col;
+    }
+
+    function displayExternalProducts(externalProducts, query) {
+      const productsGrid = document.getElementById('productsGrid');
+      const emptyState = document.getElementById('emptyState');
+      const resultsCount = document.getElementById('resultsCount');
+      
+      // Hide empty state
+      if (emptyState) emptyState.classList.add('d-none');
+      
+      // Clear and populate products grid
+      if (productsGrid) {
+        productsGrid.innerHTML = '';
+        
+        externalProducts.forEach(product => {
+          const productCard = createProductCard(product);
+          productsGrid.appendChild(productCard);
+        });
+      }
+      
+      // Update results count
+      if (resultsCount) resultsCount.innerText = externalProducts.length;
+      
+      // Show toast for external search
+      showToast('External Search', `Found ${externalProducts.length} products for "${query}" from Amazon`, 'info');
+    }
+
+    function showNoExternalResults(query) {
+      const emptyState = document.getElementById('emptyState');
+      const titleEl = document.getElementById('emptyStateTitle');
+      const descEl = document.getElementById('emptyStateDesc');
+      
+      if (emptyState) emptyState.classList.remove('d-none');
+      if (titleEl) titleEl.textContent = 'No Products Found';
+      if (descEl) descEl.textContent = `No products found for "${query}" in our database or on Amazon.`;
+      
+      showToast('No Results', `No products found for "${query}"`, 'warning');
+    }
+
+    function showExternalSearchError(query) {
+      const emptyState = document.getElementById('emptyState');
+      const titleEl = document.getElementById('emptyStateTitle');
+      const descEl = document.getElementById('emptyStateDesc');
+      
+      if (emptyState) emptyState.classList.remove('d-none');
+      if (titleEl) titleEl.textContent = 'Search Error';
+      if (descEl) descEl.textContent = 'Unable to search external products. Please try again later.';
+      
+      showToast('Search Error', 'Failed to search external products', 'danger');
+    }
+
+    // Scroll to Top Button - Added separately without affecting existing code
+    document.addEventListener('DOMContentLoaded', function() {
+      const scrollToTopBtn = document.getElementById('scrollToTop');
+      if (scrollToTopBtn) {
+        // Show/hide button based on scroll position
+        window.addEventListener('scroll', function() {
+          if (window.scrollY > 50) {
+            scrollToTopBtn.classList.add('visible');
+          } else {
+            scrollToTopBtn.classList.remove('visible');
+          }
+        });
+
+        // Smooth scroll to top when clicked
+        scrollToTopBtn.addEventListener('click', function() {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        });
+      }
+    });
+
     // Quick View Modal
     let currentQuickViewProductId = null;
-    
+
     function showQuickView(name, imageUrl, description, price, productId) {
       currentQuickViewProductId = productId;
       const modalHtml = `
@@ -3468,14 +3834,14 @@
           </div>
         </div>
       `;
-      
+
       // Remove existing modal if any
       const existingModal = document.getElementById('quickViewModal');
       if (existingModal) existingModal.remove();
-      
+
       // Add new modal
       document.body.insertAdjacentHTML('beforeend', modalHtml);
-      
+
       // Show modal
       const modal = new bootstrap.Modal(document.getElementById('quickViewModal'));
       modal.show();
@@ -3486,24 +3852,24 @@
         showToast('Error', 'Product ID not found', 'danger');
         return;
       }
-      
+
       // Check if user is authenticated
       if (!isAuthenticated) {
         // Close quick view modal first
         const quickViewModal = bootstrap.Modal.getInstance(document.getElementById('quickViewModal'));
         if (quickViewModal) quickViewModal.hide();
-        
+
         // Store pending product and redirect to login
         pendingCartProduct = currentQuickViewProductId;
         sessionStorage.setItem('pendingCartProduct', currentQuickViewProductId);
         console.log('[ShopEasy] User not logged in (from Quick View), redirecting to login');
-        
+
         // Store current page for return after login
         const returnUrl = encodeURIComponent(window.location.pathname + window.location.search);
         window.location.href = `/auth/?return=${returnUrl}`;
         return;
       }
-      
+
       // User is logged in, add to cart
       await addToCart(currentQuickViewProductId);
     }
@@ -3532,27 +3898,41 @@
   <!-- Orders History Modal -->
   <div class="modal fade" id="ordersModal" tabindex="-1" aria-labelledby="ordersModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
-      <div class="modal-content" style="background: var(--bg-card); backdrop-filter: blur(20px); border: 1px solid var(--border); border-radius: 24px; box-shadow: var(--shadow-lg);">
+      <div class="modal-content"
+        style="background: var(--bg-card); backdrop-filter: blur(20px); border: 1px solid var(--border); border-radius: 24px; box-shadow: var(--shadow-lg);">
         <div class="modal-header" style="border-bottom: 1px solid var(--border); padding: 1.5rem;">
-          <h5 class="modal-title" id="ordersModalLabel" style="font-weight: 800; background: var(--gradient-mesh); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; margin: 0;">
+          <h5 class="modal-title" id="ordersModalLabel"
+            style="font-weight: 800; background: var(--gradient-mesh); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; margin: 0;">
             <i class="fas fa-box me-2"></i>Order History
           </h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: none;"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+            style="filter: none;"></button>
         </div>
         <div class="modal-body" style="padding: 1.5rem;">
           <div id="ordersEmpty" class="text-center py-5">
             <i class="fas fa-box fa-3x mb-3" style="opacity: 0.3; color: var(--text-muted);"></i>
-            <p style="color: var(--text-secondary); margin: 0;">No orders yet. Place your first order to see it here.</p>
+            <p style="color: var(--text-secondary); margin: 0;">No orders yet. Place your first order to see it here.
+            </p>
           </div>
           <div class="table-responsive">
             <table class="table align-middle" style="color: var(--text-primary);">
               <thead>
                 <tr>
-                  <th style="background: rgba(99, 102, 241, 0.1); border-color: var(--border); color: var(--text-primary); font-weight: 600;">Order ID</th>
-                  <th style="background: rgba(99, 102, 241, 0.1); border-color: var(--border); color: var(--text-primary); font-weight: 600;">Date</th>
-                  <th style="background: rgba(99, 102, 241, 0.1); border-color: var(--border); color: var(--text-primary); font-weight: 600;">Items</th>
-                  <th style="background: rgba(99, 102, 241, 0.1); border-color: var(--border); color: var(--text-primary); font-weight: 600;">Total</th>
-                  <th style="background: rgba(99, 102, 241, 0.1); border-color: var(--border); color: var(--text-primary); font-weight: 600;">Preview</th>
+                  <th
+                    style="background: rgba(99, 102, 241, 0.1); border-color: var(--border); color: var(--text-primary); font-weight: 600;">
+                    Order ID</th>
+                  <th
+                    style="background: rgba(99, 102, 241, 0.1); border-color: var(--border); color: var(--text-primary); font-weight: 600;">
+                    Date</th>
+                  <th
+                    style="background: rgba(99, 102, 241, 0.1); border-color: var(--border); color: var(--text-primary); font-weight: 600;">
+                    Items</th>
+                  <th
+                    style="background: rgba(99, 102, 241, 0.1); border-color: var(--border); color: var(--text-primary); font-weight: 600;">
+                    Total</th>
+                  <th
+                    style="background: rgba(99, 102, 241, 0.1); border-color: var(--border); color: var(--text-primary); font-weight: 600;">
+                    Preview</th>
                 </tr>
               </thead>
               <tbody id="ordersBody"></tbody>
@@ -3560,7 +3940,8 @@
           </div>
         </div>
         <div class="modal-footer" style="border-top: 1px solid var(--border); padding: 1.5rem;">
-          <button type="button" class="btn" data-bs-dismiss="modal" style="background: var(--gradient-mesh); background-size: 200% 200%; border: none; color: white; padding: 0.75rem 2rem; border-radius: 12px; font-weight: 600; box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);">
+          <button type="button" class="btn" data-bs-dismiss="modal"
+            style="background: var(--gradient-mesh); background-size: 200% 200%; border: none; color: white; padding: 0.75rem 2rem; border-radius: 12px; font-weight: 600; box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);">
             <i class="fas fa-check me-2"></i>Close
           </button>
         </div>
@@ -3570,27 +3951,39 @@
   <!-- Order Confirmation Modal -->
   <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
-      <div class="modal-content" style="background: var(--bg-card); backdrop-filter: blur(20px); border: 1px solid var(--border); border-radius: 24px; box-shadow: var(--shadow-lg);">
+      <div class="modal-content"
+        style="background: var(--bg-card); backdrop-filter: blur(20px); border: 1px solid var(--border); border-radius: 24px; box-shadow: var(--shadow-lg);">
         <div class="modal-header" style="border-bottom: 1px solid var(--border); padding: 1.5rem;">
-          <h5 class="modal-title" id="orderModalLabel" style="font-weight: 800; background: var(--gradient-mesh); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; margin: 0;">
+          <h5 class="modal-title" id="orderModalLabel"
+            style="font-weight: 800; background: var(--gradient-mesh); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; margin: 0;">
             <i class="fas fa-check-circle me-2"></i>Order Confirmed
           </h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: none;"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+            style="filter: none;"></button>
         </div>
         <div class="modal-body" style="padding: 1.5rem;">
           <div class="text-center mb-4">
             <i class="fas fa-check-circle fa-3x mb-3" style="color: var(--success);"></i>
-            <p style="color: var(--text-primary); font-size: 1.1rem; font-weight: 600; margin: 0;">Thank you for your purchase!</p>
+            <p style="color: var(--text-primary); font-size: 1.1rem; font-weight: 600; margin: 0;">Thank you for your
+              purchase!</p>
             <p style="color: var(--text-secondary); margin: 0;">Here is your order summary:</p>
           </div>
           <div class="table-responsive">
             <table class="table align-middle" style="color: var(--text-primary);">
               <thead>
                 <tr>
-                  <th style="background: rgba(99, 102, 241, 0.1); border-color: var(--border); color: var(--text-primary); font-weight: 600;">Item</th>
-                  <th style="background: rgba(99, 102, 241, 0.1); border-color: var(--border); color: var(--text-primary); font-weight: 600;">Price</th>
-                  <th style="background: rgba(99, 102, 241, 0.1); border-color: var(--border); color: var(--text-primary); font-weight: 600;">Qty</th>
-                  <th style="background: rgba(99, 102, 241, 0.1); border-color: var(--border); color: var(--text-primary); font-weight: 600;">Subtotal</th>
+                  <th
+                    style="background: rgba(99, 102, 241, 0.1); border-color: var(--border); color: var(--text-primary); font-weight: 600;">
+                    Item</th>
+                  <th
+                    style="background: rgba(99, 102, 241, 0.1); border-color: var(--border); color: var(--text-primary); font-weight: 600;">
+                    Price</th>
+                  <th
+                    style="background: rgba(99, 102, 241, 0.1); border-color: var(--border); color: var(--text-primary); font-weight: 600;">
+                    Qty</th>
+                  <th
+                    style="background: rgba(99, 102, 241, 0.1); border-color: var(--border); color: var(--text-primary); font-weight: 600;">
+                    Subtotal</th>
                 </tr>
               </thead>
               <tbody id="orderItems"></tbody>
@@ -3604,7 +3997,8 @@
           </div>
         </div>
         <div class="modal-footer" style="border-top: 1px solid var(--border); padding: 1.5rem;">
-          <button type="button" class="btn" data-bs-dismiss="modal" style="background: var(--gradient-mesh); background-size: 200% 200%; border: none; color: white; padding: 0.75rem 2rem; border-radius: 12px; font-weight: 600; box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);">
+          <button type="button" class="btn" data-bs-dismiss="modal"
+            style="background: var(--gradient-mesh); background-size: 200% 200%; border: none; color: white; padding: 0.75rem 2rem; border-radius: 12px; font-weight: 600; box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);">
             <i class="fas fa-check me-2"></i>Continue Shopping
           </button>
         </div>
@@ -3614,10 +4008,12 @@
   <!-- Auth Modal - Light Theme -->
   <div class="modal fade" id="authModal" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-md modal-dialog-centered">
-      <div class="modal-content" style="background: var(--bg-card); backdrop-filter: blur(20px); border: 1px solid var(--border); border-radius: 24px; box-shadow: var(--shadow-lg);">
+      <div class="modal-content"
+        style="background: var(--bg-card); backdrop-filter: blur(20px); border: 1px solid var(--border); border-radius: 24px; box-shadow: var(--shadow-lg);">
         <div class="modal-header border-0 pb-0">
           <div class="mx-auto text-center">
-            <div style="font-size: 2rem; font-weight: 800; background: var(--gradient-mesh);  -webkit-text-fill-color: transparent;">
+            <div
+              style="font-size: 2rem; font-weight: 800; background: var(--gradient-mesh);  -webkit-text-fill-color: transparent;">
               <i class="fas fa-shopping-bag me-2"></i>ShopEasy
             </div>
           </div>
@@ -3626,8 +4022,10 @@
         <div class="modal-body">
           <!-- Tabs -->
           <div class="d-flex gap-2 mb-4 p-1" style="background: rgba(99, 102, 241, 0.1); border-radius: 12px;">
-            <button class="flex-fill py-2 rounded-3 border-0 fw-semibold" data-tab="login" id="bravoLoginTab" style="background: white; color: var(--primary); box-shadow: 0 2px 8px rgba(0,0,0,0.1);">Sign In</button>
-            <button class="flex-fill py-2 rounded-3 border-0 fw-semibold" data-tab="signup" id="bravoSignupTab" style="background: transparent; color: var(--text-secondary);">Create Account</button>
+            <button class="flex-fill py-2 rounded-3 border-0 fw-semibold" data-tab="login" id="bravoLoginTab"
+              style="background: white; color: var(--primary); box-shadow: 0 2px 8px rgba(0,0,0,0.1);">Sign In</button>
+            <button class="flex-fill py-2 rounded-3 border-0 fw-semibold" data-tab="signup" id="bravoSignupTab"
+              style="background: transparent; color: var(--text-secondary);">Create Account</button>
           </div>
 
           <!-- Login Form -->
@@ -3636,25 +4034,37 @@
               <div class="mb-3">
                 <label class="form-label fw-semibold" style="color: var(--text-primary);">Username or Email</label>
                 <div class="position-relative">
-                  <input type="text" class="form-control" name="username" placeholder="Enter your username" required autocomplete="username" style="padding: 0.875rem 1rem; padding-left: 2.5rem; border: 2px solid rgba(99, 102, 241, 0.2); border-radius: 12px; background: white;">
-                  <i class="fas fa-user position-absolute" style="left: 1rem; top: 50%; transform: translateY(-50%); color: var(--primary);"></i>
+                  <input type="text" class="form-control" name="username" placeholder="Enter your username" required
+                    autocomplete="username"
+                    style="padding: 0.875rem 1rem; padding-left: 2.5rem; border: 2px solid rgba(99, 102, 241, 0.2); border-radius: 12px; background: white;">
+                  <i class="fas fa-user position-absolute"
+                    style="left: 1rem; top: 50%; transform: translateY(-50%); color: var(--primary);"></i>
                 </div>
               </div>
               <div class="mb-3">
                 <label class="form-label fw-semibold" style="color: var(--text-primary);">Password</label>
                 <div class="position-relative">
-                  <input type="password" class="form-control" name="password" placeholder="Enter your password" required autocomplete="current-password" style="padding: 0.875rem 1rem; padding-left: 2.5rem; border: 2px solid rgba(99, 102, 241, 0.2); border-radius: 12px; background: white;">
-                  <i class="fas fa-lock position-absolute" style="left: 1rem; top: 50%; transform: translateY(-50%); color: var(--primary);"></i>
+                  <input type="password" class="form-control" name="password" placeholder="Enter your password" required
+                    autocomplete="current-password"
+                    style="padding: 0.875rem 1rem; padding-left: 2.5rem; border: 2px solid rgba(99, 102, 241, 0.2); border-radius: 12px; background: white;">
+                  <i class="fas fa-lock position-absolute"
+                    style="left: 1rem; top: 50%; transform: translateY(-50%); color: var(--primary);"></i>
                 </div>
               </div>
               <div class="d-flex justify-content-between align-items-center mb-3">
                 <div class="form-check">
-                  <input class="form-check-input" type="checkbox" id="rememberMe" style="border-color: rgba(99, 102, 241, 0.3);">
-                  <label class="form-check-label" for="rememberMe" style="color: var(--text-secondary); font-size: 0.9rem;">Remember me</label>
+                  <input class="form-check-input" type="checkbox" id="rememberMe"
+                    style="border-color: rgba(99, 102, 241, 0.3);">
+                  <label class="form-check-label" for="rememberMe"
+                    style="color: var(--text-secondary); font-size: 0.9rem;">Remember me</label>
                 </div>
-                <a href="#" style="color: var(--primary); font-size: 0.9rem; text-decoration: none; font-weight: 500;">Forgot password?</a>
+                <a href="#"
+                  style="color: var(--primary); font-size: 0.9rem; text-decoration: none; font-weight: 500;">Forgot
+                  password?</a>
               </div>
-              <button type="submit" class="btn w-100" style="background: var(--gradient-mesh); border: none; color: white; padding: 0.875rem; border-radius: 12px; font-weight: 600; font-size: 1rem;">Sign In</button>
+              <button type="submit" class="btn w-100"
+                style="background: var(--gradient-mesh); border: none; color: white; padding: 0.875rem; border-radius: 12px; font-weight: 600; font-size: 1rem;">Sign
+                In</button>
             </form>
           </div>
 
@@ -3664,39 +4074,55 @@
               <div class="mb-3">
                 <label class="form-label fw-semibold" style="color: var(--text-primary);">Username</label>
                 <div class="position-relative">
-                  <input type="text" class="form-control" name="username" placeholder="Choose a username" required minlength="3" autocomplete="username" style="padding: 0.875rem 1rem; padding-left: 2.5rem; border: 2px solid rgba(99, 102, 241, 0.2); border-radius: 12px; background: white;">
-                  <i class="fas fa-user position-absolute" style="left: 1rem; top: 50%; transform: translateY(-50%); color: var(--primary);"></i>
+                  <input type="text" class="form-control" name="username" placeholder="Choose a username" required
+                    minlength="3" autocomplete="username"
+                    style="padding: 0.875rem 1rem; padding-left: 2.5rem; border: 2px solid rgba(99, 102, 241, 0.2); border-radius: 12px; background: white;">
+                  <i class="fas fa-user position-absolute"
+                    style="left: 1rem; top: 50%; transform: translateY(-50%); color: var(--primary);"></i>
                 </div>
               </div>
               <div class="mb-3">
                 <label class="form-label fw-semibold" style="color: var(--text-primary);">Email Address</label>
                 <div class="position-relative">
-                  <input type="email" class="form-control" name="email" placeholder="Enter your email" required autocomplete="email" style="padding: 0.875rem 1rem; padding-left: 2.5rem; border: 2px solid rgba(99, 102, 241, 0.2); border-radius: 12px; background: white;">
-                  <i class="fas fa-envelope position-absolute" style="left: 1rem; top: 50%; transform: translateY(-50%); color: var(--primary);"></i>
+                  <input type="email" class="form-control" name="email" placeholder="Enter your email" required
+                    autocomplete="email"
+                    style="padding: 0.875rem 1rem; padding-left: 2.5rem; border: 2px solid rgba(99, 102, 241, 0.2); border-radius: 12px; background: white;">
+                  <i class="fas fa-envelope position-absolute"
+                    style="left: 1rem; top: 50%; transform: translateY(-50%); color: var(--primary);"></i>
                 </div>
               </div>
               <div class="mb-3">
                 <label class="form-label fw-semibold" style="color: var(--text-primary);">Password</label>
                 <div class="position-relative">
-                  <input type="password" class="form-control" name="password" placeholder="Create a password (min 8 chars)" required minlength="8" autocomplete="new-password" style="padding: 0.875rem 1rem; padding-left: 2.5rem; border: 2px solid rgba(99, 102, 241, 0.2); border-radius: 12px; background: white;">
-                  <i class="fas fa-lock position-absolute" style="left: 1rem; top: 50%; transform: translateY(-50%); color: var(--primary);"></i>
+                  <input type="password" class="form-control" name="password"
+                    placeholder="Create a password (min 8 chars)" required minlength="8" autocomplete="new-password"
+                    style="padding: 0.875rem 1rem; padding-left: 2.5rem; border: 2px solid rgba(99, 102, 241, 0.2); border-radius: 12px; background: white;">
+                  <i class="fas fa-lock position-absolute"
+                    style="left: 1rem; top: 50%; transform: translateY(-50%); color: var(--primary);"></i>
                 </div>
               </div>
               <div class="mb-3">
                 <label class="form-label fw-semibold" style="color: var(--text-primary);">Confirm Password</label>
                 <div class="position-relative">
-                  <input type="password" class="form-control" name="confirm_password" placeholder="Confirm your password" required minlength="8" autocomplete="new-password" style="padding: 0.875rem 1rem; padding-left: 2.5rem; border: 2px solid rgba(99, 102, 241, 0.2); border-radius: 12px; background: white;">
-                  <i class="fas fa-lock position-absolute" style="left: 1rem; top: 50%; transform: translateY(-50%); color: var(--primary);"></i>
+                  <input type="password" class="form-control" name="confirm_password"
+                    placeholder="Confirm your password" required minlength="8" autocomplete="new-password"
+                    style="padding: 0.875rem 1rem; padding-left: 2.5rem; border: 2px solid rgba(99, 102, 241, 0.2); border-radius: 12px; background: white;">
+                  <i class="fas fa-lock position-absolute"
+                    style="left: 1rem; top: 50%; transform: translateY(-50%); color: var(--primary);"></i>
                 </div>
               </div>
-              <button type="submit" class="btn w-100" style="background: var(--gradient-mesh); border: none; color: white; padding: 0.875rem; border-radius: 12px; font-weight: 600; font-size: 1rem;">Create Account</button>
+              <button type="submit" class="btn w-100"
+                style="background: var(--gradient-mesh); border: none; color: white; padding: 0.875rem; border-radius: 12px; font-weight: 600; font-size: 1rem;">Create
+                Account</button>
             </form>
           </div>
 
           <!-- Footer -->
           <div class="bravo-auth-footer text-center mt-3">
-            <p class="login-footer">Don't have an account? <a href="#" class="switch-tab" data-target="signup">Sign up</a></p>
-            <p class="signup-footer" style="display: none;">Already have an account? <a href="#" class="switch-tab" data-target="login">Sign in</a></p>
+            <p class="login-footer">Don't have an account? <a href="#" class="switch-tab" data-target="signup">Sign
+                up</a></p>
+            <p class="signup-footer" style="display: none;">Already have an account? <a href="#" class="switch-tab"
+                data-target="login">Sign in</a></p>
           </div>
         </div>
       </div>
@@ -3709,7 +4135,7 @@
       background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #1e1b4b 100%);
       border: 1px solid rgba(139, 92, 246, 0.3);
       border-radius: 24px;
-      box-shadow: 
+      box-shadow:
         0 25px 50px -12px rgba(0, 0, 0, 0.8),
         0 0 60px rgba(139, 92, 246, 0.3);
       overflow: hidden;
@@ -3728,8 +4154,15 @@
     }
 
     @keyframes gradientMove {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
+
+      0%,
+      100% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
     }
 
     .bravo-auth-logo {
@@ -3798,8 +4231,15 @@
     }
 
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .bravo-input-group {
@@ -3838,7 +4278,7 @@
       font-size: 1rem;
     }
 
-    .bravo-input:focus + .input-icon {
+    .bravo-input:focus+.input-icon {
       color: #8b5cf6;
     }
 
@@ -3890,7 +4330,7 @@
       transition: all 0.3s ease;
     }
 
-    .bravo-checkbox input:checked + .checkmark {
+    .bravo-checkbox input:checked+.checkmark {
       background: #8b5cf6;
       border-color: #8b5cf6;
     }
@@ -3905,7 +4345,7 @@
       transition: opacity 0.3s ease;
     }
 
-    .bravo-checkbox input:checked + .checkmark::after {
+    .bravo-checkbox input:checked+.checkmark::after {
       opacity: 1;
     }
 
@@ -3931,8 +4371,15 @@
     }
 
     @keyframes gradientShift {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
+
+      0%,
+      100% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
     }
 
     .bravo-submit-btn:hover {
@@ -3971,7 +4418,9 @@
     }
 
     @keyframes spin {
-      to { transform: rotate(360deg); }
+      to {
+        transform: rotate(360deg);
+      }
     }
 
     .password-strength-meter {
@@ -4019,7 +4468,7 @@
 
   <script>
     // Bravo Auth Modal JavaScript
-    (function() {
+    (function () {
       const loginTab = document.getElementById('bravoLoginTab');
       const signupTab = document.getElementById('bravoSignupTab');
       const loginForm = document.getElementById('bravoLoginForm');
@@ -4081,7 +4530,7 @@
         signupPassword.addEventListener('input', (e) => {
           const password = e.target.value;
           let strength = 0;
-          
+
           if (password.length >= 8) strength++;
           if (password.length >= 12) strength++;
           if (/[a-z]/.test(password) && /[A-Z]/.test(password)) strength++;
@@ -4090,7 +4539,7 @@
 
           const colors = ['#ef4444', '#f97316', '#f59e0b', '#84cc16', '#22c55e'];
           const texts = ['Very Weak', 'Weak', 'Fair', 'Good', 'Strong'];
-          
+
           strengthFill.style.width = `${(strength / 5) * 100}%`;
           strengthFill.style.backgroundColor = colors[strength - 1] || '#ef4444';
           strengthText.textContent = strength > 0 ? `Password strength: ${texts[strength - 1]}` : 'Enter a strong password';
@@ -4100,16 +4549,19 @@
     })();
   </script>
 
-  
-    <!-- Cart Modal - Modern Theme -->
+
+  <!-- Cart Modal - Modern Theme -->
   <div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
-      <div class="modal-content" style="background: var(--bg-card); backdrop-filter: blur(20px); border: 1px solid var(--border); border-radius: 24px; box-shadow: var(--shadow-lg);">
+      <div class="modal-content"
+        style="background: var(--bg-card); backdrop-filter: blur(20px); border: 1px solid var(--border); border-radius: 24px; box-shadow: var(--shadow-lg);">
         <div class="modal-header" style="border-bottom: 1px solid var(--border); padding: 1.5rem;">
-          <h5 class="modal-title" id="cartModalLabel" style="font-weight: 800; background: var(--gradient-mesh); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; margin: 0;">
+          <h5 class="modal-title" id="cartModalLabel"
+            style="font-weight: 800; background: var(--gradient-mesh); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; margin: 0;">
             <i class="fas fa-shopping-cart me-2"></i>Your Cart
           </h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: none;"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+            style="filter: none;"></button>
         </div>
         <div class="modal-body" style="padding: 1.5rem;">
           <div id="cartEmpty" class="text-center py-5">
@@ -4120,10 +4572,18 @@
             <table class="table align-middle" style="color: var(--text-primary);">
               <thead>
                 <tr>
-                  <th style="background: rgba(99, 102, 241, 0.1); border-color: var(--border); color: var(--text-primary); font-weight: 600;">Item</th>
-                  <th style="background: rgba(99, 102, 241, 0.1); border-color: var(--border); color: var(--text-primary); font-weight: 600;">Price</th>
-                  <th style="background: rgba(99, 102, 241, 0.1); border-color: var(--border); color: var(--text-primary); font-weight: 600;">Qty</th>
-                  <th style="background: rgba(99, 102, 241, 0.1); border-color: var(--border); color: var(--text-primary); font-weight: 600;">Remove</th>
+                  <th
+                    style="background: rgba(99, 102, 241, 0.1); border-color: var(--border); color: var(--text-primary); font-weight: 600;">
+                    Item</th>
+                  <th
+                    style="background: rgba(99, 102, 241, 0.1); border-color: var(--border); color: var(--text-primary); font-weight: 600;">
+                    Price</th>
+                  <th
+                    style="background: rgba(99, 102, 241, 0.1); border-color: var(--border); color: var(--text-primary); font-weight: 600;">
+                    Qty</th>
+                  <th
+                    style="background: rgba(99, 102, 241, 0.1); border-color: var(--border); color: var(--text-primary); font-weight: 600;">
+                    Remove</th>
                 </tr>
               </thead>
               <tbody id="cartItems"></tbody>
@@ -4138,17 +4598,24 @@
           </div>
         </div>
         <div class="modal-footer" style="border-top: 1px solid var(--border); padding: 1.5rem;">
-          <button type="button" class="btn" data-bs-dismiss="modal" style="background: rgba(99, 102, 241, 0.1); border: 1px solid var(--border); color: var(--text-primary); padding: 0.75rem 1.5rem; border-radius: 12px; font-weight: 600;">
+          <button type="button" class="btn" data-bs-dismiss="modal"
+            style="background: rgba(99, 102, 241, 0.1); border: 1px solid var(--border); color: var(--text-primary); padding: 0.75rem 1.5rem; border-radius: 12px; font-weight: 600;">
             <i class="fas fa-arrow-left me-2"></i>Continue Shopping
           </button>
-          <button type="button" class="btn" id="checkoutBtn" onclick="checkout()" style="background: var(--gradient-mesh); background-size: 200% 200%; border: none; color: white; padding: 0.75rem 1.5rem; border-radius: 12px; font-weight: 600; box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);">
+          <button type="button" class="btn" id="checkoutBtn" onclick="checkout()"
+            style="background: var(--gradient-mesh); background-size: 200% 200%; border: none; color: white; padding: 0.75rem 1.5rem; border-radius: 12px; font-weight: 600; box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);">
             <i class="fas fa-credit-card me-2"></i>Checkout
           </button>
         </div>
       </div>
     </div>
   </div>
-  
-  </body>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+</body>
 
 </html>

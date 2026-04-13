@@ -17,6 +17,7 @@ urlpatterns = [
     path("api/sync-cart/", views.sync_cart, name="api-sync-cart"),
     path("api/orders/", views.get_orders, name="api-orders"),
     path("api/fetch-category/", views.fetch_category_products, name="api-fetch-category"),
+    path("api/external-search/", views.external_search, name="api-external-search"),
     path("api/verify-2fa/", views.verify_2fa, name="api-verify-2fa"),
     path("api/forgot-password/", views.request_password_reset, name="api-forgot-password"),
     path("api/reset-password/<str:token>/", views.reset_password, name="api-reset-password"),

@@ -793,3 +793,137 @@ def checkout(request):
     print("Received order:", cart)
 
     return JsonResponse({"message": "Order received! Thank you for your purchase."})
+
+
+@csrf_exempt
+def external_search(request):
+    """
+    Search for products not in the database using external APIs
+    """
+    if request.method != 'GET':
+        return cors_json_response({"error": "Method not allowed"}, status=405)
+    
+    try:
+        query = request.GET.get('query', '').strip()
+        if not query:
+            return cors_json_response({
+                "error": "Search query is required",
+                "products": []
+            }, status=400)
+        
+        print(f"[ShopEasy] External search for: {query}")
+        
+        # Import the RapidAPI fetcher
+        from .rapidapi_products import RapidAPIProductFetcher
+        
+        # Fetch products from Amazon
+        fetcher = RapidAPIProductFetcher()
+        print(f"[ShopEasy] Using RapidAPI key: {fetcher.api_key[:10]}..." if fetcher.api_key else "[ShopEasy] No RapidAPI key found")
+        amazon_products = fetcher.fetch_amazon_search(query, page=1)
+        
+        # If no products from API (likely due to missing API key), use mock data
+        if not amazon_products:
+            print("[ShopEasy] RapidAPI returned no results, using mock external search data")
+            amazon_products = get_mock_external_products(query)
+        else:
+            print(f"[ShopEasy] RapidAPI returned {len(amazon_products)} products")
+        
+        # Format products for frontend
+        formatted_products = []
+        for product in amazon_products:
+            formatted_products.append({
+                "id": product.get('id', 0),
+                "name": product.get('name', ''),
+                "price": float(product.get('price', 0)),
+                "salePrice": float(product.get('salePrice', 0)) if product.get('salePrice') else None,
+                "imageUrl": product.get('imageUrl', ''),
+                "category": product.get('category', 'External'),
+                "description": product.get('description', ''),
+                "source": product.get('source', 'external'),
+                "externalUrl": product.get('external_url', ''),
+                "rating": None,
+                "inStock": True,
+                "external": True  # Mark as external product
+            })
+        
+        print(f"[ShopEasy] Found {len(formatted_products)} external products")
+        
+        return cors_json_response({
+            "success": True,
+            "query": query,
+            "products": formatted_products,
+            "count": len(formatted_products),
+            "source": "external"
+        })
+        
+    except Exception as e:
+        print(f"[ShopEasy] Error in external search: {str(e)}")
+        return cors_json_response({
+            "error": str(e),
+            "products": [],
+            "count": 0
+        }, status=500)
+
+
+def get_mock_external_products(query):
+    """
+    Generate mock external products when RapidAPI is not configured
+    This provides a demonstration of the external search functionality
+    """
+    import random
+    
+    # Mock product templates
+    mock_templates = [
+        {
+            "name": f"Premium {query.title()} - High Quality",
+            "price": 999.99,
+            "salePrice": 799.99,
+            "imageUrl": f"https://picsum.photos/seed/{query}1/300/300.jpg",
+            "category": "External",
+            "description": f"High-quality {query} with premium features and excellent durability"
+        },
+        {
+            "name": f"{query.title()} Pro - Professional Grade",
+            "price": 1499.99,
+            "salePrice": None,
+            "imageUrl": f"https://picsum.photos/seed/{query}2/300/300.jpg",
+            "category": "External",
+            "description": f"Professional grade {query} for advanced users and experts"
+        },
+        {
+            "name": f"Budget {query.title()} - Affordable Option",
+            "price": 299.99,
+            "salePrice": 199.99,
+            "imageUrl": f"https://picsum.photos/seed/{query}3/300/300.jpg",
+            "category": "External",
+            "description": f"Affordable {query} with essential features for everyday use"
+        },
+        {
+            "name": f"Smart {query.title()} - Connected Features",
+            "price": 899.99,
+            "salePrice": 699.99,
+            "imageUrl": f"https://picsum.photos/seed/{query}4/300/300.jpg",
+            "category": "External",
+            "description": f"Smart {query} with connectivity and modern features"
+        },
+        {
+            "name": f"Eco {query.title()} - Sustainable Choice",
+            "price": 599.99,
+            "salePrice": None,
+            "imageUrl": f"https://picsum.photos/seed/{query}5/300/300.jpg",
+            "category": "External",
+            "description": f"Eco-friendly {query} made from sustainable materials"
+        }
+    ]
+    
+    # Return 3-5 random products
+    selected_products = random.sample(mock_templates, random.randint(3, 5))
+    
+    # Add unique IDs and source info
+    for i, product in enumerate(selected_products):
+        product['id'] = 2000 + i  # External product IDs start from 2000
+        product['source'] = 'external'
+        product['external_url'] = f"https://example.com/{query}/{i+1}"
+    
+    print(f"[ShopEasy] Generated {len(selected_products)} mock products for query: {query}")
+    return selected_products

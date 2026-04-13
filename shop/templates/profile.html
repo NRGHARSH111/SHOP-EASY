@@ -399,7 +399,7 @@
     <div class="profile-grid">
       <!-- Sidebar -->
       <div class="profile-sidebar">
-        <div class="profile-avatar">
+        <div class="profile-avatar" id="userAvatar">
           <i class="fas fa-user"></i>
         </div>
         <div class="profile-name" id="userName">Loading...</div>
@@ -425,9 +425,27 @@
             </a>
           </li>
           <li>
+            <a href="#" data-tab="wishlist">
+              <i class="fas fa-heart"></i>
+              Wishlist
+            </a>
+          </li>
+          <li>
+            <a href="#" data-tab="payments">
+              <i class="fas fa-credit-card"></i>
+              Payment Methods
+            </a>
+          </li>
+          <li>
             <a href="#" data-tab="addresses">
               <i class="fas fa-map-marker-alt"></i>
               Addresses
+            </a>
+          </li>
+          <li>
+            <a href="#" data-tab="notifications">
+              <i class="fas fa-bell"></i>
+              Notifications
             </a>
           </li>
           <li>
@@ -533,6 +551,115 @@
           </form>
         </div>
 
+        <!-- Wishlist Tab -->
+        <div id="wishlistTab" class="tab-content hidden">
+          <h2 class="section-title">
+            <i class="fas fa-heart"></i>
+            My Wishlist
+          </h2>
+          <div id="wishlistItems">
+            <div class="empty-orders">
+              <i class="fas fa-heart"></i>
+              <h4>No items in wishlist</h4>
+              <p>Save your favorite products for later</p>
+              <a href="/shop/" class="btn btn-primary rounded-pill">
+                <i class="fas fa-shopping-bag me-2"></i>Browse Products
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Payment Methods Tab -->
+        <div id="paymentsTab" class="tab-content hidden">
+          <h2 class="section-title">
+            <i class="fas fa-credit-card"></i>
+            Payment Methods
+          </h2>
+          <div id="paymentMethods">
+            <div class="order-card">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <div class="d-flex align-items-center">
+                  <i class="fas fa-credit-card fa-2x text-primary me-3"></i>
+                  <div>
+                    <h5 class="mb-1">Credit Card ending in 4242</h5>
+                    <p class="text-muted mb-0">Expires 12/2024</p>
+                  </div>
+                </div>
+                <span class="badge bg-primary">Default</span>
+              </div>
+              <div class="d-flex gap-2">
+                <button class="btn btn-sm btn-outline-primary">Edit</button>
+                <button class="btn btn-sm btn-outline-danger">Remove</button>
+              </div>
+            </div>
+            <div class="order-card">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <div class="d-flex align-items-center">
+                  <i class="fab fa-paypal fa-2x text-info me-3"></i>
+                  <div>
+                    <h5 class="mb-1">PayPal</h5>
+                    <p class="text-muted mb-0">user@example.com</p>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex gap-2">
+                <button class="btn btn-sm btn-outline-primary">Edit</button>
+                <button class="btn btn-sm btn-outline-danger">Remove</button>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-primary rounded-pill mt-3">
+            <i class="fas fa-plus me-2"></i>Add Payment Method
+          </button>
+        </div>
+
+        <!-- Notifications Tab -->
+        <div id="notificationsTab" class="tab-content hidden">
+          <h2 class="section-title">
+            <i class="fas fa-bell"></i>
+            Notification Settings
+          </h2>
+          <div class="order-card">
+            <h5 class="mb-4">Email Notifications</h5>
+            <div class="form-check form-switch mb-3">
+              <input class="form-check-input" type="checkbox" id="orderUpdates" checked>
+              <label class="form-check-label" for="orderUpdates">
+                Order Updates & Shipping
+              </label>
+            </div>
+            <div class="form-check form-switch mb-3">
+              <input class="form-check-input" type="checkbox" id="promotionalEmails" checked>
+              <label class="form-check-label" for="promotionalEmails">
+                Promotional Offers & Deals
+              </label>
+            </div>
+            <div class="form-check form-switch mb-3">
+              <input class="form-check-input" type="checkbox" id="wishlistAlerts" checked>
+              <label class="form-check-label" for="wishlistAlerts">
+                Wishlist Price Drops
+              </label>
+            </div>
+          </div>
+          <div class="order-card">
+            <h5 class="mb-4">SMS Notifications</h5>
+            <div class="form-check form-switch mb-3">
+              <input class="form-check-input" type="checkbox" id="smsOrderUpdates">
+              <label class="form-check-label" for="smsOrderUpdates">
+                Order Updates
+              </label>
+            </div>
+            <div class="form-check form-switch mb-3">
+              <input class="form-check-input" type="checkbox" id="deliveryAlerts">
+              <label class="form-check-label" for="deliveryAlerts">
+                Delivery Alerts
+              </label>
+            </div>
+          </div>
+          <button class="btn btn-save mt-3">
+            <i class="fas fa-save me-2"></i>Save Preferences
+          </button>
+        </div>
+
         <!-- Addresses Tab -->
         <div id="addressesTab" class="tab-content hidden">
           <h2 class="section-title">
@@ -598,30 +725,123 @@
         }
         
         currentUser = data.user;
-        document.getElementById('userName').textContent = data.username || 'User';
-        document.getElementById('userEmail').textContent = data.email || 'user@example.com';
+        const username = data.user.username || 'User';
+        const email = data.user.email || 'user@example.com';
+        
+        document.getElementById('userName').textContent = username;
+        document.getElementById('userEmail').textContent = email;
+        
+        // Update avatar with user's first letter
+        const avatarElement = document.getElementById('userAvatar');
+        const firstLetter = username.charAt(0).toUpperCase();
+        avatarElement.innerHTML = `<span style="font-size: 3rem; font-weight: bold;">${firstLetter}</span>`;
+        avatarElement.style.background = `linear-gradient(135deg, #6366f1 0%, #ec4899 50%, #06b6d4 100%)`;
         
         // Populate edit form
-        document.getElementById('editName').value = data.username || '';
-        document.getElementById('editEmail').value = data.email || '';
+        document.getElementById('editName').value = username;
+        document.getElementById('editEmail').value = email;
         
         // Load orders
         await loadOrders();
+        
+        // Load wishlist
+        await loadWishlist();
       } catch (err) {
         console.error('Failed to load user data:', err);
         showToast('Error', 'Failed to load profile data', 'danger');
       }
     }
 
+    // Load wishlist
+    async function loadWishlist() {
+      try {
+        const wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+        renderWishlist(wishlist);
+      } catch (err) {
+        console.error('Failed to load wishlist:', err);
+      }
+    }
+
+    // Render wishlist
+    function renderWishlist(wishlist) {
+      const container = document.getElementById('wishlistItems');
+      
+      if (wishlist.length === 0) {
+        container.innerHTML = `
+          <div class="empty-orders">
+            <i class="fas fa-heart"></i>
+            <h4>No items in wishlist</h4>
+            <p>Save your favorite products for later</p>
+            <a href="/shop/" class="btn btn-primary rounded-pill">
+              <i class="fas fa-shopping-bag me-2"></i>Browse Products
+            </a>
+          </div>
+        `;
+        return;
+      }
+      
+      const wishlistHTML = wishlist.map(item => `
+        <div class="order-card">
+          <div class="d-flex align-items-center">
+            <img src="${item.imageUrl || 'https://via.placeholder.com/80x80?text=Product'}" 
+                 alt="${item.name}" 
+                 class="rounded me-3" 
+                 style="width: 80px; height: 80px; object-fit: cover;">
+            <div class="flex-grow-1">
+              <h6 class="mb-1">${item.name}</h6>
+              <p class="text-muted mb-0">Rs${parseFloat(item.price || 0).toFixed(0)}</p>
+            </div>
+            <div class="d-flex gap-2">
+              <button class="btn btn-sm btn-primary" onclick="addToCartFromWishlist(${item.id})">
+                <i class="fas fa-shopping-cart"></i>
+              </button>
+              <button class="btn btn-sm btn-outline-danger" onclick="removeFromWishlist(${item.id})">
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+      
+      container.innerHTML = wishlistHTML;
+    }
+
+    // Add to cart from wishlist
+    function addToCartFromWishlist(productId) {
+      // This would integrate with the main cart functionality
+      window.location.href = `/shop/?add=${productId}`;
+    }
+
+    // Remove from wishlist
+    function removeFromWishlist(productId) {
+      let wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+      wishlist = wishlist.filter(item => item.id !== productId);
+      localStorage.setItem('wishlist', JSON.stringify(wishlist));
+      loadWishlist();
+      showToast('Removed', 'Item removed from wishlist', 'info');
+    }
+
     // Load orders
     async function loadOrders() {
       try {
-        // This is a mock - in real implementation, fetch from API
-        orders = JSON.parse(localStorage.getItem('orders') || '[]');
-        renderOrders();
-        updateStats();
+        const res = await fetch(`${apiBaseUrl}/orders/`);
+        const data = await res.json();
+        
+        if (res.ok) {
+          orders = data.orders || [];
+          renderOrders();
+          updateStats();
+        } else {
+          // Fallback to empty if no orders
+          orders = [];
+          renderOrders();
+          updateStats();
+        }
       } catch (err) {
         console.error('Failed to load orders:', err);
+        orders = [];
+        renderOrders();
+        updateStats();
       }
     }
 
@@ -679,9 +899,56 @@
       const name = document.getElementById('editName').value;
       const phone = document.getElementById('editPhone').value;
       
-      // Mock save - in real implementation, send to API
-      document.getElementById('userName').textContent = name;
-      showToast('Success', 'Profile updated successfully', 'success');
+      try {
+        // In real implementation, send to API
+        // const res = await fetch(`${apiBaseUrl}/profile/update/`, {
+        //   method: 'POST',
+        //   headers: { 'Content-Type': 'application/json' },
+        //   body: JSON.stringify({ name, phone })
+        // });
+        
+        // Mock save for now
+        document.getElementById('userName').textContent = name;
+        
+        // Update avatar if name changed
+        const avatarElement = document.getElementById('userAvatar');
+        const firstLetter = name.charAt(0).toUpperCase();
+        avatarElement.innerHTML = `<span style="font-size: 3rem; font-weight: bold;">${firstLetter}</span>`;
+        
+        showToast('Success', 'Profile updated successfully', 'success');
+      } catch (err) {
+        showToast('Error', 'Failed to update profile', 'danger');
+      }
+    });
+
+    // Notification settings save
+    document.addEventListener('DOMContentLoaded', function() {
+      // Find the save preferences button in notifications tab
+      const saveNotificationsBtn = document.querySelector('#notificationsTab .btn-save');
+      if (saveNotificationsBtn) {
+        saveNotificationsBtn.addEventListener('click', function() {
+          const settings = {
+            orderUpdates: document.getElementById('orderUpdates').checked,
+            promotionalEmails: document.getElementById('promotionalEmails').checked,
+            wishlistAlerts: document.getElementById('wishlistAlerts').checked,
+            smsOrderUpdates: document.getElementById('smsOrderUpdates').checked,
+            deliveryAlerts: document.getElementById('deliveryAlerts').checked
+          };
+          
+          // Save to localStorage (in real app, send to backend)
+          localStorage.setItem('notificationSettings', JSON.stringify(settings));
+          showToast('Success', 'Notification preferences saved', 'success');
+        });
+      }
+      
+      // Load notification settings
+      const savedSettings = JSON.parse(localStorage.getItem('notificationSettings') || '{}');
+      Object.keys(savedSettings).forEach(key => {
+        const checkbox = document.getElementById(key);
+        if (checkbox) {
+          checkbox.checked = savedSettings[key];
+        }
+      });
     });
 
     // Logout

@@ -52,17 +52,29 @@ class RapidAPIProductFetcher:
         }
         
         try:
+            print(f"[RapidAPI] Making request to: {url}")
+            print(f"[RapidAPI] Query: {query}")
+            print(f"[RapidAPI] Headers: {headers}")
+            print(f"[RapidAPI] Params: {querystring}")
+            
             response = requests.get(url, headers=headers, params=querystring, timeout=15)
+            
+            print(f"[RapidAPI] Status Code: {response.status_code}")
+            print(f"[RapidAPI] Response Headers: {dict(response.headers)}")
             
             if response.status_code == 200:
                 data = response.json()
+                print(f"[RapidAPI] Response Data: {data}")
                 return self.format_amazon_products(data)
             else:
-                print(f"API Error: {response.status_code}")
+                print(f"[RapidAPI] API Error: {response.status_code}")
+                print(f"[RapidAPI] Error Response: {response.text}")
                 return []
                 
         except Exception as e:
-            print(f"Error fetching from RapidAPI: {e}")
+            print(f"[RapidAPI] Error fetching from RapidAPI: {e}")
+            import traceback
+            traceback.print_exc()
             return []
     
     def fetch_amazon_deals(self):
@@ -101,12 +113,22 @@ class RapidAPIProductFetcher:
         """Convert Amazon API response to our product format"""
         products = []
         
+        print(f"[RapidAPI] Formatting products from data: {data}")
+        
         items = data.get('data', {}).get('products', [])
+        print(f"[RapidAPI] Found {len(items)} items in response")
+        
+        if not items:
+            # Try alternative response structure
+            items = data.get('products', [])
+            print(f"[RapidAPI] Trying alternative structure, found {len(items)} items")
         
         for idx, item in enumerate(items, 1):
             try:
+                print(f"[RapidAPI] Processing item {idx}: {item}")
+                
                 # Extract price - handle different formats
-                price_info = item.get('product_price', '₹0')
+                price_info = item.get('product_price', '0')
                 price_num = self.extract_price(price_info)
                 
                 # Original price (if on sale)
@@ -126,10 +148,12 @@ class RapidAPIProductFetcher:
                     'source': 'amazon'
                 }
                 products.append(product)
+                print(f"[RapidAPI] Successfully formatted product: {product['name']}")
             except Exception as e:
                 print(f"Error formatting product: {e}")
                 continue
         
+        print(f"[RapidAPI] Returning {len(products)} formatted products")
         return products
     
     def extract_price(self, price_str):
