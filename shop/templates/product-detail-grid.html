@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Premium Laptop Pro - ShopEasy</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
+  <!-- Grid System -->
+  <link rel="stylesheet" href="{% static 'css/grid-system.css' %}">
+  
+  <style>
+    :root {
+      /* Modern Theme Variables */
+      --primary: #6366f1;
+      --primary-light: #818cf8;
+      --primary-dark: #4f46e5;
+      --secondary: #ec4899;
+      --accent: #06b6d4;
+      --success: #22c55e;
+      --warning: #f59e0b;
+      --error: #ef4444;
+      
+      /* Background Colors */
+      --bg-primary: #f8fafc;
+      --bg-secondary: #ffffff;
+      --bg-card: rgba(255, 255, 255, 0.95);
+      --bg-glass: rgba(255, 255, 255, 0.8);
+      
+      /* Text Colors */
+      --text-primary: #1e293b;
+      --text-secondary: #64748b;
+      --text-muted: #94a3b8;
+      
+      /* Effects */
+      --border: rgba(99, 102, 241, 0.2);
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      --glow-primary: 0 0 40px rgba(99, 102, 241, 0.15);
+      --glow-secondary: 0 0 40px rgba(236, 72, 153, 0.15);
+      
+      /* Gradients */
+      --gradient-mesh: linear-gradient(135deg, #6366f1 0%, #ec4899 50%, #06b6d4 100%);
+      --gradient-card: linear-gradient(145deg, rgba(99, 102, 241, 0.08) 0%, rgba(6, 182, 212, 0.05) 100%);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* Background Effects */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background: 
+        radial-gradient(at 30% 20%, rgba(99, 102, 241, 0.05) 0px, transparent 50%),
+        radial-gradient(at 80% 10%, rgba(236, 72, 153, 0.03) 0px, transparent 50%),
+        radial-gradient(at 10% 50%, rgba(6, 182, 212, 0.03) 0px, transparent 50%);
+      animation: meshMove 30s ease-in-out infinite;
+    }
+
+    @keyframes meshMove {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+    }
+
+    /* Header Styles */
+    .header-grid {
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(20px);
+    }
+
+    .header-content {
+      padding: 16px 0;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.75rem;
+      color: var(--text-primary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--gradient-mesh);
+      background-size: 200% 200%;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.25rem;
+      animation: gradientShift 3s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .brand-accent {
+      background: var(--gradient-mesh);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      background: transparent;
+      padding: 20px 0;
+      margin: 0;
+    }
+
+    .breadcrumb-item {
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .breadcrumb-item.active {
+      color: var(--text-primary);
+    }
+
+    .breadcrumb-item a {
+      color: var(--primary-light);
+      text-decoration: none;
+    }
+
+    .breadcrumb-item a:hover {
+      color: var(--primary);
+    }
+
+    /* Product Detail Layout */
+    .product-detail-layout {
+      display: grid;
+      grid-template-columns: 6fr 6fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    /* Product Images Section */
+    .product-images {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 24px;
+      backdrop-filter: blur(20px);
+    }
+
+    .main-image-container {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 16px;
+      background: var(--bg-secondary);
+      aspect-ratio: 1;
+    }
+
+    .main-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .main-image:hover {
+      transform: scale(1.05);
+    }
+
+    .image-badge {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: var(--gradient-mesh);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      animation: gradientShift 3s ease infinite;
+    }
+
+    .zoom-btn {
+      position: absolute;
+      bottom: 16px;
+      right: 16px;
+      width: 48px;
+      height: 48px;
+      background: var(--bg-card);
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      color: var(--text-secondary);
+    }
+
+    .zoom-btn:hover {
+      border-color: var(--primary-light);
+      color: var(--primary-light);
+    }
+
+    .thumbnail-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .thumbnail {
+      aspect-ratio: 1;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+      background: var(--bg-secondary);
+    }
+
+    .thumbnail:hover,
+    .thumbnail.active {
+      border-color: var(--primary-light);
+      transform: scale(1.05);
+    }
+
+    .thumbnail img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Product Details Section */
+    .product-details {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 32px;
+      backdrop-filter: blur(20px);
+    }
+
+    .product-title {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .product-meta {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .product-rating {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .product-rating .stars {
+      color: #fbbf24;
+    }
+
+    .product-reviews {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .product-reviews:hover {
+      color: var(--primary-light);
+    }
+
+    .product-sku {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .price-section {
+      background: var(--gradient-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 32px;
+    }
+
+    .price-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+
+    .current-price {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: var(--gradient-mesh);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .original-price {
+      font-size: 1.5rem;
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
+
+    .discount-badge {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: white;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .price-info {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .price-info i {
+      color: var(--success);
+    }
+
+    /* Product Options */
+    .product-options {
+      margin-bottom: 32px;
+    }
+
+    .option-group {
+      margin-bottom: 24px;
+    }
+
+    .option-label {
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .color-options {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .color-option {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      border: 3px solid transparent;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .color-option:hover {
+      transform: scale(1.1);
+    }
+
+    .color-option.selected {
+      border-color: var(--primary-light);
+      box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+    }
+
+    .color-option.selected::after {
+      content: '\f00c';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      color: white;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 0.8rem;
+      text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .size-options {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .size-option {
+      padding: 12px 20px;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      background: var(--bg-secondary);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .size-option:hover {
+      border-color: var(--primary-light);
+      color: var(--primary-light);
+    }
+
+    .size-option.selected {
+      background: var(--gradient-mesh);
+      border-color: transparent;
+      color: white;
+      animation: gradientShift 3s ease infinite;
+    }
+
+    /* Quantity Selector */
+    .quantity-selector {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .quantity-controls {
+      display: flex;
+      align-items: center;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--bg-secondary);
+    }
+
+    .quantity-btn {
+      width: 48px;
+      height: 48px;
+      border: none;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      color: var(--text-secondary);
+    }
+
+    .quantity-btn:hover {
+      background: rgba(139, 92, 246, 0.1);
+      color: var(--primary-light);
+    }
+
+    .quantity-input {
+      width: 60px;
+      height: 48px;
+      border: none;
+      text-align: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--text-primary);
+      background: transparent;
+    }
+
+    .quantity-input:focus {
+      outline: none;
+    }
+
+    .stock-info {
+      color: var(--success);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Action Buttons */
+    .action-buttons {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .btn-primary-large {
+      flex: 1;
+      background: var(--gradient-mesh);
+      color: white;
+      border: none;
+      padding: 16px 32px;
+      border-radius: 16px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      animation: gradientShift 3s ease infinite;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .btn-primary-large:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 40px rgba(139, 92, 246, 0.6);
+    }
+
+    .btn-secondary-large {
+      width: 56px;
+      height: 56px;
+      border: 2px solid var(--border);
+      background: var(--bg-secondary);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      color: var(--text-secondary);
+      font-size: 1.2rem;
+    }
+
+    .btn-secondary-large:hover {
+      border-color: var(--secondary);
+      color: var(--secondary);
+    }
+
+    /* Product Features */
+    .product-features {
+      margin-bottom: 32px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px;
+      background: var(--bg-secondary);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+
+    .feature-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--gradient-mesh);
+      background-size: 200% 200%;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      animation: gradientShift 3s ease infinite;
+    }
+
+    .feature-text {
+      flex: 1;
+    }
+
+    .feature-title {
+      font-weight: 700;
+      color: var(--text-primary);
+      font-size: 0.9rem;
+      margin-bottom: 2px;
+    }
+
+    .feature-desc {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    /* Tabs Section */
+    .tabs-section {
+      margin-top: 48px;
+    }
+
+    .tabs-nav {
+      display: flex;
+      gap: 8px;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 24px;
+    }
+
+    .tab-btn {
+      padding: 12px 24px;
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+    }
+
+    .tab-btn:hover {
+      color: var(--primary-light);
+    }
+
+    .tab-btn.active {
+      color: var(--primary-light);
+      border-bottom-color: var(--primary-light);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .description-text {
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+
+    .specs-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .specs-table tr {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .specs-table td {
+      padding: 16px 0;
+      color: var(--text-secondary);
+    }
+
+    .specs-table td:first-child {
+      font-weight: 600;
+      color: var(--text-primary);
+      width: 40%;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 767px) {
+      .product-detail-layout {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      
+      .product-title {
+        font-size: 1.5rem;
+      }
+      
+      .current-price {
+        font-size: 2rem;
+      }
+      
+      .action-buttons {
+        flex-direction: column;
+      }
+      
+      .btn-primary-large {
+        width: 100%;
+      }
+      
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .tabs-nav {
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+      
+      .tabs-nav::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .product-detail-layout {
+        gap: 32px;
+      }
+      
+      .thumbnail-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header-grid">
+    <div class="grid-container">
+      <div class="grid-row grid-align-center">
+        <!-- Logo (3 columns) -->
+        <div class="grid-col-3 header-logo">
+          <a href="#" class="logo">
+            <div class="logo-icon">
+              <i class="fas fa-shopping-bag"></i>
+            </div>
+            <span class="brand-accent">ShopEasy</span>
+          </a>
+        </div>
+        
+        <!-- Search Bar (6 columns) -->
+        <div class="grid-col-6">
+          <div class="search-container">
+            <div class="search-box">
+              <input type="text" class="search-input" placeholder="Search for products...">
+              <button class="search-btn">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Header Actions (3 columns) -->
+        <div class="grid-col-3 header-actions grid-end">
+          <a href="#" class="header-action">
+            <i class="fas fa-user"></i>
+            <span>Profile</span>
+          </a>
+          <a href="#" class="header-action cart-action">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Cart</span>
+            <div class="cart-badge">0</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Breadcrumb -->
+  <div class="grid-container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Electronics</a></li>
+        <li class="breadcrumb-item"><a href="#">Laptops</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Premium Laptop Pro</li>
+      </ol>
+    </nav>
+  </div>
+
+  <!-- Main Content -->
+  <main class="section-spacing-lg">
+    <div class="grid-container">
+      <!-- Product Detail Layout: 6 columns images, 6 columns details -->
+      <div class="product-detail-layout">
+        
+        <!-- Product Images (6 columns) -->
+        <section class="product-images">
+          <div class="main-image-container">
+            <img src="https://via.placeholder.com/600x600/6366f1/ffffff?text=Premium+Laptop+Pro" alt="Premium Laptop Pro" class="main-image">
+            <div class="image-badge">Best Seller</div>
+            <button class="zoom-btn">
+              <i class="fas fa-search-plus"></i>
+            </button>
+          </div>
+          
+          <div class="thumbnail-grid">
+            <div class="thumbnail active">
+              <img src="https://via.placeholder.com/150x150/6366f1/ffffff?text=View+1" alt="View 1">
+            </div>
+            <div class="thumbnail">
+              <img src="https://via.placeholder.com/150x150/ec4899/ffffff?text=View+2" alt="View 2">
+            </div>
+            <div class="thumbnail">
+              <img src="https://via.placeholder.com/150x150/06b6d4/ffffff?text=View+3" alt="View 3">
+            </div>
+            <div class="thumbnail">
+              <img src="https://via.placeholder.com/150x150/22c55e/ffffff?text=View+4" alt="View 4">
+            </div>
+          </div>
+        </section>
+        
+        <!-- Product Details (6 columns) -->
+        <section class="product-details">
+          <h1 class="product-title">Premium Laptop Pro 15" - Intel Core i7, 16GB RAM, 512GB SSD</h1>
+          
+          <div class="product-meta">
+            <div class="product-rating">
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+              </div>
+              <span>4.5</span>
+              <a href="#" class="product-reviews">(342 reviews)</a>
+            </div>
+            <div class="product-sku">SKU: LP-PRO-15-I7-512</div>
+          </div>
+          
+          <div class="price-section">
+            <div class="price-row">
+              <span class="current-price">$1,299.99</span>
+              <span class="original-price">$1,599.99</span>
+              <span class="discount-badge">19% OFF</span>
+            </div>
+            <div class="price-info">
+              <i class="fas fa-truck"></i>
+              <span>Free shipping on orders over $50</span>
+            </div>
+            <div class="price-info">
+              <i class="fas fa-shield-alt"></i>
+              <span>2-year warranty included</span>
+            </div>
+          </div>
+          
+          <div class="product-options">
+            <div class="option-group">
+              <label class="option-label">Color:</label>
+              <div class="color-options">
+                <div class="color-option selected" style="background: #1e293b;" title="Space Gray"></div>
+                <div class="color-option" style="background: #f8fafc;" title="Silver"></div>
+                <div class="color-option" style="background: #ef4444;" title="Red"></div>
+                <div class="color-option" style="background: #3b82f6;" title="Blue"></div>
+              </div>
+            </div>
+            
+            <div class="option-group">
+              <label class="option-label">Storage:</label>
+              <div class="size-options">
+                <button class="size-option">256GB</button>
+                <button class="size-option selected">512GB</button>
+                <button class="size-option">1TB</button>
+                <button class="size-option">2TB</button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="quantity-selector">
+            <div class="quantity-controls">
+              <button class="quantity-btn">
+                <i class="fas fa-minus"></i>
+              </button>
+              <input type="number" class="quantity-input" value="1" min="1" max="10">
+              <button class="quantity-btn">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+            <div class="stock-info">
+              <i class="fas fa-check-circle"></i>
+              <span>In Stock - Only 5 left!</span>
+            </div>
+          </div>
+          
+          <div class="action-buttons">
+            <button class="btn-primary-large">
+              <i class="fas fa-shopping-cart"></i>
+              <span>Add to Cart</span>
+            </button>
+            <button class="btn-secondary-large">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          
+          <div class="product-features">
+            <div class="features-grid">
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <i class="fas fa-microchip"></i>
+                </div>
+                <div class="feature-text">
+                  <div class="feature-title">Intel Core i7</div>
+                  <div class="feature-desc">12th Gen Processor</div>
+                </div>
+              </div>
+              
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <i class="fas fa-memory"></i>
+                </div>
+                <div class="feature-text">
+                  <div class="feature-title">16GB RAM</div>
+                  <div class="feature-desc">DDR5 Memory</div>
+                </div>
+              </div>
+              
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <i class="fas fa-hdd"></i>
+                </div>
+                <div class="feature-text">
+                  <div class="feature-title">512GB SSD</div>
+                  <div class="feature-desc">NVMe Storage</div>
+                </div>
+              </div>
+              
+              <div class="feature-item">
+                <div class="feature-icon">
+                  <i class="fas fa-desktop"></i>
+                </div>
+                <div class="feature-text">
+                  <div class="feature-title">15" Display</div>
+                  <div class="feature-desc">4K Resolution</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      
+      <!-- Tabs Section -->
+      <div class="tabs-section">
+        <div class="tabs-nav">
+          <button class="tab-btn active" data-tab="description">Description</button>
+          <button class="tab-btn" data-tab="specifications">Specifications</button>
+          <button class="tab-btn" data-tab="reviews">Reviews</button>
+          <button class="tab-btn" data-tab="shipping">Shipping & Returns</button>
+        </div>
+        
+        <div class="tab-content active" id="description">
+          <p class="description-text">
+            Experience unparalleled performance with the Premium Laptop Pro 15". Powered by the latest Intel Core i7 processor and featuring 16GB of DDR5 RAM, this laptop is designed to handle even the most demanding tasks with ease. Whether you're a creative professional, gamer, or business user, this laptop delivers the power and versatility you need.
+          </p>
+          <p class="description-text">
+            The stunning 15-inch 4K display brings your content to life with vibrant colors and sharp details. With a 512GB NVMe SSD, you'll enjoy lightning-fast boot times and quick access to all your files and applications. The sleek, modern design is both beautiful and functional, making it the perfect companion for work or play.
+          </p>
+          <h3 style="font-size: 1.3rem; font-weight: 700; margin: 24px 0 16px; color: var(--text-primary);">Key Features:</h3>
+          <ul style="color: var(--text-secondary); line-height: 1.8; padding-left: 20px;">
+            <li>12th Gen Intel Core i7 Processor for exceptional performance</li>
+            <li>16GB DDR5 RAM for smooth multitasking</li>
+            <li>512GB NVMe SSD for ultra-fast storage</li>
+            <li>15-inch 4K display with stunning visuals</li>
+            <li>Advanced cooling system for optimal performance</li>
+            <li>All-day battery life with fast charging</li>
+            <li>Thunderbolt 4 connectivity for versatile peripherals</li>
+            <li>Backlit keyboard with fingerprint sensor</li>
+          </ul>
+        </div>
+        
+        <div class="tab-content" id="specifications">
+          <table class="specs-table">
+            <tr>
+              <td>Processor</td>
+              <td>Intel Core i7-12700H (12th Gen)</td>
+            </tr>
+            <tr>
+              <td>Memory</td>
+              <td>16GB DDR5 4800MHz</td>
+            </tr>
+            <tr>
+              <td>Storage</td>
+              <td>512GB NVMe SSD (expandable up to 2TB)</td>
+            </tr>
+            <tr>
+              <td>Display</td>
+              <td>15.6" 4K (3840 x 2160) IPS, 120Hz</td>
+            </tr>
+            <tr>
+              <td>Graphics</td>
+              <td>Intel Iris Xe Graphics</td>
+            </tr>
+            <tr>
+              <td>Operating System</td>
+              <td>Windows 11 Pro</td>
+            </tr>
+            <tr>
+              <td>Ports</td>
+              <td>2x Thunderbolt 4, 1x USB-A 3.2, HDMI 2.1, SD card reader</td>
+            </tr>
+            <tr>
+              <td>Wireless</td>
+              <td>Wi-Fi 6E, Bluetooth 5.2</td>
+            </tr>
+            <tr>
+              <td>Battery</td>
+              <td>86Wh, up to 12 hours of use</td>
+            </tr>
+            <tr>
+              <td>Weight</td>
+              <td>4.2 lbs (1.9 kg)</td>
+            </tr>
+            <tr>
+              <td>Dimensions</td>
+              <td>14.1 x 9.5 x 0.7 inches</td>
+            </tr>
+          </table>
+        </div>
+        
+        <div class="tab-content" id="reviews">
+          <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 24px; color: var(--text-primary);">Customer Reviews</h3>
+          
+          <!-- Review Summary -->
+          <div style="background: var(--gradient-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; margin-bottom: 32px;">
+            <div style="display: flex; align-items: center; gap: 32px;">
+              <div style="text-align: center;">
+                <div style="font-size: 3rem; font-weight: 800; background: var(--gradient-mesh); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">4.5</div>
+                <div class="stars" style="justify-content: center;">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div style="color: var(--text-muted); font-size: 0.9rem;">342 reviews</div>
+              </div>
+              <div style="flex: 1;">
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                  <span style="width: 60px;">5 stars</span>
+                  <div style="flex: 1; height: 8px; background: var(--bg-secondary); border-radius: 4px; overflow: hidden;">
+                    <div style="width: 65%; height: 100%; background: var(--gradient-mesh);"></div>
+                  </div>
+                  <span style="color: var(--text-muted); font-size: 0.9rem;">222</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                  <span style="width: 60px;">4 stars</span>
+                  <div style="flex: 1; height: 8px; background: var(--bg-secondary); border-radius: 4px; overflow: hidden;">
+                    <div style="width: 20%; height: 100%; background: var(--gradient-mesh);"></div>
+                  </div>
+                  <span style="color: var(--text-muted); font-size: 0.9rem;">68</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                  <span style="width: 60px;">3 stars</span>
+                  <div style="flex: 1; height: 8px; background: var(--bg-secondary); border-radius: 4px; overflow: hidden;">
+                    <div style="width: 10%; height: 100%; background: var(--gradient-mesh);"></div>
+                  </div>
+                  <span style="color: var(--text-muted); font-size: 0.9rem;">34</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                  <span style="width: 60px;">2 stars</span>
+                  <div style="flex: 1; height: 8px; background: var(--bg-secondary); border-radius: 4px; overflow: hidden;">
+                    <div style="width: 3%; height: 100%; background: var(--gradient-mesh);"></div>
+                  </div>
+                  <span style="color: var(--text-muted); font-size: 0.9rem;">10</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 12px;">
+                  <span style="width: 60px;">1 star</span>
+                  <div style="flex: 1; height: 8px; background: var(--bg-secondary); border-radius: 4px; overflow: hidden;">
+                    <div style="width: 2%; height: 100%; background: var(--gradient-mesh);"></div>
+                  </div>
+                  <span style="color: var(--text-muted); font-size: 0.9rem;">8</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Sample Reviews -->
+          <div style="space-y: 24px;">
+            <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; margin-bottom: 24px;">
+              <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 16px;">
+                <div>
+                  <div style="font-weight: 700; color: var(--text-primary); margin-bottom: 4px;">Sarah Johnson</div>
+                  <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                </div>
+                <div style="color: var(--text-muted); font-size: 0.9rem;">2 days ago</div>
+              </div>
+              <p style="color: var(--text-secondary); line-height: 1.6;">
+                Absolutely love this laptop! The performance is incredible and the 4K display is stunning. Perfect for my work as a graphic designer. Highly recommend!
+              </p>
+            </div>
+            
+            <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px;">
+              <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 16px;">
+                <div>
+                  <div style="font-weight: 700; color: var(--text-primary); margin-bottom: 4px;">Mike Chen</div>
+                  <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                  </div>
+                </div>
+                <div style="color: var(--text-muted); font-size: 0.9rem;">1 week ago</div>
+              </div>
+              <p style="color: var(--text-secondary); line-height: 1.6;">
+                Great laptop overall. Fast performance and beautiful display. Battery life could be better, but it's manageable. The build quality is excellent.
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="tab-content" id="shipping">
+          <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 24px; color: var(--text-primary);">Shipping & Returns</h3>
+          
+          <div style="background: var(--gradient-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; margin-bottom: 24px;">
+            <h4 style="font-weight: 700; margin-bottom: 16px; color: var(--text-primary); display: flex; align-items: center; gap: 12px;">
+              <i class="fas fa-truck" style="color: var(--primary-light);"></i>
+              Free Shipping
+            </h4>
+            <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">
+              Enjoy free shipping on all orders over $50. Standard delivery typically takes 5-7 business days.
+            </p>
+            <ul style="color: var(--text-secondary); line-height: 1.8; padding-left: 20px;">
+              <li>Standard Shipping: 5-7 business days (Free on orders $50+)</li>
+              <li>Express Shipping: 2-3 business days ($15.99)</li>
+              <li>Overnight Shipping: 1 business day ($29.99)</li>
+            </ul>
+          </div>
+          
+          <div style="background: var(--gradient-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px;">
+            <h4 style="font-weight: 700; margin-bottom: 16px; color: var(--text-primary); display: flex; align-items: center; gap: 12px;">
+              <i class="fas fa-undo" style="color: var(--primary-light);"></i>
+              30-Day Returns
+            </h4>
+            <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">
+              We offer a 30-day return policy for all products. Items must be in original condition with all accessories included.
+            </p>
+            <ul style="color: var(--text-secondary); line-height: 1.8; padding-left: 20px;">
+              <li>30-day money-back guarantee</li>
+              <li>Items must be unused and in original packaging</li>
+              <li>Return shipping fee may apply</li>
+              <li>Refunds processed within 5-7 business days</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Tab functionality
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tabId = btn.dataset.tab;
+        
+        // Remove active class from all tabs and contents
+        document.querySelectorAll('.tab-btn').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        
+        // Add active class to clicked tab and corresponding content
+        btn.classList.add('active');
+        document.getElementById(tabId).classList.add('active');
+      });
+    });
+    
+    // Thumbnail functionality
+    document.querySelectorAll('.thumbnail').forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        // Remove active class from all thumbnails
+        document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+        
+        // Add active class to clicked thumbnail
+        thumb.classList.add('active');
+        
+        // Update main image (in real implementation, would change image src)
+        const mainImg = document.querySelector('.main-image');
+        // mainImg.src = thumb.querySelector('img').src.replace('150x150', '600x600');
+      });
+    });
+    
+    // Color selection
+    document.querySelectorAll('.color-option').forEach(option => {
+      option.addEventListener('click', () => {
+        document.querySelectorAll('.color-option').forEach(o => o.classList.remove('selected'));
+        option.classList.add('selected');
+      });
+    });
+    
+    // Size selection
+    document.querySelectorAll('.size-option').forEach(option => {
+      option.addEventListener('click', () => {
+        document.querySelectorAll('.size-option').forEach(o => o.classList.remove('selected'));
+        option.classList.add('selected');
+      });
+    });
+    
+    // Quantity controls
+    const quantityInput = document.querySelector('.quantity-input');
+    const minusBtn = document.querySelector('.quantity-btn:first-of-type');
+    const plusBtn = document.querySelector('.quantity-btn:last-of-type');
+    
+    minusBtn.addEventListener('click', () => {
+      if (quantityInput.value > 1) {
+        quantityInput.value = parseInt(quantityInput.value) - 1;
+      }
+    });
+    
+    plusBtn.addEventListener('click', () => {
+      if (quantityInput.value < 10) {
+        quantityInput.value = parseInt(quantityInput.value) + 1;
+      }
+    });
+  </script>
+</body>
+</html>

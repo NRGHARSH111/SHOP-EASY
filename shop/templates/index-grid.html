@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ShopEasy - Modern E-commerce</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
+  <!-- Grid System -->
+  <link rel="stylesheet" href="{% static 'css/grid-system.css' %}">
+  
+  <style>
+    :root {
+      /* Modern Theme Variables */
+      --primary: #6366f1;
+      --primary-light: #818cf8;
+      --primary-dark: #4f46e5;
+      --secondary: #ec4899;
+      --accent: #06b6d4;
+      --success: #22c55e;
+      --warning: #f59e0b;
+      --error: #ef4444;
+      
+      /* Background Colors */
+      --bg-primary: #f8fafc;
+      --bg-secondary: #ffffff;
+      --bg-card: rgba(255, 255, 255, 0.95);
+      --bg-glass: rgba(255, 255, 255, 0.8);
+      
+      /* Text Colors */
+      --text-primary: #1e293b;
+      --text-secondary: #64748b;
+      --text-muted: #94a3b8;
+      
+      /* Effects */
+      --border: rgba(99, 102, 241, 0.2);
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+      --glow-primary: 0 0 40px rgba(99, 102, 241, 0.15);
+      --glow-secondary: 0 0 40px rgba(236, 72, 153, 0.15);
+      
+      /* Gradients */
+      --gradient-mesh: linear-gradient(135deg, #6366f1 0%, #ec4899 50%, #06b6d4 100%);
+      --gradient-card: linear-gradient(145deg, rgba(99, 102, 241, 0.08) 0%, rgba(6, 182, 212, 0.05) 100%);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* Background Effects */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background: 
+        radial-gradient(at 30% 20%, rgba(99, 102, 241, 0.05) 0px, transparent 50%),
+        radial-gradient(at 80% 10%, rgba(236, 72, 153, 0.03) 0px, transparent 50%),
+        radial-gradient(at 10% 50%, rgba(6, 182, 212, 0.03) 0px, transparent 50%);
+      animation: meshMove 30s ease-in-out infinite;
+    }
+
+    @keyframes meshMove {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+    }
+
+    /* Header Styles */
+    .header-grid {
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(20px);
+    }
+
+    .header-content {
+      padding: 16px 0;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.75rem;
+      color: var(--text-primary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--gradient-mesh);
+      background-size: 200% 200%;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.25rem;
+      animation: gradientShift 3s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .brand-accent {
+      background: var(--gradient-mesh);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Navigation */
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-item {
+      padding: 8px 16px;
+      border-radius: 10px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .nav-item:hover {
+      background: rgba(139, 92, 246, 0.1);
+      color: var(--primary-light);
+    }
+
+    .nav-item.active {
+      background: var(--gradient-mesh);
+      color: white;
+      animation: gradientShift 3s ease infinite;
+    }
+
+    /* Search Bar */
+    .search-container {
+      position: relative;
+      flex: 1;
+      max-width: 600px;
+      margin: 0 20px;
+    }
+
+    .search-box {
+      display: flex;
+      background: var(--bg-card);
+      border: 2px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .search-box:focus-within {
+      border-color: var(--primary-light);
+      box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.2);
+    }
+
+    .search-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      padding: 14px 20px;
+      color: var(--text-primary);
+      font-size: 1rem;
+    }
+
+    .search-input:focus {
+      outline: none;
+    }
+
+    .search-btn {
+      background: var(--gradient-mesh);
+      border: none;
+      padding: 0 24px;
+      color: white;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      animation: gradientShift 3s ease infinite;
+    }
+
+    .search-btn:hover {
+      filter: brightness(1.2);
+    }
+
+    /* Header Actions */
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .header-action {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      padding: 8px 16px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: var(--text-secondary);
+      position: relative;
+    }
+
+    .header-action:hover {
+      background: rgba(139, 92, 246, 0.1);
+      color: var(--text-primary);
+    }
+
+    .header-action i {
+      font-size: 1.25rem;
+    }
+
+    .header-action span {
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .cart-badge {
+      position: absolute;
+      top: -4px;
+      right: 8px;
+      background: var(--secondary);
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 10px;
+      min-width: 18px;
+      text-align: center;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      background: var(--gradient-card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      overflow: hidden;
+      position: relative;
+      margin: 40px 0;
+      min-height: 400px;
+    }
+
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--gradient-mesh);
+      background-size: 200% 200%;
+      opacity: 0.1;
+      animation: gradientShift 3s ease infinite;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 60px 40px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(139, 92, 246, 0.2);
+      border: 1px solid var(--border);
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      color: var(--primary-light);
+      margin-bottom: 20px;
+      width: fit-content;
+    }
+
+    .hero-title {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+      line-height: 1.1;
+    }
+
+    .hero-title span {
+      background: var(--gradient-mesh);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientShift 3s ease infinite;
+    }
+
+    .hero-description {
+      color: var(--text-secondary);
+      font-size: 1.2rem;
+      max-width: 500px;
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--gradient-mesh);
+      color: white;
+      padding: 16px 32px;
+      border-radius: 16px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      animation: gradientShift 3s ease infinite;
+      box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
+    }
+
+    .hero-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 40px rgba(139, 92, 246, 0.6);
+    }
+
+    /* Category Section */
+    .category-section {
+      margin: 60px 0;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-title::before {
+      content: '';
+      width: 4px;
+      height: 32px;
+      background: var(--gradient-mesh);
+      background-size: 200% 200%;
+      border-radius: 2px;
+      animation: gradientShift 3s ease infinite;
+    }
+
+    .view-all-btn {
+      color: var(--primary-light);
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .view-all-btn:hover {
+      color: var(--secondary);
+      gap: 12px;
+    }
+
+    .category-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+      text-align: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .category-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--gradient-mesh);
+      background-size: 200% 200%;
+      animation: gradientShift 3s ease infinite;
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .category-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .category-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--primary-light);
+      box-shadow: var(--glow-primary);
+    }
+
+    .category-icon {
+      width: 64px;
+      height: 64px;
+      background: var(--gradient-mesh);
+      background-size: 200% 200%;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5rem;
+      margin: 0 auto 16px;
+      animation: gradientShift 3s ease infinite;
+    }
+
+    .category-name {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .category-count {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* Product Cards */
+    .product-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--gradient-mesh);
+      background-size: 200% 200%;
+      animation: gradientShift 3s ease infinite;
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--primary-light);
+      box-shadow: var(--glow-primary);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: var(--gradient-mesh);
+      color: white;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      animation: gradientShift 3s ease infinite;
+    }
+
+    .product-content {
+      padding: 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .product-title {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--text-primary);
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .product-price {
+      font-size: 1.5rem;
+      font-weight: 800;
+      background: var(--gradient-mesh);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .product-rating {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .product-rating .stars {
+      color: #fbbf24;
+    }
+
+    .product-footer {
+      display: flex;
+      gap: 12px;
+      margin-top: auto;
+    }
+
+    .add-to-cart-btn {
+      flex: 1;
+      background: var(--gradient-mesh);
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      animation: gradientShift 3s ease infinite;
+    }
+
+    .add-to-cart-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(139, 92, 246, 0.5);
+    }
+
+    .wishlist-btn {
+      width: 48px;
+      height: 48px;
+      border: 2px solid var(--border);
+      background: var(--bg-secondary);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .wishlist-btn:hover {
+      border-color: var(--secondary);
+      color: var(--secondary);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 767px) {
+      .hero-title {
+        font-size: 2rem;
+      }
+      
+      .hero-content {
+        padding: 40px 20px;
+      }
+      
+      .nav-menu {
+        display: none;
+      }
+      
+      .search-container {
+        margin: 0 10px;
+      }
+      
+      .header-action span {
+        display: none;
+      }
+    }
+
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      
+      .product-grid-4 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      
+      .category-grid-4 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header-grid">
+    <div class="grid-container">
+      <div class="grid-row grid-align-center">
+        <!-- Logo (3 columns) -->
+        <div class="grid-col-3 header-logo">
+          <a href="#" class="logo">
+            <div class="logo-icon">
+              <i class="fas fa-shopping-bag"></i>
+            </div>
+            <span class="brand-accent">ShopEasy</span>
+          </a>
+        </div>
+        
+        <!-- Search Bar (6 columns) -->
+        <div class="grid-col-6">
+          <div class="search-container">
+            <div class="search-box">
+              <input type="text" class="search-input" placeholder="Search for products...">
+              <button class="search-btn">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Header Actions (3 columns) -->
+        <div class="grid-col-3 header-actions grid-end">
+          <a href="#" class="header-action">
+            <i class="fas fa-user"></i>
+            <span>Profile</span>
+          </a>
+          <a href="#" class="header-action cart-action">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Cart</span>
+            <div class="cart-badge">0</div>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Category Navigation -->
+      <div class="grid-row">
+        <div class="grid-col-12">
+          <nav class="category-nav">
+            <div class="nav-menu">
+              <a href="#" class="nav-item active">All</a>
+              <a href="#" class="nav-item">Electronics</a>
+              <a href="#" class="nav-item">Fashion</a>
+              <a href="#" class="nav-item">Home</a>
+              <a href="#" class="nav-item">Sports</a>
+              <a href="#" class="nav-item">Books</a>
+              <a href="#" class="nav-item">Toys</a>
+              <a href="#" class="nav-item">Beauty</a>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section (12 columns) -->
+    <section class="hero-section">
+      <div class="grid-container">
+        <div class="grid-row">
+          <div class="grid-col-12">
+            <div class="hero-content">
+              <div class="hero-badge">
+                <i class="fas fa-fire"></i>
+                <span>Hot Deals This Week</span>
+              </div>
+              <h1 class="hero-title">
+                Discover <span>Amazing Products</span> at Unbeatable Prices
+              </h1>
+              <p class="hero-description">
+                Shop from thousands of premium products with fast delivery and excellent customer service.
+              </p>
+              <a href="#" class="hero-cta">
+                <span>Start Shopping</span>
+                <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="category-section">
+      <div class="grid-container">
+        <div class="grid-row">
+          <div class="grid-col-12">
+            <div class="section-header">
+              <h2 class="section-title">Shop by Category</h2>
+              <a href="#" class="view-all-btn">
+                <span>View All</span>
+                <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Category Grid (4 columns on desktop) -->
+        <div class="grid-row category-grid-4">
+          <div class="grid-col-3">
+            <div class="category-card">
+              <div class="category-icon">
+                <i class="fas fa-laptop"></i>
+              </div>
+              <h3 class="category-name">Electronics</h3>
+              <p class="category-count">2,456 Products</p>
+            </div>
+          </div>
+          
+          <div class="grid-col-3">
+            <div class="category-card">
+              <div class="category-icon">
+                <i class="fas fa-tshirt"></i>
+              </div>
+              <h3 class="category-name">Fashion</h3>
+              <p class="category-count">3,892 Products</p>
+            </div>
+          </div>
+          
+          <div class="grid-col-3">
+            <div class="category-card">
+              <div class="category-icon">
+                <i class="fas fa-home"></i>
+              </div>
+              <h3 class="category-name">Home & Living</h3>
+              <p class="category-count">1,234 Products</p>
+            </div>
+          </div>
+          
+          <div class="grid-col-3">
+            <div class="category-card">
+              <div class="category-icon">
+                <i class="fas fa-football-ball"></i>
+              </div>
+              <h3 class="category-name">Sports</h3>
+              <p class="category-count">987 Products</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section class="section-spacing-lg">
+      <div class="grid-container">
+        <div class="grid-row">
+          <div class="grid-col-12">
+            <div class="section-header">
+              <h2 class="section-title">Featured Products</h2>
+              <a href="#" class="view-all-btn">
+                <span>View All</span>
+                <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Product Grid (4 columns on desktop, 3 per row) -->
+        <div class="grid-row product-grid-4">
+          <div class="grid-col-3">
+            <div class="product-card">
+              <div class="product-badge">Hot Deal</div>
+              <img src="https://via.placeholder.com/300x240/6366f1/ffffff?text=Product+1" alt="Product" class="product-image">
+              <div class="product-content">
+                <h3 class="product-title">Premium Wireless Headphones</h3>
+                <div class="product-price">$89.99</div>
+                <div class="product-rating">
+                  <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                  </div>
+                  <span>4.5 (234)</span>
+                </div>
+                <div class="product-footer">
+                  <button class="add-to-cart-btn">Add to Cart</button>
+                  <button class="wishlist-btn">
+                    <i class="far fa-heart"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="grid-col-3">
+            <div class="product-card">
+              <div class="product-badge">New</div>
+              <img src="https://via.placeholder.com/300x240/ec4899/ffffff?text=Product+2" alt="Product" class="product-image">
+              <div class="product-content">
+                <h3 class="product-title">Smart Watch Pro Max</h3>
+                <div class="product-price">$249.99</div>
+                <div class="product-rating">
+                  <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                  <span>5.0 (89)</span>
+                </div>
+                <div class="product-footer">
+                  <button class="add-to-cart-btn">Add to Cart</button>
+                  <button class="wishlist-btn">
+                    <i class="far fa-heart"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="grid-col-3">
+            <div class="product-card">
+              <img src="https://via.placeholder.com/300x240/06b6d4/ffffff?text=Product+3" alt="Product" class="product-image">
+              <div class="product-content">
+                <h3 class="product-title">Laptop Backpack Premium</h3>
+                <div class="product-price">$45.99</div>
+                <div class="product-rating">
+                  <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                  </div>
+                  <span>4.0 (156)</span>
+                </div>
+                <div class="product-footer">
+                  <button class="add-to-cart-btn">Add to Cart</button>
+                  <button class="wishlist-btn">
+                    <i class="far fa-heart"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="grid-col-3">
+            <div class="product-card">
+              <div class="product-badge">Sale</div>
+              <img src="https://via.placeholder.com/300x240/22c55e/ffffff?text=Product+4" alt="Product" class="product-image">
+              <div class="product-content">
+                <h3 class="product-title">Wireless Charging Pad</h3>
+                <div class="product-price">$29.99</div>
+                <div class="product-rating">
+                  <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                    <i class="far fa-star"></i>
+                  </div>
+                  <span>3.5 (78)</span>
+                </div>
+                <div class="product-footer">
+                  <button class="add-to-cart-btn">Add to Cart</button>
+                  <button class="wishlist-btn">
+                    <i class="far fa-heart"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Special Offers Section -->
+    <section class="section-spacing-lg">
+      <div class="grid-container">
+        <div class="grid-row">
+          <div class="grid-col-12">
+            <div class="section-header">
+              <h2 class="section-title">Special Offers</h2>
+              <a href="#" class="view-all-btn">
+                <span>View All</span>
+                <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Offer Cards Grid -->
+        <div class="grid-row">
+          <div class="grid-col-6">
+            <div class="category-card" style="text-align: left; height: 200px;">
+              <div style="display: flex; align-items: center; gap: 20px; height: 100%;">
+                <div style="flex: 1;">
+                  <h3 style="color: var(--primary-light); font-size: 1.5rem; margin-bottom: 8px;">Flash Sale</h3>
+                  <p style="color: var(--text-secondary); margin-bottom: 16px;">Up to 50% off on selected items</p>
+                  <a href="#" class="hero-cta" style="padding: 10px 20px; font-size: 0.9rem;">
+                    <span>Shop Now</span>
+                    <i class="fas fa-arrow-right"></i>
+                  </a>
+                </div>
+                <div style="font-size: 3rem; color: var(--primary-light);">
+                  <i class="fas fa-bolt"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="grid-col-6">
+            <div class="category-card" style="text-align: left; height: 200px;">
+              <div style="display: flex; align-items: center; gap: 20px; height: 100%;">
+                <div style="flex: 1;">
+                  <h3 style="color: var(--secondary); font-size: 1.5rem; margin-bottom: 8px;">Free Shipping</h3>
+                  <p style="color: var(--text-secondary); margin-bottom: 16px;">On orders over $50</p>
+                  <a href="#" class="hero-cta" style="padding: 10px 20px; font-size: 0.9rem;">
+                    <span>Learn More</span>
+                    <i class="fas fa-arrow-right"></i>
+                  </a>
+                </div>
+                <div style="font-size: 3rem; color: var(--secondary);">
+                  <i class="fas fa-truck"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer style="background: var(--bg-secondary); border-top: 1px solid var(--border); padding: 60px 0 40px; margin-top: 80px;">
+    <div class="grid-container">
+      <div class="grid-row">
+        <div class="grid-col-3">
+          <div class="logo" style="margin-bottom: 20px;">
+            <div class="logo-icon">
+              <i class="fas fa-shopping-bag"></i>
+            </div>
+            <span class="brand-accent">ShopEasy</span>
+          </div>
+          <p style="color: var(--text-secondary); line-height: 1.6;">
+            Your trusted online marketplace for quality products and exceptional service.
+          </p>
+        </div>
+        
+        <div class="grid-col-3">
+          <h4 style="font-weight: 700; margin-bottom: 16px; color: var(--text-primary);">Quick Links</h4>
+          <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 8px;"><a href="#" style="color: var(--text-secondary); text-decoration: none;">About Us</a></li>
+            <li style="margin-bottom: 8px;"><a href="#" style="color: var(--text-secondary); text-decoration: none;">Contact</a></li>
+            <li style="margin-bottom: 8px;"><a href="#" style="color: var(--text-secondary); text-decoration: none;">FAQs</a></li>
+            <li style="margin-bottom: 8px;"><a href="#" style="color: var(--text-secondary); text-decoration: none;">Shipping Info</a></li>
+          </ul>
+        </div>
+        
+        <div class="grid-col-3">
+          <h4 style="font-weight: 700; margin-bottom: 16px; color: var(--text-primary);">Categories</h4>
+          <ul style="list-style: none; padding: 0;">
+            <li style="margin-bottom: 8px;"><a href="#" style="color: var(--text-secondary); text-decoration: none;">Electronics</a></li>
+            <li style="margin-bottom: 8px;"><a href="#" style="color: var(--text-secondary); text-decoration: none;">Fashion</a></li>
+            <li style="margin-bottom: 8px;"><a href="#" style="color: var(--text-secondary); text-decoration: none;">Home</a></li>
+            <li style="margin-bottom: 8px;"><a href="#" style="color: var(--text-secondary); text-decoration: none;">Sports</a></li>
+          </ul>
+        </div>
+        
+        <div class="grid-col-3">
+          <h4 style="font-weight: 700; margin-bottom: 16px; color: var(--text-primary);">Connect</h4>
+          <div style="display: flex; gap: 12px; margin-bottom: 20px;">
+            <a href="#" style="width: 40px; height: 40px; background: var(--gradient-mesh); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" style="width: 40px; height: 40px; background: var(--gradient-mesh); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" style="width: 40px; height: 40px; background: var(--gradient-mesh); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none;">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
+          <p style="color: var(--text-secondary); font-size: 0.9rem;">
+            Subscribe to our newsletter for exclusive deals!
+          </p>
+        </div>
+      </div>
+      
+      <div class="grid-row" style="margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border);">
+        <div class="grid-col-12" style="text-align: center; color: var(--text-muted);">
+          <p>&copy; 2024 ShopEasy. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
