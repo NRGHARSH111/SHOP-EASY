@@ -1114,7 +1114,7 @@
       transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       overflow: hidden;
       position: relative;
-      height: 420px;
+      height: 300px;
       /* Fixed height */
       display: flex;
       flex-direction: column;
@@ -1140,25 +1140,36 @@
 
     .product-img-container {
       position: relative;
-      height: 220px;
+      height: 150px;
       overflow: hidden;
       flex-shrink: 0;
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.3) 0%, rgba(30, 41, 59, 0.2) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
     }
 
     .product-img {
-      height: 100%;
-      width: 100%;
-      object-fit: cover;
-      border-bottom: 1px solid var(--border);
+      max-height: 100%;
+      max-width: 100%;
+      height: auto;
+      width: auto;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover .product-img {
+      transform: scale(1.05);
     }
 
     .price {
-      font-weight: 800;
+      font-weight: 700;
       background: var(--gradient-mesh);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      font-size: 1.25rem;
+      font-size: 1.1rem;
     }
 
     .badge-float {
@@ -1179,12 +1190,12 @@
 
     /* Product Card Body */
     .product-card-body {
-      padding: 16px;
-      flex: 1;
+      padding: 12px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 12px;
+      gap: 8px;
+      min-height: 0;
     }
 
     .product-meta {
@@ -1216,10 +1227,10 @@
     .product-name {
       font-weight: 600;
       color: var(--text-primary);
-      font-size: 0.9rem;
-      line-height: 1.4;
+      font-size: 0.85rem;
+      line-height: 1.3;
       margin: 0;
-      min-height: 2.8rem;
+      min-height: 2.2rem;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       line-clamp: 2;
@@ -1232,8 +1243,9 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       margin-top: auto;
+      padding-top: 4px;
     }
 
     .product-price {
@@ -1245,12 +1257,16 @@
       background: var(--gradient-mesh) !important;
       background-size: 200% 200% !important;
       border: none !important;
-      border-radius: 12px !important;
-      padding: 10px 24px !important;
-      font-weight: 700 !important;
-      font-size: 0.9rem !important;
+      border-radius: 8px !important;
+      padding: 6px 12px !important;
+      font-weight: 600 !important;
+      font-size: 0.75rem !important;
       transition: all 0.3s ease !important;
       animation: gradientShift 3s ease infinite !important;
+      white-space: nowrap;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .add-to-cart-btn:hover {
@@ -1653,15 +1669,17 @@
       background: var(--gradient-mesh);
       background-size: 200% 200%;
       border: none;
-      padding: 12px 24px;
-      border-radius: 12px;
+      padding: 12px 12px;
+      border-radius: 8px;
       color: white;
       font-weight: 600;
+      font-size: 0.75rem;
       opacity: 0;
       transition: all 0.3s ease;
       cursor: pointer;
       animation: gradientShift 3s ease infinite;
       z-index: 10;
+      white-space: nowrap;
     }
 
     .product-card:hover .quick-view-btn {
@@ -2542,6 +2560,8 @@
         const safeName = (product.name || 'Unknown Product').replace(/'/g, "\\'").replace(/"/g, '&quot;');
         const safeCategory = (product.category || 'General').substring(0, 20);
         const displayPrice = salePrice || price;
+        const safeImageUrl = (product.imageUrl || '').replace(/'/g, "\\'");
+        const safeDescription = (product.description || 'Premium product').replace(/'/g, "\\'").replace(/"/g, '&quot;');
 
         // All products can be added to cart - external ones will open affiliate link on checkout
         const btnText = isExternal ? `Add (${source})` : 'Add';
@@ -2562,7 +2582,7 @@
                    class="w-100 product-img" 
                    alt="${safeName}"
                    onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'">
-              <button class="quick-view-btn" onclick="showQuickView('${safeName}', '${product.imageUrl}', '${(product.description || 'Premium product').replace(/'/g, "\\'")}', ${displayPrice}, ${product.id})">
+              <button class="quick-view-btn" onclick="showQuickView('${safeName}', '${safeImageUrl}', '${safeDescription}', ${displayPrice}, ${product.id})">
                 <i class="fas fa-eye me-2"></i>Quick View
               </button>
             </div>
@@ -3686,9 +3706,11 @@
       const col = document.createElement('div');
       col.className = 'col-md-6 col-lg-4 col-xl-3 mb-4';
       
-      const safeName = (product.name || 'Unknown Product').replace(/"/g, '&quot;');
+      const safeName = (product.name || 'Unknown Product').replace(/'/g, "\\'").replace(/"/g, '&quot;');
       const displayName = safeName.length > 45 ? safeName.substring(0, 42) + '...' : safeName;
       const safeCategory = (product.category || 'External').replace(/"/g, '&quot;');
+      const safeImageUrl = (product.imageUrl || '').replace(/'/g, "\\'");
+      const safeDescription = (product.description || '').replace(/'/g, "\\'").replace(/"/g, '&quot;');
       
       const badgeHtml = product.salePrice ? '<span class="product-badge">SALE</span>' : '';
       
@@ -3700,7 +3722,7 @@
                  alt="${safeName}"
                  onerror="this.src='https://via.placeholder.com/300x300?text=No+Image'"
                  loading="lazy">
-            <button class="quick-view-btn" onclick="showQuickView('${safeName}', '${product.imageUrl || ''}', '${product.description || ''}', ${product.price || 0}, ${product.id || 0})">
+            <button class="quick-view-btn" onclick="showQuickView('${safeName}', '${safeImageUrl}', '${safeDescription}', ${product.price || 0}, ${product.id || 0})">
               <i class="fas fa-eye me-2"></i>Quick View
             </button>
           </div>
@@ -3817,7 +3839,9 @@
               <div class="modal-body p-4">
                 <div class="row g-4">
                   <div class="col-md-6">
-                    <img src="${imageUrl}" style="width: 100%; height: 300px; object-fit: cover; border-radius: 16px;">
+                    <div style="width: 100%; height: 300px; background: linear-gradient(145deg, rgba(15, 23, 42, 0.3) 0%, rgba(30, 41, 59, 0.2) 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; padding: 16px;">
+                      <img src="${imageUrl}" style="max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; border-radius: 8px;">
+                    </div>
                   </div>
                   <div class="col-md-6 d-flex flex-column justify-content-center">
                     <h4 style="font-weight: 800; color: var(--text-primary); margin-bottom: 12px; font-size: 1.5rem;">${name}</h4>
